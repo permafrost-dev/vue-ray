@@ -12,19 +12,16 @@
   "bugs": {
     "url": "https://github.com/permafrost-dev/vue-ray/issues"
   },
-  "main": "dist/index.cjs",
+  "main": "dist/index-vue3.cjs",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index-vue3.mjs",
+      "require": "./dist/index-vue3.cjs"
     },
     "./vue2": {
-      "import": "./dist/vue2.mjs",
-      "require": "./dist/vue2.cjs"
+      "import": "./dist/index-vue2.mjs",
+      "require": "./dist/index-vue2.cjs"
     }
-  },
-  "directories": {
-    "test": "tests"
   },
   "scripts": {
     "test": "./node_modules/.bin/jest tests --verbose",
@@ -66,5 +63,8 @@
     "ts-jest": "^26.5.0",
     "ts-mixer": "^5.4.0",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "node-ray": "^1.4.0"
   }
 }
