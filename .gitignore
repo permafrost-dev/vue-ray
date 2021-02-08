@@ -1,0 +1,12 @@
+/build/*.js
+!/build/test.js
+
+/.vscode
+/node_modules
+/dist
+/coverage
+
+package-lock.json
+yarn.lock
+
+notes.txt

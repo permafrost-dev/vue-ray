@@ -1,0 +1,40 @@
+codecov:
+  branch: main
+  require_ci_to_pass: yes
+
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+        target: auto
+        # this allows a 10% drop from the previous base commit coverage
+        threshold: 20%
+    patch:
+      default:
+        informational: true
+  precision: 2
+  round: up
+  range: "40...80"
+
+parsers:
+  javascript:
+    enable_partials: yes
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "reach,diff,flags,files,footer"
+  behavior: default
+  require_changes: true
+
+ignore:
+  - "build/"
+  - ".eslintrc.js"
+  - "jest.config.js"
+  - "rollup.config.js"
+  - "rollup.standalone-config.js"
