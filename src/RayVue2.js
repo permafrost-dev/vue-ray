@@ -1,5 +1,5 @@
-import { Ray } from 'node-ray/web';
 import { mergeOptionsWithDefaults } from './options';
+const { Ray } = require('node-ray');
 
 const RayVue2Plugin = {
     install: function (Vue, options) {

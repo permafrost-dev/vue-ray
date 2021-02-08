@@ -3,7 +3,7 @@ import { terser } from 'rollup-plugin-terser';
 
 const options = {
     sourceMapsEnabled: true,
-    minified: true,
+    minified: false,
 };
 
 const outputs = {
