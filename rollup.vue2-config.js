@@ -51,9 +51,9 @@ export default {
         replace({
             __buildDate__: () => (new Date()).toISOString(),
             __buildVersion__: () => require('./package.json').version,
-            'node-ray/dist/web.cjs': () => 'node-ray/web',
         }),
         nodeResolve(),
+        commonjs(),
     ],
     external: ['axios', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
 };
