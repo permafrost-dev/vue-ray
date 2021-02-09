@@ -4,6 +4,12 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.4.1 - 2021-02-09
+
+- fix `/vue2` export
+
+- fix `/vue3` export
+
 ## 1.4.0 - 2021-02-09
 
 - change vue2/vue3 to use module.exports

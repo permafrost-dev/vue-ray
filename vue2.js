@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 
-const { RayPlugin } = require('./dist/vue2.cjs');
+const RayPlugin = require('./dist/vue2.cjs');
 
-module.exports.RayPlugin = RayPlugin;
+module.exports = { RayPlugin };
 
