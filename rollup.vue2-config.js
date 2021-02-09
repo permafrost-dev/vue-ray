@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 
 const options = {
     sourceMapsEnabled: true,
@@ -46,6 +47,13 @@ export default {
         ...outputs.unminified,
         ...outputs.minified,
     ],
-    plugins: [nodeResolve()],
+    plugins: [
+        replace({
+            __buildDate__: () => (new Date()).toISOString(),
+            __buildVersion__: () => require('./package.json').version,
+            'node-ray/dist/web.cjs': () => 'node-ray/web',
+        }),
+        nodeResolve(),
+    ],
     external: ['axios', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
 };

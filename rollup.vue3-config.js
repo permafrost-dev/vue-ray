@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 
 const options = {
     sourceMapsEnabled: true,
@@ -10,14 +11,14 @@ const options = {
 const outputs = {
     minified: options.minified ? [
         {
-            file: 'dist/index-vue3.min.cjs',
+            file: 'dist/vue3.cjs.min.js',
             format: 'cjs',
             plugins: [terser()],
             sourcemap: options.sourceMapsEnabled,
             exports: 'auto',
         },
         {
-            file: 'dist/index-vue3.min.mjs',
+            file: 'dist/vue3.min.mjs',
             format: 'esm',
             plugins: [terser()],
             sourcemap: options.sourceMapsEnabled,
@@ -25,14 +26,14 @@ const outputs = {
     ] : [],
     unminified: [
         {
-            file: 'dist/index-vue3.cjs',
+            file: 'dist/vue3.cjs.js',
             format: 'cjs',
             sourcemap: options.sourceMapsEnabled,
             exports: 'auto',
             plugins: []
         },
         {
-            file: 'dist/index-vue3.mjs',
+            file: 'dist/vue3.mjs',
             format: 'esm',
             sourcemap: options.sourceMapsEnabled,
             plugins: []
@@ -46,6 +47,14 @@ export default {
         ...outputs.unminified,
         ...outputs.minified,
     ],
-    plugins: [nodeResolve(), commonjs(),],
+    plugins: [
+        replace({
+            __buildDate__: () => (new Date()).toISOString(),
+            __buildVersion__: () => require('./package.json').version,
+            'node-ray/dist/web.cjs': () => 'node-ray/web',
+        }),
+        nodeResolve(),
+        commonjs(),
+    ],
     external: ['axios', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
 };
