@@ -1,4 +1,4 @@
-const { ray } = require('node-ray/web');
+const { ray } = require('node-ray/dist/web.cjs');
 
 const RayVue3Plugin = {
     install: (app, options) => {
