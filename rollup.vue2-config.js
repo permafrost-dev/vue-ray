@@ -10,14 +10,14 @@ const options = {
 const outputs = {
     minified: options.minified ? [
         {
-            file: 'dist/index-vue2.min.cjs',
+            file: 'dist/vue2.cjs.min.js',
             format: 'cjs',
             plugins: [terser()],
             sourcemap: options.sourceMapsEnabled,
             exports: 'auto',
         },
         {
-            file: 'dist/index-vue2.min.mjs',
+            file: 'dist/vue2.min.mjs',
             format: 'esm',
             plugins: [terser()],
             sourcemap: options.sourceMapsEnabled,
@@ -25,14 +25,14 @@ const outputs = {
     ] : [],
     unminified: [
         {
-            file: 'dist/index-vue2.cjs',
+            file: 'dist/vue2.cjs.js',
             format: 'cjs',
             sourcemap: options.sourceMapsEnabled,
             exports: 'auto',
             plugins: []
         },
         {
-            file: 'dist/index-vue2.mjs',
+            file: 'dist/vue2.mjs',
             format: 'esm',
             sourcemap: options.sourceMapsEnabled,
             plugins: []
@@ -46,6 +46,6 @@ export default {
         ...outputs.unminified,
         ...outputs.minified,
     ],
-    plugins: [commonjs(), nodeResolve()],
+    plugins: [nodeResolve()],
     external: ['axios', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
 };

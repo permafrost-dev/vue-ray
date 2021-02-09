@@ -19,8 +19,8 @@
       "require": "./dist/index-vue3.cjs"
     },
     "./vue2": {
-      "import": "./dist/index-vue2.mjs",
-      "require": "./dist/index-vue2.cjs"
+      "import": "./dist/vue2.mjs",
+      "require": "./dist/vue2.cjs.js"
     }
   },
   "scripts": {
