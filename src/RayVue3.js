@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-const { ray } = require('node-ray/dist/web.cjs');
+const { ray } = require('node-ray/web');
 
 const RayVue3Plugin = {
     install: (app, options) => {
