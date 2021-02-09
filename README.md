@@ -36,7 +36,7 @@ When using in a Vue 3.x project (the default), import the plugin normally:
 ```js 
 import { createApp } from 'vue';
 import App from './App.vue';
-const RayPlugin = require('vue-ray');
+import RayPlugin from 'vue-ray';
 
 const app = createApp(App);
 
