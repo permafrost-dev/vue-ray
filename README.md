@@ -10,6 +10,7 @@
 </p>
 
 # vue-ray
+
 ## Debug your Vue code with Ray to fix problems faster
 
 This package can be installed in any Vue 2.x or Vue 3.x project to send messages to the [Ray app](https://myray.app).
@@ -55,13 +56,41 @@ Vue.use(RayPlugin);
 
 ## Usage
 
-## Configuration
+Once the plugin is installed, you may access the `ray()` method on `this` as `this.$ray()`.
 
-## About
+See the [node-ray reference](https://github.com/permafrost-dev/node-ray#reference) for a full list of available methods.
 
-## Reference
+## Example Component
 
-## FAQ
+```vue
+<template>
+    <div class="flex-col border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto w-100 h-screen">
+        <div class="about">
+            <h1>This is a folders page</h1>
+            <a @click="sendToRay()">send folder to ray</a>
+        </div>
+        <div class="w-full flex flex-wrap">
+            <folder ref="folder1" class="w-4/12 inline-flex"></folder>
+            <folder ref="folder2" class="w-4/12 inline-flex"></folder>
+        </div>
+    </div>
+</template>
+
+<script>
+import Folder from './Folder.vue';
+
+export default {
+    components: {
+        Folder
+    },
+    methods: {
+        sendToRay() {
+            this.$ray().html(this.$refs.folder1.$el.innerHTML);
+        }
+    }
+};
+</script>
+```
 
 ## Development setup
 
