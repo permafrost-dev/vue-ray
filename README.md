@@ -35,12 +35,12 @@ When using in a Vue 3.x project (the default), import the plugin normally:
 
 ```js 
 import { createApp } from 'vue';
-import RayPlugin from 'vue-ray';
 import App from './App.vue';
+const RayPlugin = require('vue-ray');
 
 const app = createApp(App);
 
-app.use(RayVuePlugin);
+app.use(RayPlugin);
 ```
 
 ### Installing in Vue 2
@@ -95,8 +95,8 @@ export default {
 ## Development setup
 
 - `npm install`
-- `npm run build:all`
 - `npm run test`
+- `npm run build:all`
 
 ## Testing
 
