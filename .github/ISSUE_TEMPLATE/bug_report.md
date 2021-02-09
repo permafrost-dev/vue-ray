@@ -30,8 +30,8 @@ If applicable, add screenshots to help explain your problem.
 **Environment (please complete the following information):**
 
  - OS: [e.g. iOS]
- - NodeJS Version [e.g. 14.4]
- - Language & Version [e.g. Typescript 4.1]
+ - Vue Version [e.g. 2.6, 3.0]
+ - Language & Version [e.g. Babel, Typescript 4.1]
 
 **Additional context**
 
