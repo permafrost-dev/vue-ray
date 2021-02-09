@@ -1,6 +1,5 @@
 
-import Plugin from './dist/vue2.cjs.js';
+const { RayPlugin } = require('./dist/vue2.cjs');
 
-export const RayPlugin = Plugin;
-export default Plugin;
+module.exports.RayPlugin = RayPlugin;
 
