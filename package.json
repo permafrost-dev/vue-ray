@@ -13,10 +13,9 @@
     "url": "https://github.com/permafrost-dev/vue-ray/issues"
   },
   "main": "./dist/index-vue3.mjs",
-  "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "import": "./dist/index-vue3.mjs",
       "require": "./dist/index-vue3.cjs"
     },
     "./vue2": {
