@@ -1,2 +1,6 @@
 
-export * from './dist/vue2.cjs';
+import Plugin from './dist/vue2.cjs';
+
+export const RayPlugin = Plugin;
+export default Plugin;
+
