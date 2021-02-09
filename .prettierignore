@@ -4,3 +4,4 @@ build/*
 *.yml
 *.yaml
 *.ignore
+*.ignored

@@ -16,3 +16,4 @@ SECURITY.md
 tsconfig.json
 *.sh
 _*.txt
+*.ignored
