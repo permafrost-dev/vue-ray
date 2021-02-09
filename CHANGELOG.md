@@ -4,6 +4,14 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.4.0 - 2021-02-09
+
+- change vue2/vue3 to use module.exports
+
+- code cleanup
+
+- use `Ray.create().send(...)` instead of `ray(...)` in Vue 3 plugin
+
 ## 1.3.0 - 2021-02-09
 
 - update the way vue2 & vue3 modules are imported
