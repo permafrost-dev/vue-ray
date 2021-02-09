@@ -12,27 +12,31 @@
   "bugs": {
     "url": "https://github.com/permafrost-dev/vue-ray/issues"
   },
-  "main": "./dist/index-vue3.mjs",
+  "main": "./dist/vue3.cjs.js",
   "exports": {
     ".": {
-      "import": "./dist/index-vue3.mjs",
-      "require": "./dist/index-vue3.cjs"
+      "import": "./dist/vue3.mjs",
+      "require": "./dist/vue3.cjs.js"
     },
     "./vue2": {
       "import": "./dist/vue2.mjs",
       "require": "./dist/vue2.cjs.js"
+    },
+    "./vue3": {
+      "import": "./dist/vue3.mjs",
+      "require": "./dist/vue3.cjs.js"
     }
   },
   "scripts": {
     "test": "./node_modules/.bin/jest tests --verbose",
     "test:coverage": "./node_modules/.bin/jest tests --coverage",
-    "fmt": "./node_modules/.bin/prettier --config .prettierrc --write $(find src/ tests/ -printf '%p ' -type f -regex '.*\\.([tj]s|vue|json)$')",
+    "fmt": "./node_modules/.bin/prettier --config .prettierrc --write 'src/**/*.{js,ts,json}' 'tests/**/*.{js,ts,json}'",
     "lint": "./node_modules/.bin/eslint --ext ts,js src/",
     "lint:fix": "./node_modules/.bin/eslint --ext ts,js --fix src/",
     "fix": "npm run fmt && npm run lint:fix",
     "build:vue2": "rollup --config rollup.vue2-config.js",
     "build:vue3": "rollup --config rollup.vue3-config.js",
-    "build:all": "npm run build:vue2 && npm run build:vue3",
+    "build:all": "concurrently npm:build:vue2 npm:build:vue3",
     "preversion": "npm run test",
     "postversion": "npm run build:all"
   },
@@ -48,11 +52,13 @@
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
+    "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^8.1.1",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.25",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
+    "concurrently": "^5.3.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
