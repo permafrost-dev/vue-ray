@@ -12,10 +12,11 @@
   "bugs": {
     "url": "https://github.com/permafrost-dev/vue-ray/issues"
   },
-  "main": "dist/index-vue3.cjs",
+  "main": "./dist/index-vue3.mjs",
+  "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index-vue3.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index-vue3.cjs"
     },
     "./vue2": {

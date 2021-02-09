@@ -1,5 +1,6 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const options = {
     sourceMapsEnabled: true,
@@ -45,6 +46,6 @@ export default {
         ...outputs.unminified,
         ...outputs.minified,
     ],
-    plugins: [commonjs()],
-    external: ['node-ray/web']
+    plugins: [nodeResolve(), commonjs(),],
+    external: ['axios', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
 };

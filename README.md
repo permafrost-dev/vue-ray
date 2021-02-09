@@ -64,7 +64,7 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 ```vue
 <template>
-    <div class="flex-col border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto w-100 h-screen">
+    <div class="flex-col border-r border-gray-200 bg-white overflow-y-auto w-100">
         <div class="about">
             <h1>This is a folders page</h1>
             <a @click="sendToRay()">send folder to ray</a>
