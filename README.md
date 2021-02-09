@@ -28,16 +28,29 @@ or yarn:
 yarn add vue-ray
 ```
 
-### Importing the package
+### Installing in Vue 3
 
-When using in a NodeJS environment (the default), import the package as you would normally:
+When using in a Vue 3.x project (the default), import the plugin normally:
 
 ```js 
-// es module import:
-import { ray } from 'vue-ray';
+import { createApp } from 'vue';
+import RayPlugin from 'vue-ray';
+import App from './App.vue';
 
-// commonjs import:
-const ray = require('vue-ray').ray;
+const app = createApp(App);
+
+app.use(RayVuePlugin);
+```
+
+### Installing in Vue 2
+
+When using in a Vue 2.x project, import the 'vue2' variant:
+
+```js 
+const Vue = require('vue');
+const RayPlugin = require('vue-ray/vue2');
+
+Vue.use(RayPlugin);
 ```
 
 ## Usage
@@ -61,10 +74,6 @@ const ray = require('vue-ray').ray;
 `vue-ray` uses Jest for unit tests.  To run the test suite:
 
 `npm run test`
-
-To update the test snapshots:
-
-`npm run test -- -u`
 
 ---
 
