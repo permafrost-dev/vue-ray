@@ -4,15 +4,12 @@
 
 import RayVue3Plugin from './../src/RayVue3';
 
-test('it installs the Vue 3 plugin', () =>
-{
-    class FakeVue3
-    {
+test('it installs the Vue 3 plugin', () => {
+    class FakeVue3 {
         [x: string]: any;
     }
 
-    class FakeApp
-    {
+    class FakeApp {
         public providedItems: string[] = [];
 
         public config = {
@@ -21,18 +18,15 @@ test('it installs the Vue 3 plugin', () =>
             },
         };
 
-        provide(name: string, options: any)
-        {
+        provide(name: string, options: any) {
             this.providedItems.push(name);
         }
 
-        getProvided(): string[]
-        {
+        getProvided(): string[] {
             return this.providedItems;
         }
 
-        getLastProvided(): string | undefined
-        {
+        getLastProvided(): string | undefined {
             return this.getProvided().slice(0).pop();
         }
     }
