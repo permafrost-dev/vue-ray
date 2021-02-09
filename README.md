@@ -31,12 +31,17 @@ yarn add vue-ray
 
 ### Installing in Vue 3
 
-When using in a Vue 3.x project (the default), import the plugin normally:
+When using in a Vue 3.x project (the default), import the 'vue3' variant:
 
 ```js 
 import { createApp } from 'vue';
 import App from './App.vue';
-import RayPlugin from 'vue-ray';
+
+// as an es module import:
+import RayPlugin from 'vue-ray/vue3';
+
+// or as a commonjs import:
+const { RayPlugin } = require('vue-ray/vue3');
 
 const app = createApp(App);
 
@@ -49,7 +54,12 @@ When using in a Vue 2.x project, import the 'vue2' variant:
 
 ```js 
 const Vue = require('vue');
-const RayPlugin = require('vue-ray/vue2');
+
+// as an es module import:
+import RayPlugin from 'vue-ray/vue2';
+
+// or as a commonjs import:
+const { RayPlugin } = require('vue-ray/vue2');
 
 Vue.use(RayPlugin);
 ```
