@@ -2,15 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 const { Ray } = require('node-ray/web');
-//import { Ray } from 'node-ray/web';
 
-const RayVue2Plugin = {
+const RayPlugin = {
     install: function (Vue, options) {
         Vue.prototype.$ray = (...args) => {
-            //const opts = mergeOptionsWithDefaults(options);
             return Ray.create().send(...args);
         };
     },
 };
 
-export default RayVue2Plugin;
+export default RayPlugin;

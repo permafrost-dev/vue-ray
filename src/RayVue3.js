@@ -3,7 +3,7 @@
 
 const { ray } = require('node-ray/web');
 
-const RayVue3Plugin = {
+const RayPlugin = {
     install: (app, options) => {
         app.config.globalProperties.$ray = (...args) => {
             return ray(...args);
@@ -13,4 +13,4 @@ const RayVue3Plugin = {
     },
 };
 
-export default RayVue3Plugin;
+export default RayPlugin;
