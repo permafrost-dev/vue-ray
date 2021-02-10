@@ -4,6 +4,18 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.4.2 - 2021-02-09
+
+- convert all tests to es6
+
+- clean up and standardize rollup configs
+
+- remove unused packages
+
+- remove rollup configs from npm package
+
+- `this.$rayVersion` returns the current `vue-ray` package version
+
 ## 1.4.1 - 2021-02-09
 
 - fix `/vue2` export
