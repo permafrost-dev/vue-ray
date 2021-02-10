@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 const { Ray } = require('node-ray/web');
 
 const RayPlugin = {
@@ -8,6 +5,8 @@ const RayPlugin = {
         app.config.globalProperties.$ray = (...args) => {
             return Ray.create().send(...args);
         };
+
+        app.config.globalProperties.$rayVersion = '__BUILD_VERSION__';
 
         app.provide('ray', options);
     },

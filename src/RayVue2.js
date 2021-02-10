@@ -8,6 +8,8 @@ const RayPlugin = {
         Vue.prototype.$ray = (...args) => {
             return Ray.create().send(...args);
         };
+
+        Vue.prototype.$rayVersion = '__BUILD_VERSION__';
     },
 };
 
