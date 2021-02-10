@@ -40,6 +40,8 @@ Before submitting a pull request:
 
 If the project maintainer has any additional requirements, you will find them listed here.
 
+- **Use Modern JS/TS** - Unless the project is specifically javascript, TypeScript is preferable.
+
 - **Add tests!** - Your patch won't be accepted if it doesn't have tests.
 
 - **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
