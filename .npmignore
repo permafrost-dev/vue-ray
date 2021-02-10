@@ -17,3 +17,4 @@ tsconfig.json
 *.sh
 _*.txt
 *.ignored
+rollup.vue?-config.js
