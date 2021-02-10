@@ -13,7 +13,7 @@ module.exports = {
         '/tests/TestClasses/',
         '/tests/TestData/',
     ],
-    moduleFileExtensions: ['ts', 'js', 'jsx', 'json'],
+    moduleFileExtensions: ['js', 'ts'],
     coverageDirectory: './coverage',
     coverageReporters: ['html-spa', 'text'],
     collectCoverageFrom: [
