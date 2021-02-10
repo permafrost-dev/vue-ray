@@ -1,32 +1,32 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-undef */
 
 import RayVue3Plugin from './../src/RayVue3';
 
 test('it installs the Vue 3 plugin', () => {
     class FakeVue3 {
-        [x: string]: any;
+        //
     }
 
     class FakeApp {
-        public providedItems: string[] = [];
+        constructor() {
+            this.providedItems = [];
+            this.config = {
+                globalProperties: {
+                    $ray: null,
+                },
+            };
+        }
 
-        public config = {
-            globalProperties: {
-                $ray: null,
-            },
-        };
-
-        provide(name: string, options: any) {
+        provide(name, options) {
             this.providedItems.push(name);
         }
 
-        getProvided(): string[] {
+        getProvided() {
             return this.providedItems;
         }
 
-        getLastProvided(): string | undefined {
+        getLastProvided() {
             return this.getProvided().slice(0).pop();
         }
     }
@@ -36,10 +36,12 @@ test('it installs the Vue 3 plugin', () => {
     RayVue3Plugin.install(fakeApp, {});
 
     expect(fakeApp.getLastProvided()).toBe('ray');
+    expect(fakeApp.getProvided().length).toBe(1);
+    expect(fakeApp.config.globalProperties['$ray']).not.toBe(null);
 
     if (fakeApp.config.globalProperties['$ray'] !== null) {
-        // @ts-ignore
-        const testRay: any = fakeApp.config.globalProperties['$ray'];
+        const testRay = fakeApp.config.globalProperties['$ray'];
+
         expect(typeof testRay).not.toBe('undefined');
         expect(testRay().constructor.name).toBe('Ray');
     }
