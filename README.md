@@ -102,6 +102,46 @@ export default {
 </script>
 ```
 
+## Intercepting errors (Vue 3)
+
+The following will intercept errors in Vue 3 and send them to Ray as a red-labeled message:
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import RayPlugin from 'vue-ray';
+
+const app = createApp(App);
+
+app.use(RayPlugin);
+
+app.config.errorHandler = function (err) {
+    app.config.globalProperties.$ray(err).green();
+}
+
+app.mount('#app');
+```
+
+## Intercepting errors (Vue 2)
+
+The following will intercept errors in Vue 2 and send them to Ray as a red-labeled message:
+
+```js
+import Vue from 'vue'
+import App from './App.vue'
+const { RayPlugin } = require('vue-ray/vue2');
+
+Vue.use(RayPlugin);
+
+Vue.config.errorHandler = (err) => {
+    Vue.$ray(err).red();
+};
+
+new Vue({
+    render: h => h(App),
+}).$mount('#app');
+```
+
 ## Development setup
 
 - `npm install`
