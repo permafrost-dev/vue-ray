@@ -1,6 +1,6 @@
 {
   "name": "vue-ray",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Debug Vue code with Ray to fix problems faster",
   "license": "MIT",
   "author": "Patrick Organ <patrick@permafrost.dev>",
