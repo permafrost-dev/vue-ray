@@ -33,5 +33,5 @@ export default {
         nodeResolve(),
         commonjs(),
     ],
-    external: [],
+    external: ['vue'],
 };
