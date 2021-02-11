@@ -53,29 +53,31 @@ class FakeVue2 {
     constructor() {}
 }
 
-test('it installs the Vue 2 plugin', () => {
-    RayVue2Plugin.install(FakeVue2, {});
+describe('Vue 2 Ray Plugin:', () => {
+    test('it installs successfully', () => {
+        RayVue2Plugin.install(FakeVue2, {});
 
-    expect(typeof FakeVue2.prototype.$ray).not.toBe('undefined');
-    expect(new FakeVue2().$ray().constructor.name).toBe('Ray');
-});
+        expect(typeof FakeVue2.prototype.$ray).not.toBe('undefined');
+        expect(new FakeVue2().$ray().constructor.name).toBe('Ray');
+    });
 
-test('it installs the Vue 2 plugin with the interceptErrors option', () => {
-    RayVue2Plugin.install(FakeVue2, { interceptErrors: true });
-    const myVue = new FakeVue2();
+    test('it installs with the interceptErrors option successfully', () => {
+        RayVue2Plugin.install(FakeVue2, { interceptErrors: true });
+        const myVue = new FakeVue2();
 
-    expect(typeof FakeVue2.prototype.$ray).not.toBe('undefined');
-    expect(new FakeVue2().$ray().constructor.name).toBe('Ray');
-    expect(FakeVue2.config.errorHandler).not.toBeNull();
-    expect(typeof FakeVue2.config.errorHandler).toBe('function');
+        expect(typeof FakeVue2.prototype.$ray).not.toBe('undefined');
+        expect(new FakeVue2().$ray().constructor.name).toBe('Ray');
+        expect(FakeVue2.config.errorHandler).not.toBeNull();
+        expect(typeof FakeVue2.config.errorHandler).toBe('function');
 
-    const fakeVm = new FakeVm();
-    const myRay = fakeVm.$ray();
+        const fakeVm = new FakeVm();
+        const myRay = fakeVm.$ray();
 
-    FakeVue2.config.errorHandler({ stack: 'test error' }, fakeVm);
+        FakeVue2.config.errorHandler({ stack: 'test error' }, fakeVm);
 
-    expect(myRay.payloads.length).toBe(3);
-    expect(myRay.payloads[0].content).toContain('test error');
-    expect(myRay.payloads[1].content).toBe('small');
-    expect(myRay.payloads[2].content).toBe('red');
+        expect(myRay.payloads.length).toBe(3);
+        expect(myRay.payloads[0].content).toContain('test error');
+        expect(myRay.payloads[1].content).toBe('small');
+        expect(myRay.payloads[2].content).toBe('red');
+    });
 });
