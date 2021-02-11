@@ -4,6 +4,14 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.6.0 - 2021-02-11
+
+- add `this.$ray().ref(name)` method that shows the html content of a named Vue ref
+
+- merge duplicate code into shared files
+
+- update readme examples
+
 ## 1.5.1 - 2021-02-11
 
 - fix rollup-removed error handlers being removed
