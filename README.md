@@ -45,7 +45,7 @@ const { RayPlugin } = require('vue-ray/vue3');
 
 const app = createApp(App);
 
-app.use(RayPlugin, {interceptErrors: true});
+app.use(RayPlugin, { interceptErrors: true });
 ```
 
 ### Installing in Vue 2
@@ -61,7 +61,7 @@ import RayPlugin from 'vue-ray/vue2';
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
 
-Vue.use(RayPlugin, {interceptErrors: true});
+Vue.use(RayPlugin, { interceptErrors: true });
 ```
 
 ### Installation options
@@ -92,23 +92,18 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
             <h1>This is a folders page</h1>
             <a @click="sendToRay()">send folder to ray</a>
         </div>
-        <div class="w-full flex flex-wrap">
-            <folder ref="folder1" class="w-4/12 inline-flex"></folder>
-            <folder ref="folder2" class="w-4/12 inline-flex"></folder>
+        <div ref="div1" class="w-full flex flex-wrap">
+            <div ref="div1a" class="w-4/12 inline-flex">one</div>
+            <div ref="div1b" class="w-4/12 inline-flex">two</divr>
         </div>
     </div>
 </template>
 
 <script>
-import Folder from './Folder.vue';
-
 export default {
-    components: {
-        Folder
-    },
     methods: {
         sendToRay() {
-            this.$ray().ref('folder1');
+            this.$ray().ref('div1');
         }
     }
 };
@@ -117,42 +112,18 @@ export default {
 
 ## Intercepting errors (Vue 3)
 
-The following will intercept errors in Vue 3 and send them to Ray as a red-labeled message:
+Use the `interceptErrors` option to intercept errors and send them to Ray:
 
 ```js
-import { createApp } from 'vue'
-import App from './App.vue'
-import RayPlugin from 'vue-ray';
-
-const app = createApp(App);
-
-app.use(RayPlugin);
-
-app.config.errorHandler = function (err) {
-    app.config.globalProperties.$ray(err).green();
-}
-
-app.mount('#app');
+app.use(RayPlugin, { interceptErrors: true });
 ```
 
 ## Intercepting errors (Vue 2)
 
-The following will intercept errors in Vue 2 and send them to Ray as a red-labeled message:
+Use the `interceptErrors` option to intercept errors and send them to Ray:
 
 ```js
-import Vue from 'vue'
-import App from './App.vue'
-const { RayPlugin } = require('vue-ray/vue2');
-
-Vue.use(RayPlugin);
-
-Vue.config.errorHandler = (err) => {
-    Vue.$ray(err).red();
-};
-
-new Vue({
-    render: h => h(App),
-}).$mount('#app');
+Vue.use(RayPlugin, { interceptErrors: true });
 ```
 
 ## Development setup
