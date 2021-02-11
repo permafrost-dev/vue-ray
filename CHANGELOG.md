@@ -4,6 +4,12 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.6.1 - 2021-02-11
+
+- allow specifying the host to connect to as `options.host`
+
+- allow specifying the port to connect to as `options.port`
+
 ## 1.6.0 - 2021-02-11
 
 - add `this.$ray().data()` to show component data

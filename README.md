@@ -45,7 +45,7 @@ const { RayPlugin } = require('vue-ray/vue3');
 
 const app = createApp(App);
 
-app.use(RayPlugin, { interceptErrors: true });
+app.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500 });
 ```
 
 ### Installing in Vue 2
@@ -61,14 +61,16 @@ import RayPlugin from 'vue-ray/vue2';
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
 
-Vue.use(RayPlugin, { interceptErrors: true });
+Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500 });
 ```
 
 ### Installation options
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `host` | `string` | `localhost` | host to connect to the Ray app on |
 | `interceptErrors` | `boolean` | `false` | send Vue errors to Ray |
+| `port` | `number` | `23517` | port to connect to the Ray app on |
 
 ## Usage
 
