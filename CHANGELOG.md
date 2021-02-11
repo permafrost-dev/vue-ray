@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.7.1 - 2021-02-11
+
+- fix data var tracking call to `watch()`
+
 ## 1.7.0 - 2021-02-11
 
 - component data change tracking shows changes in real time with `this.$ray().track('myvar')`
