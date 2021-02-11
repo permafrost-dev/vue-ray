@@ -1,9 +1,10 @@
-import errorHandler from './ErrorHandler';
-import rayMethodMixin from './RayMethodMixin';
+import errorHandler from './shared/ErrorHandler';
+import PackageInfo from './shared/PackageInfo';
+import rayMethodMixin from './shared/RayMethodMixin';
 
 const RayPlugin = {
     install: (app, options) => {
-        app.config.globalProperties.$rayVersion = '__BUILD_VERSION__';
+        app.config.globalProperties.$rayVersion = PackageInfo.VERSION;
 
         if (options.interceptErrors === true) {
             app.config.errorHandler = errorHandler;
