@@ -82,9 +82,36 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 | Name | Description |
 | --- | --- |
-| `data()` | show the component data |
-| `props()` | show the component props |
-| `ref(name)` | show the `innerHTML` of a named ref |
+| `this.$ray().data()` | show the component data |
+| `this.$ray().props()` | show the component props |
+| `this.$ray().ref(name)` | show the `innerHTML` of a named ref |
+| `this.$ray().track(name)` | display changes to a component's data variable |
+| `this.$ray().untrack(name)` | stop displaying changes to a component's data variable |
+
+## Tracking component data
+
+Changes to any of a component's data variables can be tracked and displayed in real time using the `track(name)` method.
+
+```vue
+<script>
+export default {
+    props: ['title'],
+    data() {
+        return {
+            one: 100,
+            two: 22,
+        };
+    },
+    created() {
+        this.$ray().data();
+        this.$ray().track('one');
+    },
+    mounted() {
+        setInterval( () => { this.one += 3; }, 4000);
+    }
+}
+</script>
+```
 
 ## Example Component
 
@@ -92,21 +119,36 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 <template>
     <div class="flex-col border-r border-gray-200 bg-white overflow-y-auto w-100">
         <div class="about">
-            <h1>This is a folders page</h1>
-            <a @click="sendToRay()">send folder to ray</a>
+            <h1>{{ title }}</h1>
+            <a @click="sendToRay()">send ref to ray</a><br>
+            <a @click="increment()">increment data var</a><br>
         </div>
         <div ref="div1" class="w-full flex flex-wrap">
-            <div ref="div1a" class="w-4/12 inline-flex">one</div>
-            <div ref="div1b" class="w-4/12 inline-flex">two</divr>
+            <div ref="div1a" class="w-4/12 inline-flex">{{ one }}</div>
+            <div ref="div1b" class="w-4/12 inline-flex">{{ two }}</divr>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    props: ['title'],
+    data() {
+        return {
+            one: 100,
+            two: 22,
+        };
+    },
+    created() {
+        this.$ray().data();
+        this.$ray().track('one');
+    },
     methods: {
         sendToRay() {
             this.$ray().ref('div1');
+        },
+        increment() {
+            this.one += 3;
         }
     }
 };

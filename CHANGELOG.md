@@ -4,6 +4,16 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.7.0 - 2021-02-11
+
+- component data change tracking shows changes in real time with `this.$ray().track('myvar')`
+
+- added additional unit tests
+
+- reorganized code
+
+- moved duplicate code to shared modules
+
 ## 1.6.1 - 2021-02-11
 
 - allow specifying the host to connect to as `options.host`
