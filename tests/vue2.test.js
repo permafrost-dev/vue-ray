@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
