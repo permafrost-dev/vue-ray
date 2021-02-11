@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.5.0 - 2021-02-10
+
+- add `interceptErrors` option - if true, display Vue errors in Ray instead of the console
+
 ## 1.4.2 - 2021-02-09
 
 - convert all tests to es6
