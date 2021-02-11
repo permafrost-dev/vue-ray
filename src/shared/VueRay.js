@@ -38,7 +38,7 @@ export class VueRay extends Ray {
                 });
             };
 
-            this.component.trackingStops[name] = this.watch(`$data.${name}`, onTrackedUpdate, { deep: true });
+            this.component.trackingStops[name] = this.watch(() => this.component[name], onTrackedUpdate, { deep: true });
         }
     }
 
