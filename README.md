@@ -76,6 +76,13 @@ Once the plugin is installed, you may access the `ray()` method on `this` as `th
 
 See the [node-ray reference](https://github.com/permafrost-dev/node-ray#reference) for a full list of available methods.
 
+## Vue-specific methods
+
+| Name | Description |
+| --- | --- |
+| `ref(name)` | show the `innerHTML` of a named ref |
+
+
 ## Example Component
 
 ```vue
@@ -101,7 +108,7 @@ export default {
     },
     methods: {
         sendToRay() {
-            this.$ray().html(this.$refs.folder1.$el.innerHTML);
+            this.$ray().ref('folder1');
         }
     }
 };
