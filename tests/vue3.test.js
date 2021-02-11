@@ -16,9 +16,7 @@ class FakeRay {
 
     send(...args) {
         if (args.length) {
-            this.payloads.push(
-                ...args.map(arg => ({ name: 'log', content: arg, label: null }))
-            );
+            this.payloads.push(...args.map(arg => ({ name: 'log', content: arg, label: null })));
         }
         return this;
     }
@@ -52,6 +50,11 @@ class FakeApp {
             },
             errorHandler: null,
         };
+
+        this.mixins = {};
+        this.mixins.methods = {
+            $ray: null,
+        };
     }
 
     provide(name, options) {
@@ -64,6 +67,10 @@ class FakeApp {
 
     getLastProvided() {
         return this.getProvided().slice(0).pop();
+    }
+
+    mixin(obj) {
+        this.mixins = Object.assign({}, this.mixins, obj);
     }
 }
 
@@ -78,13 +85,14 @@ describe('Vue 3 Ray Plugin:', () => {
 
         expect(fakeApp.getLastProvided()).toBe('ray');
         expect(fakeApp.getProvided().length).toBe(1);
-        expect(fakeApp.config.globalProperties['$ray']).not.toBe(null);
+        //expect(fakeApp.config.globalProperties['$ray']).not.toBe(null);
+        expect(fakeApp.mixins.methods.$ray).not.toBe(null);
 
-        if (fakeApp.config.globalProperties['$ray'] !== null) {
-            const testRay = fakeApp.config.globalProperties['$ray'];
+        if (fakeApp.mixins.methods.$ray !== null) {
+            const testRay = fakeApp.mixins.methods.$ray;
 
             expect(typeof testRay).not.toBe('undefined');
-            expect(testRay().constructor.name).toBe('Ray');
+            expect(testRay().constructor.name).toBe('VueRay');
         }
     });
 
@@ -93,7 +101,7 @@ describe('Vue 3 Ray Plugin:', () => {
 
         expect(fakeApp.getLastProvided()).toBe('ray');
         expect(fakeApp.getProvided().length).toBe(1);
-        expect(fakeApp.config.globalProperties['$ray']).not.toBe(null);
+        expect(fakeApp.mixins.methods.$ray).not.toBe(null);
         expect(fakeApp.config.errorHandler).not.toBeNull();
         expect(typeof fakeApp.config.errorHandler).toBe('function');
 

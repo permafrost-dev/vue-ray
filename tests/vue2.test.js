@@ -21,9 +21,7 @@ class FakeRay {
 
     send(...args) {
         if (args.length) {
-            this.payloads.push(
-                ...args.map(arg => ({ name: 'log', content: arg, label: null }))
-            );
+            this.payloads.push(...args.map(arg => ({ name: 'log', content: arg, label: null }))); // eslint-disable-line
         }
         return this;
     }
@@ -50,23 +48,35 @@ class FakeVue2 {
         errorHandler: null,
     };
 
-    constructor() {}
+    static mixins = {
+        methods: {
+            $ray: null,
+        },
+    };
+
+    constructor() {
+        this.$ray = FakeVue2.mixins.methods.$ray;
+    }
+
+    static mixin(obj) {
+        FakeVue2.mixins = Object.assign({}, FakeVue2.mixins, obj);
+    }
 }
 
 describe('Vue 2 Ray Plugin:', () => {
     test('it installs successfully', () => {
         RayVue2Plugin.install(FakeVue2, {});
 
-        expect(typeof FakeVue2.prototype.$ray).not.toBe('undefined');
-        expect(new FakeVue2().$ray().constructor.name).toBe('Ray');
+        expect(typeof FakeVue2.mixins.methods.$ray).not.toBe('undefined');
+        expect(new FakeVue2().$ray().constructor.name).toBe('VueRay');
     });
 
     test('it installs with the interceptErrors option successfully', () => {
         RayVue2Plugin.install(FakeVue2, { interceptErrors: true });
         const myVue = new FakeVue2();
 
-        expect(typeof FakeVue2.prototype.$ray).not.toBe('undefined');
-        expect(new FakeVue2().$ray().constructor.name).toBe('Ray');
+        expect(typeof FakeVue2.mixins.methods.$ray).not.toBe('undefined');
+        expect(new FakeVue2().$ray().constructor.name).toBe('VueRay');
         expect(FakeVue2.config.errorHandler).not.toBeNull();
         expect(typeof FakeVue2.config.errorHandler).toBe('function');
 
