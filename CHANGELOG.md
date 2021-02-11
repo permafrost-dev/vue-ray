@@ -6,9 +6,15 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ## 1.6.0 - 2021-02-11
 
+- add `this.$ray().data()` to show component data
+
+- add `this.$ray().props()` to show component props
+
 - add `this.$ray().ref(name)` method that shows the html content of a named Vue ref
 
 - merge duplicate code into shared files
+
+- reorganize project structure
 
 - update readme examples
 
