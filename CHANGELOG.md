@@ -4,6 +4,13 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.5.1 - 2021-02-11
+
+- fix rollup-removed error handlers being removed
+
+- change error handler to pretty-print errors plus stack trace
+
+
 ## 1.5.0 - 2021-02-10
 
 - add `interceptErrors` option - if true, display Vue errors in Ray instead of the console
