@@ -80,8 +80,9 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 | Name | Description |
 | --- | --- |
+| `data()` | show the component data |
+| `props()` | show the component props |
 | `ref(name)` | show the `innerHTML` of a named ref |
-
 
 ## Example Component
 
