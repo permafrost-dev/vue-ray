@@ -45,7 +45,7 @@ const { RayPlugin } = require('vue-ray/vue3');
 
 const app = createApp(App);
 
-app.use(RayPlugin);
+app.use(RayPlugin, {interceptErrors: true});
 ```
 
 ### Installing in Vue 2
@@ -61,8 +61,14 @@ import RayPlugin from 'vue-ray/vue2';
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
 
-Vue.use(RayPlugin);
+Vue.use(RayPlugin, {interceptErrors: true});
 ```
+
+### Installation options
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `interceptErrors` | `boolean` | `false` | send Vue errors to Ray |
 
 ## Usage
 
