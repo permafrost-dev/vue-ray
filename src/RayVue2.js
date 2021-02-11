@@ -1,19 +1,15 @@
-import errorHandler from './shared/ErrorHandler';
+import initializeOptions from './shared/InitializeOptions';
 import PackageInfo from './shared/PackageInfo';
 import rayMethodMixin from './shared/RayMethodMixin';
 
-const RayPlugin = {
+export default {
     install: function (Vue, options) {
         Vue.prototype.$rayVersion = PackageInfo.VERSION;
 
-        if (options.interceptErrors === true) {
-            Vue.config.errorHandler = errorHandler;
-        }
+        initializeOptions(options, Vue.config);
 
         Vue.mixin({
             methods: rayMethodMixin,
         });
     },
 };
-
-export default RayPlugin;

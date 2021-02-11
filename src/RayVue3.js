@@ -1,14 +1,12 @@
-import errorHandler from './shared/ErrorHandler';
+import initializeOptions from './shared/InitializeOptions';
 import PackageInfo from './shared/PackageInfo';
 import rayMethodMixin from './shared/RayMethodMixin';
 
-const RayPlugin = {
+export default {
     install: (app, options) => {
         app.config.globalProperties.$rayVersion = PackageInfo.VERSION;
 
-        if (options.interceptErrors === true) {
-            app.config.errorHandler = errorHandler;
-        }
+        initializeOptions(options, app.config);
 
         app.provide('ray', options);
 
@@ -17,5 +15,3 @@ const RayPlugin = {
         });
     },
 };
-
-export default RayPlugin;
