@@ -1,17 +1,17 @@
+import { DataTrackingMixin } from './shared/DataTrackingMixin';
+import { createPackageMetaProperty } from './shared/helpers';
 import initializeOptions from './shared/InitializeOptions';
-import PackageInfo from './shared/PackageInfo';
-import rayMethodMixin from './shared/RayMethodMixin';
+import { Vue3RayMixin } from './v3/Vue3RayMixin';
 
 export default {
     install: (app, options) => {
-        app.config.globalProperties.$rayVersion = PackageInfo.VERSION;
+        createPackageMetaProperty(app.config.globalProperties);
 
         initializeOptions(options, app.config);
 
         app.provide('ray', options);
 
-        app.mixin({
-            methods: rayMethodMixin,
-        });
+        app.mixin(DataTrackingMixin);
+        app.mixin(Vue3RayMixin);
     },
 };

@@ -1,15 +1,15 @@
+import { DataTrackingMixin } from './shared/DataTrackingMixin';
+import { createPackageMetaProperty } from './shared/helpers';
 import initializeOptions from './shared/InitializeOptions';
-import PackageInfo from './shared/PackageInfo';
-import rayMethodMixin from './shared/RayMethodMixin';
+import { Vue2RayMixin } from './v2/Vue2RayMixin';
 
 export default {
-    install: function (Vue, options) {
-        Vue.prototype.$rayVersion = PackageInfo.VERSION;
+    install: (Vue, options) => {
+        createPackageMetaProperty(Vue.prototype);
 
         initializeOptions(options, Vue.config);
 
-        Vue.mixin({
-            methods: rayMethodMixin,
-        });
+        Vue.mixin(DataTrackingMixin);
+        Vue.mixin(Vue2RayMixin);
     },
 };
