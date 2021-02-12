@@ -3,34 +3,42 @@ import { VueRay } from '../shared/VueRay';
 
 export let vue3Watch = null;
 
+const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>) => {
+    if (VueRay.shouldDisplayEvent(eventName)) {
+        this.$ray().table([
+            `component ${eventName}: <code>${options.name}</code>`,
+            `filename: <code>&lt;project root&gt;/${options.__file}</code>`,
+        ]);
+    }
+};
+
 export const Vue3RayMixin = {
     beforeCreate() {
         if (typeof vue3Watch === 'undefined' || vue3Watch === null) {
             vue3Watch = require('vue').watch;
         }
+
+        conditionallyDisplayEvent('before-create', this.$options);
+    },
+
+    beforeMount() {
+        conditionallyDisplayEvent('before-mount', this.$options);
     },
 
     created() {
-        if (VueRay.show_component_lifecycles.includes('created')) {
-            this.$ray().table([
-                // @ts-ignore
-                `component created: <code>${this.$options.name}</code>`,
-                // @ts-ignore
-                `filename: <code>&lt;project root&gt;/${this.$options.__file}</code>`,
-            ]);
-        }
+        conditionallyDisplayEvent('created', this.$options);
     },
 
     mounted() {
-        if (VueRay.show_component_lifecycles.includes('mounted')) {
-            // @ts-ignore
-            this.$ray().table([
-                // @ts-ignore
-                `component mounted: <code>${this.$options.name}</code>`,
-                // @ts-ignore
-                `filename: <code>&lt;project root&gt;/${this.$options.__file}</code>`,
-            ]);
-        }
+        conditionallyDisplayEvent('mounted', this.$options);
+    },
+
+    unmounted() {
+        conditionallyDisplayEvent('unmounted', this.$options);
+    },
+
+    updated() {
+        conditionallyDisplayEvent('updated', this.$options);
     },
 
     methods: {

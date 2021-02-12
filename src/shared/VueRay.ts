@@ -80,6 +80,10 @@ export class VueRay extends Ray {
         }
     }
 
+    public static shouldDisplayEvent(name: string): boolean {
+        return VueRay.show_component_lifecycles.includes(name);
+    }
+
     public static showComponentLifecycles(names: string[]): void {
         if (Array.isArray(VueRay.show_component_lifecycles)) {
             VueRay.show_component_lifecycles.push(...names);
