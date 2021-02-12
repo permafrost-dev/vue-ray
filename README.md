@@ -45,7 +45,7 @@ const { RayPlugin } = require('vue-ray');
 
 const app = createApp(App);
 
-app.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500, showComponentEvents: ['created', 'mounted'] });
+app.use(RayPlugin, { interceptErrors: true, port: 23500, showComponentEvents: ['created', 'mounted'] });
 ```
 
 ### Installing in Vue 2
@@ -61,7 +61,7 @@ import RayPlugin from 'vue-ray/vue2';
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
 
-Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500, showComponentEvents: ['mounted'] });
+Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', showComponentEvents: ['mounted'] });
 ```
 
 ### Installation options
@@ -71,7 +71,19 @@ Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500, show
 | `host` | `string` | `localhost` | host to connect to the Ray app on |
 | `interceptErrors` | `boolean` | `false` | send Vue errors to Ray |
 | `port` | `number` | `23517` | port to connect to the Ray app on |
-| `showComponentEvents` | `string[]` | `[]` | display component events in Ray, can be any of `created, mounted`
+| `showComponentEvents` | `string[]` | `[]` | display component events in Ray, see below for possible values |
+
+### Component events
+
+Component lifecycle events can be sent to Ray using the `showComponentEvents` plugin option _(`array`)_.
+
+Any or all of the following values can be used with this option:
+
+- `before-create`
+- `before-mount`
+- `created`
+- `mounted`
+- `updated`
 
 ## Usage
 
