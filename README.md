@@ -31,21 +31,21 @@ yarn add vue-ray
 
 ### Installing in Vue 3
 
-When using in a Vue 3.x project (the default), import the 'vue3' variant:
+When using in a Vue 3.x project (the default), import package normally:
 
 ```js 
 import { createApp } from 'vue';
 import App from './App.vue';
 
 // as an es module import:
-import RayPlugin from 'vue-ray/vue3';
+import RayPlugin from 'vue-ray';
 
 // or as a commonjs import:
-const { RayPlugin } = require('vue-ray/vue3');
+const { RayPlugin } = require('vue-ray');
 
 const app = createApp(App);
 
-app.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500 });
+app.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500, showComponentEvents: ['created', 'mounted'] });
 ```
 
 ### Installing in Vue 2
@@ -61,7 +61,7 @@ import RayPlugin from 'vue-ray/vue2';
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
 
-Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500 });
+Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500, showComponentEvents: ['mounted'] });
 ```
 
 ### Installation options
@@ -71,6 +71,7 @@ Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', port: 23500 });
 | `host` | `string` | `localhost` | host to connect to the Ray app on |
 | `interceptErrors` | `boolean` | `false` | send Vue errors to Ray |
 | `port` | `number` | `23517` | port to connect to the Ray app on |
+| `showComponentEvents` | `string[]` | `[]` | display component events in Ray, can be any of `created, mounted`
 
 ## Usage
 
