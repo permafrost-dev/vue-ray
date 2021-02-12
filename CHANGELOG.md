@@ -4,6 +4,14 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.8.0 - 2021-02-12
+
+- fix recursive error with calls to `data()` in Vue 2
+
+- convert entire project to TypeScript
+
+- add lifecycle event logging, configured with plugin option `showComponentEvents: ['created', 'mounted']`
+
 ## 1.7.1 - 2021-02-11
 
 - fix data var tracking call to `watch()`
