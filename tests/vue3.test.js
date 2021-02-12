@@ -92,7 +92,7 @@ describe('Vue 3 Ray Plugin:', () => {
             const testRay = fakeApp.mixins.methods.$ray;
 
             expect(typeof testRay).not.toBe('undefined');
-            expect(testRay().constructor.name).toBe('Vue3Ray');
+            expect(testRay().constructor.name).toBe('VueRay');
         }
     });
 

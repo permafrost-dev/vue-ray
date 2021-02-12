@@ -67,7 +67,7 @@ describe('Vue 2 Ray Plugin:', () => {
         RayVue2Plugin.install(FakeVue2, {});
 
         expect(typeof FakeVue2.mixins.methods.$ray).not.toBe('undefined');
-        expect(new FakeVue2().$ray().constructor.name).toBe('Vue2Ray');
+        expect(new FakeVue2().$ray().constructor.name).toBe('VueRay');
     });
 
     test('it installs with the interceptErrors option successfully', () => {
@@ -75,7 +75,7 @@ describe('Vue 2 Ray Plugin:', () => {
         const myVue = new FakeVue2();
 
         expect(typeof FakeVue2.mixins.methods.$ray).not.toBe('undefined');
-        expect(new FakeVue2().$ray().constructor.name).toBe('Vue2Ray');
+        expect(new FakeVue2().$ray().constructor.name).toBe('VueRay');
         expect(FakeVue2.config.errorHandler).not.toBeNull();
         expect(typeof FakeVue2.config.errorHandler).toBe('function');
 
