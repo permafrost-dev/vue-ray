@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import typescript from '@rollup/plugin-typescript';
 
 const options = {
     sourceMapsEnabled: false,
@@ -9,7 +10,7 @@ const options = {
 };
 
 export default {
-    input: `src/RayVue${options.version}.js`,
+    input: `src/RayVue${options.version}.ts`,
     output: [
         {
             file: `dist/vue${options.version}.cjs.js`,
@@ -31,7 +32,8 @@ export default {
             __BUILD_VERSION__: () => require('./package.json').version,
         }),
         nodeResolve(),
-        commonjs(),
+        commonjs(), //{ extensions: ['.js', '.ts'] }),
+        typescript(), //{ module: 'es2015' }),
     ],
-    external: ['vue'],
+    external: ['axios', 'dayjs', 'stopwatch-node', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
 };
