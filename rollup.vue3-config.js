@@ -26,6 +26,7 @@ export default {
             plugins: [],
         },
     ],
+    moduleContext: {'src/v3/Vue3RayMixin.ts': 'this'},
     plugins: [
         replace({
             __BUILD_DATE__: () => new Date().toISOString(),
