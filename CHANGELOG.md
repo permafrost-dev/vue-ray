@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.8.1 - unreleased
+
+- add support for lifecycle events `beforeCreate`, `beforeMount`, `updated`
+
 ## 1.8.0 - 2021-02-12
 
 - fix recursive error with calls to `data()` in Vue 2
