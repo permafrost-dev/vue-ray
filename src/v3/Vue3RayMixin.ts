@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { VueRay } from '../shared/VueRay';
 
 export let vue3Watch = null;
@@ -11,7 +12,6 @@ export const Vue3RayMixin = {
 
     created() {
         if (VueRay.show_component_lifecycles.includes('created')) {
-            // @ts-ignore
             this.$ray().table([
                 // @ts-ignore
                 `component created: <code>${this.$options.name}</code>`,
