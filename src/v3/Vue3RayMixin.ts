@@ -34,7 +34,7 @@ export const Vue3RayMixin = {
     },
 
     methods: {
-        $ray: (...args: any[]) => {
+        $ray(...args: any[]) {
             const ray = VueRay.create();
             ray.component = this;
             ray.watch = vue3Watch;

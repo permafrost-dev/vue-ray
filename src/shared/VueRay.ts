@@ -7,7 +7,7 @@ const { Ray } = require('node-ray/web');
 
 export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
-    public component: any;
+    //public component: any = { $refs: {} };
     public watch: CallableFunction = () => {};
 
     // static create(client?: any | null, uuid?: string | null): this {
@@ -16,7 +16,15 @@ export class VueRay extends Ray {
 
     public data(): void {
         if (this.component) {
-            this.table([this.component.$data]);
+            let data = Object.assign({}, this.component.$data);
+
+            // remove Vue Observers to avoid recursive issues
+            delete data['trackingRays'];
+            delete data['trackingStops'];
+
+            data = Object.freeze(data);
+
+            this.table([data], 'Data');
         }
     }
 
@@ -73,7 +81,9 @@ export class VueRay extends Ray {
     }
 
     public static showComponentLifecycles(names: string[]): void {
-        VueRay.show_component_lifecycles.push(...names);
+        if (Array.isArray(VueRay.show_component_lifecycles)) {
+            VueRay.show_component_lifecycles.push(...names);
+        }
     }
 
     public static stopShowingComponentLifecycles(names: string[] = []): void {
