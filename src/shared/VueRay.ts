@@ -1,31 +1,42 @@
 /* eslint-disable no-unused-vars */
 
+/// <reference path="../../node_modules/node-ray/dist/web.d.ts" />
+
 const { Ray } = require('node-ray/web');
+//import { Ray } from 'node-ray/web';
 
 export class VueRay extends Ray {
-    data() {
+    public static show_component_lifecycles: string[] = [];
+    public component: any;
+    public watch: CallableFunction = () => {};
+
+    // static create(client?: any | null, uuid?: string | null): this {
+    //     return Ray.create(client, uuid);
+    // }
+
+    public data(): void {
         if (this.component) {
             this.table([this.component.$data]);
         }
     }
 
-    props() {
+    public props(): void {
         if (this.component) {
             this.table([this.component.$props]);
         }
     }
 
-    ref(name) {
+    public ref(name: string): void {
         if (this.component) {
             this.html(this.component.$refs[name].innerHTML);
         }
     }
 
-    track(name) {
+    public track(name: string): void {
         if (this.component && typeof this.component.trackingRays[name] === 'undefined') {
             this.component.trackingRays[name] = this.component.$ray(name);
 
-            const onTrackedUpdate = (value, previousValue) => {
+            const onTrackedUpdate = (value: any, previousValue: any) => {
                 this.component.trackingRays[name] = this.component.trackingRays[name].send({
                     info: {
                         variable: name,
@@ -42,7 +53,7 @@ export class VueRay extends Ray {
         }
     }
 
-    untrack(name) {
+    public untrack(name: string): void {
         if (this.component && typeof this.component.trackingStops[name] !== 'undefined') {
             this.component.trackingRays[name] = this.component.trackingRays[name].send({
                 info: {
@@ -59,6 +70,19 @@ export class VueRay extends Ray {
             delete this.component.trackingStops[name];
             delete this.component.trackingRays[name];
         }
+    }
+
+    public static showComponentLifecycles(names: string[]): void {
+        VueRay.show_component_lifecycles.push(...names);
+    }
+
+    public static stopShowingComponentLifecycles(names: string[] = []): void {
+        if (!names.length) {
+            VueRay.show_component_lifecycles = [];
+            return;
+        }
+
+        VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => names.includes(name));
     }
 }
 

@@ -1,4 +1,5 @@
-import { Vue2Ray } from './Vue2Ray';
+// @ts-nocheck
+import { VueRay as Vue2Ray } from '../shared/VueRay';
 
 export const Vue2RayMixin = {
     methods: {

@@ -4,6 +4,7 @@ import initializeOptions from './shared/InitializeOptions';
 import { Vue2RayMixin } from './v2/Vue2RayMixin';
 
 export default {
+    // @ts-ignore
     install: (Vue, options) => {
         createPackageMetaProperty(Vue.prototype);
 

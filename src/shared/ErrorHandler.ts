@@ -1,4 +1,4 @@
-const errorHandler = (err, vm) => {
+const errorHandler = (err: any, vm: any) => {
     // pretty-print the error message and stack trace
     const stack = err.stack
         .replace(
