@@ -29,6 +29,8 @@ export class FakeClient extends Client {
                 .replace('/dist', '')
                 .replace(/^\//, '');
 
+            payload.data.origin.file = 'web.cjs.js';
+
             if (payload.getType() === 'measure') {
                 payload.data.content.total_time = Math.floor(payload.data.content.total_time / 10);
                 payload.data.content.time_since_last_call = Math.floor(payload.data.content.time_since_last_call / 10);
