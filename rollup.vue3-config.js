@@ -26,15 +26,27 @@ export default {
             plugins: [],
         },
     ],
-    moduleContext: {'src/v3/Vue3RayMixin.ts': 'this'},
+    moduleContext: { 'src/v3/Vue3RayMixin.ts': 'this' },
     plugins: [
         replace({
-            __BUILD_DATE__: () => new Date().toISOString(),
-            __BUILD_VERSION__: () => require('./package.json').version,
+            values: {
+                __BUILD_DATE__: () => new Date().toISOString(),
+                __BUILD_VERSION__: () => require('./package.json').version,
+            },
+            preventAssignment: true,
         }),
         nodeResolve(),
-        commonjs(), //{ extensions: ['.js', '.ts'] }),
-        typescript(), //{ module: 'es2015' }),
+        commonjs(),
+        typescript(),
     ],
-    external: ['axios', 'dayjs', 'stopwatch-node', 'md5', 'pretty-format', 'stacktrace-js', 'xml-formatter', 'uuid'],
+    external: [
+        'axios',
+        'dayjs',
+        'stopwatch-node',
+        'md5',
+        '@permafrost-dev/pretty-format',
+        'stacktrace-js',
+        'xml-formatter',
+        'uuid',
+    ],
 };
