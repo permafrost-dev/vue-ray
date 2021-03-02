@@ -186,7 +186,9 @@ Vue.use(RayPlugin, { interceptErrors: true });
 
 ## Using the Vuex plugin
 
-In either a Vue 2.x or 3.x project, you may use the `vue-ray` vuex plugin - it will send the vuex state to Ray whenever a mutation is called, in a manner similar to the `track()` method.
+In either a Vue 2.x or 3.x project, you may use the `vue-ray` vuex plugin - it can track the vuex state, log mutations and log actions.
+
+To use it, import the `RayVuexPlugin` function from `vue-ray` _(`vue-ray/vue2` for Vue 2)_, and pass the result of the function to the `plugins` property on your Vuex store:
 
 ```js
 // ...
@@ -210,7 +212,7 @@ const storeObj = {
   },
   actions: {},
   modules: {},
-  plugins: [RayVuexPlugin],
+  plugins: [RayVuexPlugin({trackState: true, logMutations: true})],
 };
 
 // Vue 3:
@@ -219,6 +221,18 @@ export default createStore(storeObj);
 // Vue 2:
 export default new Vuex.Store(storeObj);
 ```
+
+### Vuex plugin options
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `trackState` | `boolean` | track the data in the store's state |
+| `logMutations` | `boolean` | log all fired mutations to Ray |
+| `logActions` | `boolean` | log all fired actions to Ray |
+| `loggedMutationColor` | `string` | send logged mutations with the specified Ray color |
+| `loggedActionColor` | `string` | send logged actions with the specified Ray color |
+
+Valid color names are `blue`, `gray`, `green`, `orange`, `purple`, `red`, and `none`.
 
 ## Development setup
 
