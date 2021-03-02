@@ -11,7 +11,9 @@ module.exports = {
     coverageReporters: ['html-spa', 'text'],
     collectCoverageFrom: [
         'src/*.js',
+        'src/*.ts',
         'src/**/*.js',
+        'src/**/*.ts',
         '!**/build/**',
         '!**/dist/**',
         '!**/node_modules/**',
