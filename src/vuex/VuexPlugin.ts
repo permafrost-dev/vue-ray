@@ -74,6 +74,8 @@ export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOpti
                 if (isRayVuexPluginNamedColor(options.loggedMutationColor)) {
                     r.color(options.loggedMutationColor);
                 }
+
+                r.hide();
             });
         }
 
@@ -84,6 +86,8 @@ export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOpti
                 if (isRayVuexPluginNamedColor(options.loggedActionColor)) {
                     r.color(options.loggedActionColor);
                 }
+
+                r.hide();
             });
         }
     };
