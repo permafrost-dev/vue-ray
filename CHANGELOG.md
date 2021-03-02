@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.10.0 - 2021-03-02
+
+- update vuex plugin to support tracking state, logging mutations and logging actions
+
 ## 1.9.0 - 2021-03-02
 
 - add support for lifecycle events `beforeCreate`, `beforeMount`, `updated`
