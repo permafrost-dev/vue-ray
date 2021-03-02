@@ -13,7 +13,7 @@
 
 ## Debug your Vue code with Ray to fix problems faster
 
-This package can be installed in any Vue 2.x or Vue 3.x project to send messages to the [Ray app](https://myray.app).
+This package can be installed in any Vue 2.x or Vue 3.x project to send messages to the [Ray app](https://myray.app). It also includes a Vuex plugin to monitor changes to your Vuex state.
 
 ## Installation
 
@@ -182,6 +182,42 @@ Use the `interceptErrors` option to intercept errors and send them to Ray:
 
 ```js
 Vue.use(RayPlugin, { interceptErrors: true });
+```
+
+## Using the Vuex plugin
+
+In either a Vue 2.x or 3.x project, you may use the `vue-ray` vuex plugin - it will send the vuex state to Ray whenever a mutation is called, in a manner similar to the `track()` method.
+
+```js
+// ...
+
+import { RayVuexPlugin } from 'vue-ray'; // or 'vue-ray/vue2' if using Vue 2.x
+
+// ...
+
+const storeObj = {
+  state: {
+    one: 11,
+    two: 22,
+  },
+  mutations: {
+    incrementOne(state) {
+        state.one += 1;
+    },
+    incrementTwo(state) {
+        state.two += 2;
+    },
+  },
+  actions: {},
+  modules: {},
+  plugins: [RayVuexPlugin],
+};
+
+// Vue 3:
+export default createStore(storeObj);
+
+// Vue 2:
+export default new Vuex.Store(storeObj);
 ```
 
 ## Development setup
