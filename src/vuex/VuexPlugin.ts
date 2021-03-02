@@ -40,8 +40,17 @@ const decorateEventType = (name: RayVuexPluginEventType, color: string) => {
     return `<span class="pr-1 text-${color}-600">${name}</span>`;
 };
 
-const sendEventInfoTable = (name: RayVuexPluginEventType, color: string, data: any) => {
-    return ray().table(
+const sendEventInfoTable = (
+    name: RayVuexPluginEventType,
+    color: string,
+    data: any,
+    rayInstance: CallableFunction | null = null
+) => {
+    if (rayInstance === null) {
+        rayInstance = () => ray();
+    }
+
+    return rayInstance().table(
         {
             'Vuex Event': decorateEventType(name, color) + ' ' + data.type,
             Payload: data.payload,
@@ -50,7 +59,12 @@ const sendEventInfoTable = (name: RayVuexPluginEventType, color: string, data: a
     );
 };
 
-export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOptions) => {
+export const VuexPlugin = (
+    options: RayVuexPluginOptions = DefaultVuexPluginOptions,
+    rayInstance: CallableFunction | null = null
+) => {
+    rayInstance = rayInstance ?? (() => ray());
+
     options = Object.assign({}, DefaultVuexPluginOptions, options);
 
     return (store: any) => {
@@ -60,7 +74,8 @@ export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOpti
                 const copiedState = Object.freeze(tempState);
 
                 if (vuexStateRay === null) {
-                    vuexStateRay = ray();
+                    // @ts-ignore
+                    vuexStateRay = rayInstance();
                 }
 
                 vuexStateRay = vuexStateRay.send(new VuexState(copiedState));
@@ -69,7 +84,7 @@ export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOpti
 
         if (options.logMutations) {
             store.subscribe((mutation: any, state: any) => {
-                const r = sendEventInfoTable('mutation', 'green', mutation);
+                const r = sendEventInfoTable('mutation', 'green', mutation, rayInstance);
 
                 if (isRayVuexPluginNamedColor(options.loggedMutationColor)) {
                     r.color(options.loggedMutationColor);
@@ -81,7 +96,7 @@ export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOpti
 
         if (options.logActions) {
             store.subscribeAction((action: any, state: any) => {
-                const r = sendEventInfoTable('action', 'blue', action);
+                const r = sendEventInfoTable('action', 'blue', action, rayInstance);
 
                 if (isRayVuexPluginNamedColor(options.loggedActionColor)) {
                     r.color(options.loggedActionColor);
