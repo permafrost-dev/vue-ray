@@ -1,13 +1,10 @@
 /* eslint-disable no-unused-vars */
 
-/// <reference path="../../node_modules/node-ray/dist/web.d.ts" />
-
 const { Ray } = require('node-ray/web');
-//import { Ray } from 'node-ray/web';
 
 export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
-    //public component: any = { $refs: {} };
+    public component: any = { $data: {}, $refs: {} };
     public watch: CallableFunction = () => {};
 
     // static create(client?: any | null, uuid?: string | null): this {
@@ -99,5 +96,13 @@ export class VueRay extends Ray {
         VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => names.includes(name));
     }
 }
+
+export const ray = (...args: any[]): VueRay => {
+    if (!args.length) {
+        return VueRay.create();
+    }
+
+    return VueRay.create().send(...args);
+};
 
 export default VueRay;
