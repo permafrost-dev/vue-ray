@@ -93,7 +93,7 @@ export class VueRay extends Ray {
             return;
         }
 
-        VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => names.includes(name));
+        VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => !names.includes(name));
     }
 }
 
