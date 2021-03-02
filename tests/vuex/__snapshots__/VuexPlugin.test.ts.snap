@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VuexPlugin: logs action events 1`] = `
+Array [
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {
+          "label": "Vuex",
+          "values": Object {
+            "Payload": 12,
+            "Vuex Event": "<span class=\\"pr-1 text-blue-600\\">action</span> testAction",
+          },
+        },
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {
+          "color": "blue",
+        },
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "color",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {},
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "hide",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
+
+exports[`VuexPlugin: logs mutation events 1`] = `
+Array [
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {
+          "label": "Vuex",
+          "values": Object {
+            "Payload": "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"a\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+            "Vuex Event": "<span class=\\"pr-1 text-green-600\\">mutation</span> testMutation",
+          },
+        },
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {
+          "color": "blue",
+        },
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "color",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {},
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "hide",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
+
+exports[`VuexPlugin: tracks the vuex state 1`] = `
+Array [
+  Object {
+    "meta": Array [],
+    "payloads": Array [
+      Object {
+        "content": Object {
+          "content": "<code style=\\"font-size: 0.8rem!important;\\">VuexState&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"state\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"a\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>123<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"b\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>456<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "label": "HTML",
+        },
+        "origin": Object {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "line_number": 999,
+        },
+        "type": "custom",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
