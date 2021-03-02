@@ -4,9 +4,13 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
-## 1.8.1 - unreleased
+## 1.9.0 - 2021-03-02
 
 - add support for lifecycle events `beforeCreate`, `beforeMount`, `updated`
+
+- bump package versions: `concurrently` to `6.0.0`, `eslint-config-prettier` to `8.1.0`
+
+- add Vuex plugin to allow monitoring of the Vuex state/mutations
 
 ## 1.8.0 - 2021-02-12
 
