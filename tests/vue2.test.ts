@@ -1,47 +1,19 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-import RayVue2Plugin from './../src/RayVue2';
+import RayVue2Plugin from '../src/RayVue2';
+import { FakeRay } from './TestClasses/FakeRay';
+import { FakeVm } from './TestClasses/FakeVm';
 
-let ray;
+let ray: FakeRay;
 
 beforeEach(() => {
     ray = new FakeRay();
 });
 
-class FakeVm {
-    $ray(...args) {
-        return ray.send(...args);
-    }
-}
-
-class FakeRay {
-    payloads = [];
-
-    send(...args) {
-        if (args.length) {
-            this.payloads.push(...args.map(arg => ({ name: 'log', content: arg, label: null }))); // eslint-disable-line
-        }
-        return this;
-    }
-
-    sendCustom(data, label) {
-        this.payloads.push({ name: 'custom', content: data, label });
-        return this;
-    }
-
-    small() {
-        this.payloads.push({ name: 'small', content: 'small', label: null });
-        return this;
-    }
-
-    red() {
-        this.payloads.push({ name: 'color', content: 'red', label: null });
-        return this;
-    }
-}
-
 class FakeVue2 {
+    public $ray: any;
+
     // fake vue class
     static config = {
         errorHandler: null,
@@ -57,7 +29,7 @@ class FakeVue2 {
         this.$ray = FakeVue2.mixins.methods.$ray;
     }
 
-    static mixin(obj) {
+    static mixin(obj: any) {
         FakeVue2.mixins = Object.assign({}, FakeVue2.mixins, obj);
     }
 }
@@ -79,9 +51,10 @@ describe('Vue 2 Ray Plugin:', () => {
         expect(FakeVue2.config.errorHandler).not.toBeNull();
         expect(typeof FakeVue2.config.errorHandler).toBe('function');
 
-        const fakeVm = new FakeVm();
+        const fakeVm = new FakeVm(ray);
         const myRay = fakeVm.$ray();
 
+        // @ts-ignore
         FakeVue2.config.errorHandler({ stack: 'test error' }, fakeVm);
 
         expect(myRay.payloads.length).toBe(3);

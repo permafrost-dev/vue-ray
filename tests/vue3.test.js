@@ -2,44 +2,10 @@
 /* eslint-disable no-undef */
 
 import RayVue3Plugin from './../src/RayVue3';
+import { FakeRay } from './TestClasses/FakeRay';
+import { FakeVm } from './TestClasses/FakeVm';
 
 let ray, fakeApp;
-
-class FakeVm {
-    $ray(...args) {
-        return ray.send(...args);
-    }
-}
-
-class FakeRay {
-    payloads = [];
-
-    send(...args) {
-        if (args.length) {
-            this.payloads.push(...args.map(arg => ({ name: 'log', content: arg, label: null })));
-        }
-        return this;
-    }
-
-    sendCustom(data, label) {
-        this.payloads.push({ name: 'custom', content: data, label });
-        return this;
-    }
-
-    small() {
-        this.payloads.push({ name: 'small', content: 'small', label: null });
-        return this;
-    }
-
-    red() {
-        this.payloads.push({ name: 'color', content: 'red', label: null });
-        return this;
-    }
-}
-
-class FakeVue3 {
-    //
-}
 
 class FakeApp {
     constructor() {
@@ -105,7 +71,7 @@ describe('Vue 3 Ray Plugin:', () => {
         expect(fakeApp.config.errorHandler).not.toBeNull();
         expect(typeof fakeApp.config.errorHandler).toBe('function');
 
-        const fakeVm = new FakeVm();
+        const fakeVm = new FakeVm(ray);
         fakeApp.config.errorHandler({ stack: 'test error' }, fakeVm);
 
         expect(ray.payloads.length).toBe(3);
