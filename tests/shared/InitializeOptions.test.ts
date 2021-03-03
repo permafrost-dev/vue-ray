@@ -35,4 +35,12 @@ describe('Option Initializer:', () => {
 
         expect(VueRay.defaultSettings.port).toBe(12345);
     });
+
+    it('initializes showComponentEvents option', () => {
+        options.showComponentEvents = ['created'];
+
+        initializeOptions(options, vueConfig);
+
+        expect(VueRay.show_component_lifecycles).toStrictEqual(['created']);
+    });
 });
