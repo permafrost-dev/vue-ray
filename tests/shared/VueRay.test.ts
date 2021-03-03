@@ -4,7 +4,15 @@
 import { VueRay } from '../../src/shared/VueRay';
 import { FakeClient } from '../TestClasses/FakeClient';
 
-let ray, client;
+interface WatchParameters {
+    cb1: CallableFunction;
+    cb2: CallableFunction;
+    options: Record<string, unknown>;
+}
+
+let ray: VueRay,
+    client: FakeClient,
+    lastWatchParams: WatchParameters | null = null;
 
 beforeEach(() => {
     client = new FakeClient(3000, 'localhost');
@@ -14,6 +22,21 @@ beforeEach(() => {
         $data: { one: 1 },
         $props: { title: 'abc' },
         $refs: { test1: { innerHTML: '<em>123</em>' } },
+        trackingRays: {},
+        trackingStops: {},
+        $ray(...args: any[]) {
+            return ray.send(...args);
+        },
+    };
+
+    ray.watch = (cb1: CallableFunction, cb2: CallableFunction, options: Record<string, unknown> = {}) => {
+        lastWatchParams = {
+            cb1,
+            cb2,
+            options,
+        };
+
+        return () => true;
     };
 
     ray.data();
@@ -63,5 +86,27 @@ describe('Base VueRay class:', () => {
         VueRay.stopShowingComponentLifecycles(['two']);
 
         expect(VueRay.show_component_lifecycles).toStrictEqual(['one']);
+    });
+
+    it('tracks data variables', () => {
+        ray.track('test');
+
+        lastWatchParams?.cb2();
+
+        expect(client.sentRequests).toMatchSnapshot();
+    });
+
+    it('stops tracking data variables', () => {
+        ray.track('test');
+
+        expect(ray.component.trackingRays['test']).toBeDefined();
+        expect(ray.component.trackingStops['test']).toBeDefined();
+
+        ray.untrack('test');
+
+        expect(ray.component.trackingRays['test']).toBeUndefined();
+        expect(ray.component.trackingStops['test']).toBeUndefined();
+
+        expect(client.sentRequests).toMatchSnapshot();
     });
 });
