@@ -3,7 +3,7 @@
 import { createPackageMetaProperty, encodeHtmlEntities } from '../../src/shared/helpers';
 
 it('creates a package meta property', () => {
-    const obj = { $rayMeta: null };
+    const obj: any = { $rayMeta: null };
 
     createPackageMetaProperty(obj);
 

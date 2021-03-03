@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-const { Ray } = require('node-ray/web');
 
-import { initializeOptions } from './../../src/shared/InitializeOptions';
+import { VueRay } from '../../src/shared/VueRay';
+import { initializeOptions } from '../../src/shared/InitializeOptions';
 
-let options, vueConfig;
+let options: any, vueConfig: any;
 
 beforeEach(() => {
     options = {};
@@ -25,7 +25,7 @@ describe('Option Initializer:', () => {
 
         initializeOptions(options, vueConfig);
 
-        expect(Ray.defaultSettings.host).toBe('otherhost');
+        expect(VueRay.defaultSettings.host).toBe('otherhost');
     });
 
     it('initializes port option', () => {
@@ -33,6 +33,6 @@ describe('Option Initializer:', () => {
 
         initializeOptions(options, vueConfig);
 
-        expect(Ray.defaultSettings.port).toBe(12345);
+        expect(VueRay.defaultSettings.port).toBe(12345);
     });
 });
