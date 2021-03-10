@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.11.0 - 2021-03-10
+
+- allow specifying the `scheme` option when installing the Vue plugin _(http or https)_
+
 ## 1.10.0 - 2021-03-02
 
 - update vuex plugin to support tracking state, logging mutations and logging actions
