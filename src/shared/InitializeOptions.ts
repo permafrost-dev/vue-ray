@@ -1,10 +1,13 @@
+/* eslint-disable no-undef */
 ///const { Ray } = require('node-ray/web');
 import { VueRay } from './VueRay';
 import errorHandler from './ErrorHandler';
+import { installWindowErrorHandlers } from './WindowErrorHandlers';
 
 export const initializeOptions = (options: any, vueConfig: any) => {
     if (options.interceptErrors === true) {
         vueConfig.errorHandler = errorHandler;
+        installWindowErrorHandlers(globalThis);
     }
 
     let host = 'localhost',

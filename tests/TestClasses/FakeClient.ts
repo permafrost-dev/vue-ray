@@ -75,4 +75,8 @@ export class FakeClient extends Client {
 
         return path.replace(sep, '/');
     }
+
+    public isRayAvailable(): boolean {
+        return true;
+    }
 }
