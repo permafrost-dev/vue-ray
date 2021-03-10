@@ -36,6 +36,14 @@ describe('Option Initializer:', () => {
         expect(VueRay.defaultSettings.port).toBe(12345);
     });
 
+    it('initializes scheme option', () => {
+        options.scheme = 'https';
+
+        initializeOptions(options, vueConfig);
+
+        expect(VueRay.defaultSettings.scheme).toBe('https');
+    });
+
     it('initializes showComponentEvents option', () => {
         options.showComponentEvents = ['created'];
 
