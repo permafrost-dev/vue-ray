@@ -15,6 +15,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -33,6 +34,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "custom",
@@ -58,6 +60,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -78,6 +81,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -103,6 +107,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -123,6 +128,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -148,6 +154,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -167,6 +174,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "log",
@@ -185,6 +193,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "custom",
@@ -210,6 +219,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -229,6 +239,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "log",
@@ -247,6 +258,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "custom",

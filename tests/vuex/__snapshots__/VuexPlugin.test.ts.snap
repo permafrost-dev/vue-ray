@@ -16,6 +16,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -33,6 +34,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "color",
@@ -48,6 +50,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "hide",
@@ -74,6 +77,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "table",
@@ -91,6 +95,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "color",
@@ -106,6 +111,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "hide",
@@ -129,6 +135,7 @@ Array [
         "origin": Object {
           "file": "web.cjs.js",
           "function_name": "xxxx",
+          "hostname": "remote",
           "line_number": 999,
         },
         "type": "custom",
