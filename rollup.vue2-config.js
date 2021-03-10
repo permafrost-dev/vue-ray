@@ -16,7 +16,7 @@ export default {
             file: `dist/vue${options.version}.cjs.js`,
             format: 'cjs',
             sourcemap: options.sourceMapsEnabled,
-            exports: 'auto',
+            exports: 'named',
             plugins: [],
         },
         {
