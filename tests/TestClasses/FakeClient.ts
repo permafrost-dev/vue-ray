@@ -1,6 +1,9 @@
 import { sep } from 'path';
 
 class Client {
+    public portNumber: number;
+    public host: string;
+
     constructor(portNumber = 23517, host = 'localhost') {
         this.portNumber = portNumber;
 
@@ -9,13 +12,13 @@ class Client {
 }
 
 export class FakeClient extends Client {
-    sentRequests = [];
+    public sentRequests: any[] = [];
 
-    async send(request) {
-        const requestProperties = request.toArray();
+    async send(request: any) {
+        const requestProperties: any = request.toArray();
         const payloads = request.payloads;
 
-        payloads.map(payload => {
+        payloads.map((payload: any) => {
             payload.toArray();
 
             const fn = payload.data.origin.file ?? '/test/file.js';
@@ -47,7 +50,7 @@ export class FakeClient extends Client {
     }
 
     // eslint-disable-next-line no-unused-vars
-    async lockExists(lockName) {
+    async lockExists(lockName: any) {
         return new Promise(resolve => {
             resolve({ active: false, stop_exectution: true });
         });
@@ -67,7 +70,7 @@ export class FakeClient extends Client {
         return __dirname.replace('/tests/TestClasses', '');
     }
 
-    convertToUnixPath(path) {
+    convertToUnixPath(path: string) {
         path = path.replace('D:\\a\\ray\\ray', '');
 
         return path.replace(sep, '/');
