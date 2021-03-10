@@ -33,12 +33,12 @@ yarn add vue-ray
 
 When using in a Vue 3.x project (the default), import package normally:
 
-```js 
+```js
 import { createApp } from 'vue';
 import App from './App.vue';
 
 // as an es module import:
-import RayPlugin from 'vue-ray';
+import { RayPlugin } from 'vue-ray';
 
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray');
@@ -52,11 +52,11 @@ app.use(RayPlugin, { interceptErrors: true, port: 23500, showComponentEvents: ['
 
 When using in a Vue 2.x project, import the 'vue2' variant:
 
-```js 
+```js
 const Vue = require('vue');
 
 // as an es module import:
-import RayPlugin from 'vue-ray/vue2';
+import { RayPlugin } from 'vue-ray/vue2';
 
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
@@ -66,12 +66,12 @@ Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', showComponentEven
 
 ### Installation options
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `host` | `string` | `localhost` | host to connect to the Ray app on |
-| `interceptErrors` | `boolean` | `false` | send Vue errors to Ray |
-| `port` | `number` | `23517` | port to connect to the Ray app on |
-| `showComponentEvents` | `string[]` | `[]` | display component events in Ray, see below for possible values |
+| Name                  | Type       | Default     | Description                                                    |
+| --------------------- | ---------- | ----------- | -------------------------------------------------------------- |
+| `host`                | `string`   | `localhost` | host to connect to the Ray app on                              |
+| `interceptErrors`     | `boolean`  | `false`     | send Vue errors to Ray                                         |
+| `port`                | `number`   | `23517`     | port to connect to the Ray app on                              |
+| `showComponentEvents` | `string[]` | `[]`        | display component events in Ray, see below for possible values |
 
 ### Component events
 
@@ -79,11 +79,11 @@ Component lifecycle events can be sent to Ray using the `showComponentEvents` pl
 
 Any or all of the following values can be used with this option:
 
-- `before-create`
-- `before-mount`
-- `created`
-- `mounted`
-- `updated`
+-   `before-create`
+-   `before-mount`
+-   `created`
+-   `mounted`
+-   `updated`
 
 ## Usage
 
@@ -93,12 +93,12 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 ## Vue-specific methods
 
-| Name | Description |
-| --- | --- |
-| `this.$ray().data()` | show the component data |
-| `this.$ray().props()` | show the component props |
-| `this.$ray().ref(name)` | show the `innerHTML` of a named ref |
-| `this.$ray().track(name)` | display changes to a component's data variable |
+| Name                        | Description                                            |
+| --------------------------- | ------------------------------------------------------ |
+| `this.$ray().data()`        | show the component data                                |
+| `this.$ray().props()`       | show the component props                               |
+| `this.$ray().ref(name)`     | show the `innerHTML` of a named ref                    |
+| `this.$ray().track(name)`   | display changes to a component's data variable         |
 | `this.$ray().untrack(name)` | stop displaying changes to a component's data variable |
 
 ## Tracking component data
@@ -120,9 +120,11 @@ export default {
         this.$ray().track('one');
     },
     mounted() {
-        setInterval( () => { this.one += 3; }, 4000);
-    }
-}
+        setInterval(() => {
+            this.one += 3;
+        }, 4000);
+    },
+};
 </script>
 ```
 
@@ -188,31 +190,31 @@ Vue.use(RayPlugin, { interceptErrors: true });
 
 In either a Vue 2.x or 3.x project, you may use the `vue-ray` vuex plugin - it can track the vuex state, log mutations and log actions.
 
-To use it, import the `RayVuexPlugin` function from `vue-ray` _(`vue-ray/vue2` for Vue 2)_, and pass the result of the function to the `plugins` property on your Vuex store:
+To use it, import the `RayVuexPlugin` function from `vue-ray`, and pass the result of the function to the `plugins` property on your Vuex store:
 
 ```js
 // ...
 
-import { RayVuexPlugin } from 'vue-ray'; // or 'vue-ray/vue2' if using Vue 2.x
+import { RayVuexPlugin } from 'vue-ray'; // for both vue 2 and vue 3
 
 // ...
 
 const storeObj = {
-  state: {
-    one: 11,
-    two: 22,
-  },
-  mutations: {
-    incrementOne(state) {
-        state.one += 1;
+    state: {
+        one: 11,
+        two: 22,
     },
-    incrementTwo(state) {
-        state.two += 2;
+    mutations: {
+        incrementOne(state) {
+            state.one += 1;
+        },
+        incrementTwo(state) {
+            state.two += 2;
+        },
     },
-  },
-  actions: {},
-  modules: {},
-  plugins: [RayVuexPlugin({trackState: true, logMutations: true})],
+    actions: {},
+    modules: {},
+    plugins: [RayVuexPlugin({ trackState: true, logMutations: true })],
 };
 
 // Vue 3:
@@ -224,25 +226,25 @@ export default new Vuex.Store(storeObj);
 
 ### Vuex plugin options
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `trackState` | `boolean` | track the data in the store's state |
-| `logMutations` | `boolean` | log all fired mutations to Ray |
-| `logActions` | `boolean` | log all fired actions to Ray |
-| `loggedMutationColor` | `string` | send logged mutations with the specified Ray color |
-| `loggedActionColor` | `string` | send logged actions with the specified Ray color |
+| Name                  | Type      | Description                                        |
+| --------------------- | --------- | -------------------------------------------------- |
+| `trackState`          | `boolean` | track the data in the store's state                |
+| `logMutations`        | `boolean` | log all fired mutations to Ray                     |
+| `logActions`          | `boolean` | log all fired actions to Ray                       |
+| `loggedMutationColor` | `string`  | send logged mutations with the specified Ray color |
+| `loggedActionColor`   | `string`  | send logged actions with the specified Ray color   |
 
 Valid color names are `blue`, `gray`, `green`, `orange`, `purple`, `red`, and `none`.
 
 ## Development setup
 
-- `npm install`
-- `npm run test`
-- `npm run build:all`
+-   `npm install`
+-   `npm run test`
+-   `npm run build:all`
 
 ## Testing
 
-`vue-ray` uses Jest for unit tests.  To run the test suite:
+`vue-ray` uses Jest for unit tests. To run the test suite:
 
 `npm run test`
 
@@ -262,8 +264,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Patrick Organ](https://github.com/patinthehat)
-- [All Contributors](../../contributors)
+-   [Patrick Organ](https://github.com/patinthehat)
+-   [All Contributors](../../contributors)
 
 ## License
 
