@@ -1,4 +1,5 @@
 import { PackageInfo } from './PackageInfo';
+import multimatch from 'multimatch';
 
 // @ts-ignore
 export const createPackageMetaProperty = obj => {
@@ -24,4 +25,16 @@ export const encodeHtmlEntities = (str: string) => {
     const regex = new RegExp(`[${chars.join('')}]`, 'g');
 
     return str.replace(regex, m => `&${escapeChars[m]};`);
+};
+
+export const filterObjectByKeys = (obj: any, includeKeyPatterns: string[]) => {
+    const result: any = {};
+
+    Object.keys(obj).forEach(key => {
+        multimatch(key, includeKeyPatterns).forEach(match => {
+            result[match] = obj[match];
+        });
+    });
+
+    return result;
 };

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 
+import { filterObjectByKeys } from '../shared/helpers';
 import { ray } from '../shared/VueRay';
 
 export let vuexStateRay: any = null;
@@ -7,8 +8,8 @@ export let vuexStateRay: any = null;
 class VuexState {
     public state: any;
 
-    constructor(state: any) {
-        this.state = state;
+    constructor(state: any, options: RayVuexPluginOptions = {}) {
+        this.state = filterObjectByKeys(Object.assign({}, state), options.trackingOptions?.propNames ?? ['one']);
     }
 }
 
@@ -26,6 +27,10 @@ export interface RayVuexPluginOptions {
     logActions?: boolean;
     loggedMutationColor?: RayVuexPluginLogColor;
     loggedActionColor?: RayVuexPluginLogColor;
+    trackingOptions?: {
+        moduleNames?: string[];
+        propNames?: string[];
+    };
 }
 
 const DefaultVuexPluginOptions: RayVuexPluginOptions = {
@@ -34,6 +39,10 @@ const DefaultVuexPluginOptions: RayVuexPluginOptions = {
     logActions: false,
     loggedMutationColor: 'none',
     loggedActionColor: 'none',
+    trackingOptions: {
+        moduleNames: ['*'],
+        propNames: ['*'],
+    },
 };
 
 const decorateEventType = (name: RayVuexPluginEventType, color: string) => {
@@ -78,7 +87,7 @@ export const VuexPlugin = (
                     vuexStateRay = rayInstance();
                 }
 
-                vuexStateRay = vuexStateRay.send(new VuexState(copiedState));
+                vuexStateRay = vuexStateRay.send(new VuexState(copiedState, options));
             });
         }
 
