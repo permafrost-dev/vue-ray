@@ -214,7 +214,15 @@ const storeObj = {
     },
     actions: {},
     modules: {},
-    plugins: [RayVuexPlugin({ trackState: true, logMutations: true })],
+    plugins: [
+        RayVuexPlugin({ 
+            trackState: true,
+            logMutations: true,
+            trackingOptions: {
+                propNames: ['on*'],
+            }
+        }),
+    ],
 };
 
 // Vue 3:
@@ -233,8 +241,27 @@ export default new Vuex.Store(storeObj);
 | `logActions`          | `boolean` | log all fired actions to Ray                       |
 | `loggedMutationColor` | `string`  | send logged mutations with the specified Ray color |
 | `loggedActionColor`   | `string`  | send logged actions with the specified Ray color   |
+| `trackingOptions`     | `object`  | see "tracking options" section for more info       |
 
 Valid color names are `blue`, `gray`, `green`, `orange`, `purple`, `red`, and `none`.
+
+### Tracking options
+
+The `trackingOptions` definition is as follows:
+
+```typescript
+trackingOptions?: {
+    moduleNames?: string[];
+    propNames?: string[];
+};
+```
+
+The `propNames` is an array of wildcard patterns that will be used to match store data property names when tracking store state; for example, a value of `['f*']` would match store data properties named `foo` and `fab` but not `dog`.
+
+The `moduleNames` is also an array of wildcard patterns, but will match module names and module data property names, such as `['mymod.*']`, which would match all properties in the `mymod` store.
+
+The default value for both is `['*']`, meaning all modules and properties match.
+
 
 ## Development setup
 
