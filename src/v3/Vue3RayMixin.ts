@@ -3,9 +3,11 @@ import { VueRay } from '../shared/VueRay';
 
 export let vue3Watch = null;
 
-const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>) => {
+const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (VueRay.shouldDisplayEvent(eventName)) {
-        this.$ray().table([
+        rayInstance = rayInstance ?? this.$ray ?? Vue3RayMixin.methods.$ray;
+
+        rayInstance().table([
             `component ${eventName}: <code>${options.name}</code>`,
             `filename: <code>&lt;project root&gt;/${options.__file}</code>`,
         ]);
