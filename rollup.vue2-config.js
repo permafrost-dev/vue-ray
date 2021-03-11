@@ -45,6 +45,8 @@ export default {
         'stopwatch-node',
         'md5',
         'multimatch',
+        'minimatch',
+        'path',
         '@permafrost-dev/pretty-format',
         'stacktrace-js',
         'xml-formatter',
