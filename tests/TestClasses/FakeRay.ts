@@ -22,4 +22,9 @@ export class FakeRay {
         this.payloads.push({ name: 'color', content: 'red', label: null });
         return this;
     }
+
+    table(data: any, label: any) {
+        this.payloads.push({ name: 'table', content: data, label });
+        return this;
+    }
 }

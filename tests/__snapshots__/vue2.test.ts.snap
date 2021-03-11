@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Vue 2 Ray Mixin: it conditionally displays the beforeCreate event 1`] = `
+Array [
+  Object {
+    "content": Array [
+      "component before-create: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+]
+`;
+
+exports[`Vue 2 Ray Mixin: it conditionally displays the beforeMount event 1`] = `
+Array [
+  Object {
+    "content": Array [
+      "component before-mount: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+]
+`;
+
+exports[`Vue 2 Ray Mixin: it conditionally displays the created & mounted events 1`] = `
+Array [
+  Object {
+    "content": Array [
+      "component created: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+  Object {
+    "content": Array [
+      "component mounted: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+]
+`;
+
+exports[`Vue 2 Ray Mixin: it conditionally displays the unmounted event 1`] = `
+Array [
+  Object {
+    "content": Array [
+      "component unmounted: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+]
+`;
+
+exports[`Vue 2 Ray Mixin: it conditionally displays the updated event 1`] = `
+Array [
+  Object {
+    "content": Array [
+      "component updated: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+]
+`;
