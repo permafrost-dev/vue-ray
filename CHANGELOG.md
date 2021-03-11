@@ -8,6 +8,8 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 - added support for intercepting all lifecycle events to Vue 2 plugin
 
+- added increased test coverage for Vue 2 and Vue 3 mixins
+
 ## 1.12.0 - 2021-03-10
 
 - all exports are "named" exports now
