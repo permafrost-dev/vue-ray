@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.13.2 - 2021-03-11
+
+- remove multimatch package and use custom pattern matching instead, fixes webpack 'path' bug
+
 ## 1.13.1 - 2021-03-11
 
 - make minimatch and path libraries external in rollup configurations
