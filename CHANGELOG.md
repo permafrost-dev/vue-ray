@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.13.1 - 2021-03-11
+
+- make minimatch and path libraries external in rollup configurations
+
 ## 1.13.0 - 2021-03-11
 
 - added support for intercepting all lifecycle events to Vue 2 plugin
