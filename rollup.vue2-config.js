@@ -26,7 +26,7 @@ export default {
             plugins: [],
         },
     ],
-    moduleContext: { 'src/v3/Vue2RayMixin.ts': 'this' },
+    moduleContext: { 'src/v2/Vue2RayMixin.ts': 'this' },
     plugins: [
         replace({
             values: {
