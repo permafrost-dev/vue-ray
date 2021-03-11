@@ -4,6 +4,16 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.12.0 - 2021-03-10
+
+- all exports are "named" exports now
+
+- all errors, including window errors and unhandled rejection errors, are also sent to Ray
+
+- added Vuex plugin `trackingOptions.propNames: string[]` that supports wildcard matching of store property names to display when tracking store data
+
+- readme updates and examples
+
 ## 1.11.0 - 2021-03-10
 
 - allow specifying the `scheme` option when installing the Vue plugin _(http or https)_
