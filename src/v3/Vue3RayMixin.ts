@@ -5,11 +5,16 @@ export let vue3Watch = null;
 
 const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (VueRay.shouldDisplayEvent(eventName)) {
-        rayInstance = rayInstance ?? this.$ray ?? Vue3RayMixin.methods.$ray;
+        rayInstance = rayInstance ?? Vue3RayMixin.methods.$ray;
+
+        // don't display 'unknown' components
+        if (!(options?.__file ?? false)) {
+            return;
+        }
 
         rayInstance().table([
-            `component ${eventName}: <code>${options.name}</code>`,
-            `filename: <code>&lt;project root&gt;/${options.__file}</code>`,
+            `component ${eventName}: <code>${options?.name ?? 'unknown'}</code>`,
+            `filename: <code>&lt;project root&gt;/${options?.__file ?? 'unknown.js'}</code>`,
         ]);
     }
 };
