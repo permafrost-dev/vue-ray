@@ -4,7 +4,7 @@ import { VueRay as Vue2Ray } from '../shared/VueRay';
 
 const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (Vue2Ray.shouldDisplayEvent(eventName)) {
-        rayInstance = rayInstance ?? this.$ray ?? Vue2RayMixin.methods.$ray;
+        rayInstance = rayInstance ?? Vue2RayMixin.methods.$ray;
 
         rayInstance().table([
             `component ${eventName}: <code>${options?.name ?? 'unknown'}</code>`,
@@ -15,27 +15,27 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
 
 export const Vue2RayMixin = {
     beforeCreate() {
-        conditionallyDisplayEvent('before-create', this.$options);
+        conditionallyDisplayEvent('before-create', this.$options, this.$ray);
     },
 
     beforeMount() {
-        conditionallyDisplayEvent('before-mount', this.$options);
+        conditionallyDisplayEvent('before-mount', this.$options, this.$ray);
     },
 
     created() {
-        conditionallyDisplayEvent('created', this.$options);
+        conditionallyDisplayEvent('created', this.$options, this.$ray);
     },
 
     mounted() {
-        conditionallyDisplayEvent('mounted', this.$options);
+        conditionallyDisplayEvent('mounted', this.$options, this.$ray);
     },
 
     beforeDestroy() {
-        conditionallyDisplayEvent('unmounted', this.$options);
+        conditionallyDisplayEvent('unmounted', this.$options, this.$ray);
     },
 
     updated() {
-        conditionallyDisplayEvent('updated', this.$options);
+        conditionallyDisplayEvent('updated', this.$options, this.$ray);
     },
 
     methods: {
