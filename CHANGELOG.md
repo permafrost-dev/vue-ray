@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.13.5 - 2021-03-12
+
+- remove debug code
+
 ## 1.13.4 - 2021-03-12
 
 - fix an issue with Vue 2 plugin throwing an error during event interception
