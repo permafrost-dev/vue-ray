@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.15.0 - 2021-03-12
+
+- try to determine the correct component name when displaying component events
+
 ## 1.14.0 - 2021-03-12
 
 - don't display events for "unknown" components
