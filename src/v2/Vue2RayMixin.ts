@@ -6,6 +6,11 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
     if (Vue2Ray.shouldDisplayEvent(eventName)) {
         rayInstance = rayInstance ?? Vue2RayMixin.methods.$ray;
 
+        // don't display 'unknown' components
+        if (!(options?.__file ?? false)) {
+            return;
+        }
+
         rayInstance().table([
             `component ${eventName}: <code>${options?.name ?? 'unknown'}</code>`,
             `filename: <code>&lt;project root&gt;/${options?.__file ?? 'unknown.js'}</code>`,
