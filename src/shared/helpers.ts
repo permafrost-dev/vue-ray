@@ -51,3 +51,16 @@ export const filterObjectByKeys = (obj: any, includeKeyPatterns: string[]) => {
 
     return result;
 };
+
+export const determineComponentNameDuringEvent = (options: Record<string, unknown>): string => {
+    const result: string = <string>options?.name ?? 'unknown';
+    let filename: string = <string>options?.__file ?? 'src/unknown.js';
+
+    if (result.length && result !== 'unknown') {
+        return result;
+    }
+
+    filename = filename.split('/').pop() ?? 'unknown.js';
+
+    return filename.replace(/\.[\w-_]+$/, '');
+};

@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 // @ts-nocheck
 import { VueRay as Vue2Ray } from '../shared/VueRay';
+import { determineComponentNameDuringEvent } from '../shared/helpers';
 
 const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (Vue2Ray.shouldDisplayEvent(eventName)) {
@@ -11,8 +12,10 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
             return;
         }
 
+        const componentName: string = determineComponentNameDuringEvent(options);
+
         rayInstance().table([
-            `component ${eventName}: <code>${options?.name ?? 'unknown'}</code>`,
+            `component ${eventName}: <code>${componentName}</code>`,
             `filename: <code>&lt;project root&gt;/${options?.__file ?? 'unknown.js'}</code>`,
         ]);
     }
