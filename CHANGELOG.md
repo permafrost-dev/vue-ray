@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.13.3 - 2021-03-11
+
+- change `node-ray/web` to an `import` instead of a `require()`
+
 ## 1.13.2 - 2021-03-11
 
 - remove multimatch package and use custom pattern matching instead, fixes webpack 'path' bug
