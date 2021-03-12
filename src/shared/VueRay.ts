@@ -100,6 +100,10 @@ export class VueRay extends Ray {
 
         VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => !names.includes(name));
     }
+    
+    public static useDefaultSettings(settings: any) {
+        return super.useDefaultSettings(settings);
+    }
 
     public send(...args: any[]): VueRay {
         return super.send(...args);
