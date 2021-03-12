@@ -4,6 +4,12 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.14.0 - 2021-03-12
+
+- don't display events for "unknown" components
+
+- fix an issue with Vue 3 plugin throwing an error during event interception
+
 ## 1.13.5 - 2021-03-12
 
 - remove debug code
