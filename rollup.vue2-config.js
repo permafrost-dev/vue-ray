@@ -46,6 +46,8 @@ export default {
         'md5',
         'multimatch',
         'minimatch',
+        'node-ray',
+        'node-ray/web',
         'path',
         '@permafrost-dev/pretty-format',
         'stacktrace-js',
