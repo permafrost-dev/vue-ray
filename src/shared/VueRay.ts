@@ -9,12 +9,8 @@ export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
     public component: any = { $data: {}, $refs: {} };
     public watch: CallableFunction = () => {};
-    
-    public static defaultSettings: any;
 
-    static create(client?: any | null, uuid?: string | null): this {
-         return super.create(client, uuid);
-    }
+    public static defaultSettings: any;
 
     public data(): void {
         if (this.component) {
@@ -100,7 +96,7 @@ export class VueRay extends Ray {
 
         VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => !names.includes(name));
     }
-    
+
     public static useDefaultSettings(settings: any) {
         return super.useDefaultSettings(settings);
     }
