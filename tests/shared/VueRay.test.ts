@@ -16,6 +16,7 @@ let ray: VueRay,
 
 beforeEach(() => {
     client = new FakeClient(3000, 'localhost');
+    // @ts-ignore
     ray = VueRay.create(client, 'fakeUuid'); // ({ enable: true, port: 3000, host: 'localhost' }, client, 'fakeUuid');
 
     ray.component = {

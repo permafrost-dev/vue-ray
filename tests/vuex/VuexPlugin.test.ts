@@ -10,6 +10,7 @@ let ray: VueRay, client: FakeClient, store: FakeVuexStore;
 
 beforeEach(() => {
     client = new FakeClient(3000, 'localhost');
+    // @ts-ignore
     ray = VueRay.create(client, 'fakeUuid');
 
     ray.component = {
