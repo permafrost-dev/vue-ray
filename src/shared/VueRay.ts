@@ -9,10 +9,12 @@ export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
     public component: any = { $data: {}, $refs: {} };
     public watch: CallableFunction = () => {};
+    
+    public static defaultSettings: any;
 
-    // static create(client?: any | null, uuid?: string | null): this {
-    //     return Ray.create(client, uuid);
-    // }
+    static create(client?: any | null, uuid?: string | null): this {
+         return super.create(client, uuid);
+    }
 
     public data(): void {
         if (this.component) {
