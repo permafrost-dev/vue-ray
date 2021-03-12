@@ -17,8 +17,6 @@ export const onErrorHandler = (message: string, source: string, lineno: number, 
         <div style="padding-top: 0.25em;" class="flex-row"><code>${source}</code></div>
     </div>`;
 
-    console.log(rayInstance);
-
     rayInstance.handler().html(`<pre>${html}</pre>`, 'Error').small().red();
 };
 
