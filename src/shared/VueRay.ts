@@ -1,6 +1,9 @@
+// @ts-nocheck
 /* eslint-disable no-unused-vars */
 
-const { Ray } = require('node-ray/web');
+//const { Ray } = require('node-ray/web');
+
+import { Ray } from 'node-ray/web';
 
 export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
@@ -94,6 +97,10 @@ export class VueRay extends Ray {
         }
 
         VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => !names.includes(name));
+    }
+
+    public send(...args: any[]): VueRay {
+        return super.send(...args);
     }
 }
 
