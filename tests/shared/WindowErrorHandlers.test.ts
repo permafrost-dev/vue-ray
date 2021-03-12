@@ -25,6 +25,7 @@ beforeEach(() => {
         trackingRays: {},
         trackingStops: {},
         $ray(...args: any[]) {
+            // @ts-ignore
             return ray.send(...args);
         },
     };
