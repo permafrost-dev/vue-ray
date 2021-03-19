@@ -79,11 +79,12 @@ Component lifecycle events can be sent to Ray using the `showComponentEvents` pl
 
 Any or all of the following values can be used with this option:
 
--   `before-create`
--   `before-mount`
--   `created`
--   `mounted`
--   `updated`
+- `before-create`
+- `before-mount`
+- `created`
+- `mounted`
+- `unmounted`
+- `updated`
 
 ## Usage
 
