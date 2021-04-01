@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Handler: sends an html payload and appends the callback result when handling vue errors 1`] = `
+Array [
+  Object {
+    "content": "<pre><div class=\\"text-blue-500 w-full block\\">---CUSTOM_DATA---</div></pre>",
+    "label": "Error",
+    "name": "custom",
+  },
+  Object {
+    "content": "small",
+    "label": null,
+    "name": "small",
+  },
+  Object {
+    "content": "red",
+    "label": null,
+    "name": "color",
+  },
+]
+`;
+
+exports[`Error Handler: sends an html payload and appends the callback result when handling window errors 1`] = `
+Array [
+  Object {
+    "content": "<pre>
+        <div class=\\"flex bg-white border-0\\">
+            <div class=\\"flex-row bg-white text-red-400 pr-1 pl-1 border border-1 border-red-400\\">message</div>
+            <div style=\\"padding-top: 0.25em;\\" class=\\"flex-row\\"><code>source</code></div>
+        </div><div class=\\"text-blue-500 w-full block\\">---CUSTOM_DATA---</div></pre>",
+    "label": "Error",
+    "name": "custom",
+  },
+  Object {
+    "content": "small",
+    "label": null,
+    "name": "small",
+  },
+  Object {
+    "content": "red",
+    "label": null,
+    "name": "color",
+  },
+]
+`;
+
+exports[`Error Handler: sends an html payload and appends the callback result when handling window unhandled rejection event errors 1`] = `
+Array [
+  Object {
+    "content": "<pre>
+        <div class=\\"flex bg-white border-0\\">
+            <div class=\\"flex-row bg-white text-red-400 pr-1 pl-1 border border-1 border-red-400\\">some-data</div>
+            <div style=\\"padding-top: 0.25em;\\" class=\\"flex-row\\"><code>{\\"reason\\":\\"some-data\\"}</code></div>
+        </div><div class=\\"text-blue-500 w-full block\\">---CUSTOM_DATA---</div></pre>",
+    "label": "Error",
+    "name": "custom",
+  },
+  Object {
+    "content": "small",
+    "label": null,
+    "name": "small",
+  },
+  Object {
+    "content": "red",
+    "label": null,
+    "name": "color",
+  },
+]
+`;

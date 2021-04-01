@@ -27,4 +27,9 @@ export class FakeRay {
         this.payloads.push({ name: 'table', content: data, label });
         return this;
     }
+
+    html(data: any, label: any) {
+        this.payloads.push({ name: 'custom', content: data, label });
+        return this;
+    }
 }
