@@ -14,7 +14,10 @@ export const initializeOptions = (options: any, vueConfig: any) => {
 
     let host = 'localhost',
         port = 23517,
-        scheme = 'http';
+        scheme = 'http',
+        enabled_callback = null,
+        sending_payload_callback = null,
+        sent_payload_callback = null;
 
     if (typeof options['host'] === 'string') {
         host = options.host;
@@ -28,6 +31,18 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         scheme = options.scheme;
     }
 
+    if (typeof options['enabled_callback'] === 'function') {
+        enabled_callback = options.enabled_callback;
+    }
+
+    if (typeof options['sending_payload_callback'] === 'function') {
+        sending_payload_callback = options.sending_payload_callback;
+    }
+
+    if (typeof options['sent_payload_callback'] === 'function') {
+        sent_payload_callback = options.sent_payload_callback;
+    }
+
     if (typeof options['showComponentEvents'] !== 'undefined') {
         if (Array.isArray(typeof options.showComponentEvents)) {
             VueRay.show_component_lifecycles = options.showComponentEvents;
@@ -35,7 +50,7 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         VueRay.show_component_lifecycles = options.showComponentEvents;
     }
 
-    VueRay.useDefaultSettings({ host, port, scheme });
+    VueRay.useDefaultSettings({ host, port, scheme, enabled_callback, sending_payload_callback, sent_payload_callback });
 };
 
 export default initializeOptions;
