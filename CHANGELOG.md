@@ -4,6 +4,12 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.16.0 - 2021-04-02
+
+- refactor error handlers code
+- allow specifying a closure as a value of the `interceptErrors` option which returns data to display along with the error message
+- add `enabled_callback`, `sending_payload_callback` and `sent_payload_callback` options which are passed to [`node-ray`](https://github.com/permafrost-dev/node-ray)
+
 ## 1.15.0 - 2021-03-12
 
 - try to determine the correct component name when displaying component events
