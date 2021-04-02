@@ -2,10 +2,11 @@
 /* eslint-disable no-undef */
 
 import VueRay, { ray } from './VueRay';
+import { format as prettyFormat } from '@permafrost-dev/pretty-format';
 
 export type ERROR_TYPE = 'vue' | 'error' | 'unhandled_rejection';
 
-export type AdditionalErrorInfoCallback = (err: any | null, ctx: any | null, type: ERROR_TYPE) => string;
+export type AdditionalErrorInfoCallback = (err: any | null, ctx: any | null, type: ERROR_TYPE) => any;
 
 export class ErrorHandler {
     public window: any;
@@ -19,14 +20,30 @@ export class ErrorHandler {
         this.window = window ?? globalThis;
     }
 
-    public additionalInfo(err: any, ctx: any, type: ERROR_TYPE): string {
+    public additionalInfo(err: any, ctx: any, type: ERROR_TYPE): any {
         return this.additionalInfoCallback ? this.additionalInfoCallback(err, ctx, type) : '';
     }
 
     public additionalInfoHtml(err: any, ctx: any, type: ERROR_TYPE): string {
-        const info = this.additionalInfo(err, ctx, type);
+        let info = this.additionalInfo(err, ctx, type);
 
-        return info.length === 0 ? '' : `<div class="text-blue-500 w-full block">${info}</div>`;
+        if (typeof info === 'string' && !info.length) {
+            return '';
+        }
+
+        if (typeof info !== 'string' && typeof info !== 'number') {
+            info = prettyFormat(info, { indent: 4, highlight: true });
+
+            return (
+                `<details open><summary class="text-black w-full block mt-1 cursor-pointer">Additional Info:</summary>` +
+                `<div class="text-blue-600 w-full block pl-8">${info}</div></details>`
+            );
+        }
+
+        return (
+            `<div class="text-black w-full block mt-1">Additional Info:</div>` +
+            `<div class="text-blue-600 w-full block pl-8">${info}</div>`
+        );
     }
 
     public onVueError = (err: any, vm: any) => {
