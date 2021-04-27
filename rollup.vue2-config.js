@@ -23,6 +23,7 @@ export default {
             file: `dist/vue${options.version}.mjs`,
             format: 'esm',
             sourcemap: options.sourceMapsEnabled,
+            exports: 'named',
             plugins: [],
         },
     ],
