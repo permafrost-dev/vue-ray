@@ -45,7 +45,14 @@ const { RayPlugin } = require('vue-ray');
 
 const app = createApp(App);
 
-app.use(RayPlugin, { interceptErrors: true, port: 23500, showComponentEvents: ['created', 'mounted'] });
+app.use(RayPlugin, { 
+    interceptErrors: true,
+    port: 23500,
+    showComponentEvents: ['created', 'mounted'],
+    nodeRaySettings: { 
+        interceptConsoleLog: true,
+    },
+});
 ```
 
 ### Installing in Vue 2
@@ -61,7 +68,14 @@ import { RayPlugin } from 'vue-ray/vue2';
 // or as a commonjs import:
 const { RayPlugin } = require('vue-ray/vue2');
 
-Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', showComponentEvents: ['mounted'] });
+Vue.use(RayPlugin, { 
+    interceptErrors: true,
+    host: '127.0.0.1',
+    showComponentEvents: ['mounted'],
+    nodeRaySettings: {
+        interceptConsoleLog: false,
+    },
+});
 ```
 
 ### Installation options
@@ -72,6 +86,7 @@ Vue.use(RayPlugin, { interceptErrors: true, host: '127.0.0.1', showComponentEven
 | `interceptErrors`     | `boolean`  | `false`     | send Vue errors to Ray                                         |
 | `port`                | `number`   | `23517`     | port to connect to the Ray app on                              |
 | `showComponentEvents` | `string[]` | `[]`        | display component events in Ray, see below for possible values |
+| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrost-dev/node-ray#reference))_ |
 
 ### Component events
 
