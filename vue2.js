@@ -1,3 +1,3 @@
-const RayPlugin = require('./dist/vue2.cjs');
+const Plugin = require('./dist/vue2.cjs');
 
-module.exports = { RayPlugin };
+module.exports = { RayPlugin: Plugin.RayPlugin, RayVuexPlugin: Plugin.RayVuexPlugin };
