@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.17.0 - 2021-04-27
+
+- add `nodeRaySettings` config option to allow passing options directly to the `node-ray` instance (#9)
+
 ## 1.16.0 - 2021-04-02
 
 - refactor error handlers code
