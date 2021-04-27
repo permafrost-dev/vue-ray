@@ -86,7 +86,7 @@ Vue.use(RayPlugin, {
 | `interceptErrors`     | `boolean`  | `false`     | send Vue errors to Ray                                         |
 | `port`                | `number`   | `23517`     | port to connect to the Ray app on                              |
 | `showComponentEvents` | `string[]` | `[]`        | display component events in Ray, see below for possible values |
-| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrost-dev/node-ray#reference))_ |
+| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrost-dev/node-ray#reference)_ |
 
 ### Component events
 
