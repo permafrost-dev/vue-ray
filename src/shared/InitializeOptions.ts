@@ -17,7 +17,8 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         scheme = 'http',
         enabled_callback = null,
         sending_payload_callback = null,
-        sent_payload_callback = null;
+        sent_payload_callback = null,
+        nodeRaySettings = options?.nodeRaySettings ?? {};
 
     if (typeof options['host'] === 'string') {
         host = options.host;
@@ -50,7 +51,15 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         VueRay.show_component_lifecycles = options.showComponentEvents;
     }
 
-    VueRay.useDefaultSettings({ host, port, scheme, enabled_callback, sending_payload_callback, sent_payload_callback });
+    VueRay.useDefaultSettings({
+        host,
+        port,
+        scheme,
+        enabled_callback,
+        sending_payload_callback,
+        sent_payload_callback,
+        ...nodeRaySettings,
+    });
 };
 
 export default initializeOptions;
