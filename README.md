@@ -285,6 +285,14 @@ The default value for both is `['*']`, meaning all modules and properties match.
 -   `npm run test`
 -   `npm run build:all`
 
+## Code Coverage Details
+
+<p align="center">
+    <img src="https://codecov.io/gh/permafrost-dev/vue-ray/branch/main/graphs/commits.svg" height="100" alt="codecov graph" />
+    <br>
+    <img src="https://codecov.io/gh/permafrost-dev/vue-ray/branch/main/graphs/sunburst.svg" height="210" alt="codecov graph" />
+</p>
+
 ## Testing
 
 `vue-ray` uses Jest for unit tests. To run the test suite:
