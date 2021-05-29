@@ -1,5 +1,23 @@
-export class FakeRay {
+/* eslint-disable no-unused-vars */
+
+import { Ray } from 'node-ray';
+import { FakeClient } from './FakeClient';
+
+export class FakeSettings {
+    public host: string = '';
+    public port: number = 0;
+    public scheme: string = 'http';
+
+}
+
+export class FakeRay extends Ray {
     public payloads: any[] = [];
+    public requests: any[] = [];
+
+    constructor() {
+        // @ts-ignore
+        super(new FakeSettings(), new FakeClient(), 'fakeuuid');
+    }
 
     send(...args: any[]) {
         if (args.length) {
@@ -10,6 +28,16 @@ export class FakeRay {
 
     sendCustom(data: any, label: any) {
         this.payloads.push({ name: 'custom', content: data, label });
+        return this;
+    }
+
+    sendRequest(payloads: any | any[], meta: any[] = []) {
+        if (!Array.isArray(payloads)) {
+            payloads = [payloads];
+        }
+
+        this.requests.push({ payloads, meta });
+
         return this;
     }
 
@@ -28,8 +56,9 @@ export class FakeRay {
         return this;
     }
 
-    html(data: any, label: any) {
-        this.payloads.push({ name: 'custom', content: data, label });
+    html(html: string | undefined, label: string = 'HTML') {
+        // } data: any, label: any) {
+        this.payloads.push({ name: 'custom', content: html, label });
         return this;
     }
 }
