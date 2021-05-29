@@ -52,6 +52,7 @@ export const Vue3RayMixin = {
     },
 
     methods: {
+        // @ts-ignore
         $ray(...args: any[]) {
             const ray = VueRay.create();
             ray.component = this;

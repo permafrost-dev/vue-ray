@@ -8,8 +8,6 @@ export class VueRay extends Ray {
     public component: any = { $data: {}, $refs: {} };
     public watch: CallableFunction = () => {};
 
-    public static defaultSettings: any;
-
     public data(): void {
         if (this.component) {
             let data = Object.assign({}, this.component.$data);

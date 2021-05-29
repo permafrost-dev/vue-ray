@@ -7,7 +7,7 @@ import { initializeOptions } from '../../src/shared/InitializeOptions';
 let options: any, vueConfig: any;
 
 beforeEach(() => {
-    options = {};
+    options = { port: 12345, scheme: 'http', showComponentEvents: [] };
     vueConfig = { errorHandler: null };
 });
 

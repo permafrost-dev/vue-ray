@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
-import { Ray } from 'node-ray';
-import { FakeClient } from './FakeClient';
+//import { Ray } from 'node-ray';
+//import { FakeClient } from './FakeClient';
 
 export class FakeSettings {
     public host: string = '';
@@ -10,14 +10,14 @@ export class FakeSettings {
 
 }
 
-export class FakeRay extends Ray {
+export class FakeRay {
     public payloads: any[] = [];
     public requests: any[] = [];
 
-    constructor() {
-        // @ts-ignore
-        super(new FakeSettings(), new FakeClient(), 'fakeuuid');
-    }
+    // constructor() {
+    //     // @ts-ignore
+    //     super(new FakeSettings(), new FakeClient(), 'fakeuuid');
+    // }
 
     send(...args: any[]) {
         if (args.length) {
