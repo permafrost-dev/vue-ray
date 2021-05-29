@@ -20,6 +20,8 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         sent_payload_callback = null,
         nodeRaySettings = options?.nodeRaySettings ?? {};
 
+    options = Object.assign({ host, port, scheme, enabled_callback, sending_payload_callback, sent_payload_callback }, options);
+
     if (typeof options['host'] === 'string') {
         host = options.host;
     }
