@@ -25,6 +25,7 @@ describe('Option Initializer:', () => {
 
         initializeOptions(options, vueConfig);
 
+        // @ts-ignore
         expect(VueRay.defaultSettings.host).toBe('otherhost');
     });
 
@@ -33,6 +34,7 @@ describe('Option Initializer:', () => {
 
         initializeOptions(options, vueConfig);
 
+        // @ts-ignore
         expect(VueRay.defaultSettings.port).toBe(12345);
     });
 
@@ -41,6 +43,7 @@ describe('Option Initializer:', () => {
 
         initializeOptions(options, vueConfig);
 
+        // @ts-ignore
         expect(VueRay.defaultSettings.scheme).toBe('https');
     });
 
