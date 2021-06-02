@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { VueRay } from './VueRay';
+import { ray, VueRay } from './VueRay';
 import errorHandler from './ErrorHandler';
 
 export const initializeOptions = (options: any, vueConfig: any) => {
@@ -51,6 +51,20 @@ export const initializeOptions = (options: any, vueConfig: any) => {
             VueRay.show_component_lifecycles = options.showComponentEvents;
         }
         VueRay.show_component_lifecycles = options.showComponentEvents;
+    }
+
+    if (typeof nodeRaySettings['interceptConsoleLog'] !== 'undefined') {
+        try {
+            if (nodeRaySettings['interceptConsoleLog'] == true) {
+                // @ts-ignore
+                ray().interceptor().enable();
+            } else {
+                // @ts-ignore
+                ray().interceptor().disable();
+            }
+        } catch (err) {
+            console.error('failed to enable console.log interception:', err);
+        }
     }
 
     VueRay.useDefaultSettings({
