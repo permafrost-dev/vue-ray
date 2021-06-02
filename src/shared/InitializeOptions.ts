@@ -18,7 +18,7 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         enabled_callback = null,
         sending_payload_callback = null,
         sent_payload_callback = null,
-        nodeRaySettings = options?.nodeRaySettings ?? {};
+        nodeRaySettings = options['nodeRaySettings'] ?? {};
 
     options = Object.assign({ host, port, scheme, enabled_callback, sending_payload_callback, sent_payload_callback }, options);
 
