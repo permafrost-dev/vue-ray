@@ -4,6 +4,10 @@ All notable changes to `permafrost-dev/vue-ray` will be documented in this file.
 
 ---
 
+## 1.17.3 - 2021-06-02
+
+- fix `console.log` interception
+
 ## 1.17.2 - 2021-04-27
 
 - fix exports for Vue 2
