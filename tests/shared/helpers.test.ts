@@ -1,11 +1,6 @@
 /* eslint-disable no-undef */
 
-import {
-    createPackageMetaProperty,
-    determineComponentNameDuringEvent,
-    encodeHtmlEntities,
-    matchPattern,
-} from '../../src/shared/helpers';
+import { createPackageMetaProperty, determineComponentNameDuringEvent, encodeHtmlEntities, matchPattern } from '../../src/shared/helpers';
 
 it('creates a package meta property', () => {
     const obj: any = { $rayMeta: null };

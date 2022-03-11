@@ -51,7 +51,7 @@ describe('Error Handler:', () => {
                 $ray(...args: any[]) {
                     return rayInstance.send(...args);
                 },
-            }
+            },
         );
 
         expect(rayInstance.payloads).toMatchSnapshot();

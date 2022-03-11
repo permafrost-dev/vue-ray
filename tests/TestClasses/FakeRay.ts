@@ -4,10 +4,9 @@
 //import { FakeClient } from './FakeClient';
 
 export class FakeSettings {
-    public host: string = '';
-    public port: number = 0;
-    public scheme: string = 'http';
-
+    public host = '';
+    public port = 0;
+    public scheme = 'http';
 }
 
 export class FakeRay {
@@ -56,7 +55,7 @@ export class FakeRay {
         return this;
     }
 
-    html(html: string | undefined, label: string = 'HTML') {
+    html(html: string | undefined, label = 'HTML') {
         // } data: any, label: any) {
         this.payloads.push({ name: 'custom', content: html, label });
         return this;

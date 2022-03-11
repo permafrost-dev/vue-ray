@@ -49,12 +49,7 @@ const decorateEventType = (name: RayVuexPluginEventType, color: string) => {
     return `<span class="pr-1 text-${color}-600">${name}</span>`;
 };
 
-const sendEventInfoTable = (
-    name: RayVuexPluginEventType,
-    color: string,
-    data: any,
-    rayInstance: CallableFunction | null = null
-) => {
+const sendEventInfoTable = (name: RayVuexPluginEventType, color: string, data: any, rayInstance: CallableFunction | null = null) => {
     if (rayInstance === null) {
         rayInstance = () => ray();
     }
@@ -64,14 +59,11 @@ const sendEventInfoTable = (
             'Vuex Event': decorateEventType(name, color) + ' ' + data.type,
             Payload: data.payload,
         },
-        'Vuex'
+        'Vuex',
     );
 };
 
-export const VuexPlugin = (
-    options: RayVuexPluginOptions = DefaultVuexPluginOptions,
-    rayInstance: CallableFunction | null = null
-) => {
+export const VuexPlugin = (options: RayVuexPluginOptions = DefaultVuexPluginOptions, rayInstance: CallableFunction | null = null) => {
     rayInstance = rayInstance ?? (() => ray());
 
     options = Object.assign({}, DefaultVuexPluginOptions, options);
