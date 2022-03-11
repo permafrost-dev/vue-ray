@@ -1,7 +1,5 @@
 node_modules/*
 dist/*
 build/*
-*.yml
-*.yaml
 *.ignore
 *.ignored
