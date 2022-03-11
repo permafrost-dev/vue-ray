@@ -10,9 +10,9 @@
 .eslintrc.js
 .gitattributes
 .prettierignore
-.prettierrc
 jest.config.js
 package-lock.json
+prettier.config.js
 SECURITY.md
 tsconfig.json
 *.sh
