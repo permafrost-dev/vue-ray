@@ -34,7 +34,11 @@ comment:
 
 ignore:
   - "build/"
+  - "dist/"
   - ".eslintrc.js"
   - "jest.config.js"
+  - "prettier.config.js"
   - "rollup.config.js"
   - "rollup.standalone-config.js"
+  - "rollup.vue2-config.js"
+  - "rollup.vue3-config.js"
