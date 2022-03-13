@@ -11,9 +11,9 @@
 
 # vue-ray
 
-## Debug your Vue code with Ray to fix problems faster
+## Debug Vue code with Ray to fix problems faster
 
-This package can be installed in any Vue 2.x or Vue 3.x project to send messages to the [Ray app](https://myray.app). It also includes a Vuex plugin to monitor changes to your Vuex state.
+Install this package in any Vue 2 or Vue 3 project to send messages to the [Ray app](https://myray.app). It also includes a Vuex plugin to monitor changes to the Vuex state.
 
 ## Installation
 
@@ -31,7 +31,7 @@ yarn add vue-ray
 
 ### Installing in Vue 3
 
-When using in a Vue 3.x project (the default), import package normally:
+When using in a Vue 3.x project (the default), import the package:
 
 ```js
 import { createApp } from 'vue';
@@ -92,7 +92,7 @@ Vue.use(RayPlugin, {
 
 Component lifecycle events can be sent to Ray using the `showComponentEvents` plugin option _(`array`)_.
 
-Any or all of the following values can be used with this option:
+Use any of the following values with this option:
 
 - `before-create`
 - `before-mount`
@@ -105,7 +105,7 @@ Any or all of the following values can be used with this option:
 
 Once the plugin is installed, you may access the `ray()` method on `this` as `this.$ray()`.
 
-See the [node-ray reference](https://github.com/permafrost-dev/node-ray#reference) for a full list of available methods.
+See the [node-ray reference](https://github.com/permafrost-dev/node-ray#reference) for a complete list of available methods.
 
 ## Vue-specific methods
 
@@ -119,7 +119,7 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 ## Tracking component data
 
-Changes to any of a component's data variables can be tracked and displayed in real time using the `track(name)` method.
+Changes to any component's data variables can be tracked and displayed in real-time using the `track(name)` method.
 
 ```vue
 <script>
@@ -204,7 +204,7 @@ Vue.use(RayPlugin, { interceptErrors: true });
 
 ## Using the Vuex plugin
 
-In either a Vue 2.x or 3.x project, you may use the `vue-ray` vuex plugin - it can track the vuex state, log mutations and log actions.
+In either a Vue 2.x or 3.x project, use the `vue-ray` vuex plugin - it can track the vuex state, log mutations, and log actions.
 
 To use it, import the `RayVuexPlugin` function from `vue-ray`, and pass the result of the function to the `plugins` property on your Vuex store:
 
@@ -272,18 +272,18 @@ trackingOptions?: {
 };
 ```
 
-The `propNames` is an array of wildcard patterns that will be used to match store data property names when tracking store state; for example, a value of `['f*']` would match store data properties named `foo` and `fab` but not `dog`.
+The `propNames` is an array of wildcard patterns that will match stored data property names when tracking store state; for example, a value of `['f*']` would match store data properties named `foo` and `fab` but not `dog`.
 
-The `moduleNames` is also an array of wildcard patterns, but will match module names and module data property names, such as `['mymod.*']`, which would match all properties in the `mymod` store.
+The `moduleNames` is also an array of wildcard patterns but will match module names and module data property names, such as `['mymod.*']`, which would match all properties in the `mymod` store.
 
-The default value for both is `['*']`, meaning all modules and properties match.
+The default value is `['*']`, meaning all modules and properties match.
 
 
 ## Development setup
 
--   `npm install`
--   `npm run test`
--   `npm run build:all`
+- `npm install`
+- `npm run test`
+- `npm run build:all`
 
 ## Code Coverage Details
 
@@ -315,8 +315,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
--   [Patrick Organ](https://github.com/patinthehat)
--   [All Contributors](../../contributors)
+- [Patrick Organ](https://github.com/patinthehat)
+- [All Contributors](../../contributors)
 
 ## License
 
