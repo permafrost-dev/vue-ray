@@ -61,7 +61,9 @@ export class ErrorHandler {
             .replace(/\n/, 'Stack Trace:\n')
             .replace(/ at ([^ ]+) (.*)$/gm, '<div class="inline"> at <span class="text-blue-700">$1</span> $2</div>'); // eslint-disable-line
 
-        vm.$ray().sendCustom(`<pre>${stack}${additionalInfoHtml}</pre>`, 'Error').small().red();
+        vm.$ray().sendCustom(`<pre>${stack}${additionalInfoHtml}</pre>`, 'Error')
+            .small()
+            .red();
     };
 
     public onWindowError = (message: string, source: string, lineno: number, colno: number, error: any) => {
@@ -73,7 +75,8 @@ export class ErrorHandler {
             <div style="padding-top: 0.25em;" class="flex-row"><code>${source}</code></div>
         </div>${additionalInfoHtml}`;
 
-        this.ray?.html(`<pre>${html}</pre>`, 'Error').small().red();
+        this.ray?.html(`<pre>${html}</pre>`, 'Error').small()
+            .red();
     };
 
     public onWindowUnhandledRejectionEvent = (event: any) => {
@@ -85,7 +88,8 @@ export class ErrorHandler {
             <div style="padding-top: 0.25em;" class="flex-row"><code>${JSON.stringify(event)}</code></div>
         </div>${additionalInfoHtml}`;
 
-        this.ray?.html(`<pre>${html}</pre>`, 'Error').small().red();
+        this.ray?.html(`<pre>${html}</pre>`, 'Error').small()
+            .red();
     };
 
     public installVueErrorHandler(vueConfig: any): any {

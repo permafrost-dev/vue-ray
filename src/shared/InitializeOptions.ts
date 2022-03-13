@@ -57,10 +57,12 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         try {
             if (nodeRaySettings['interceptConsoleLog'] == true) {
                 // @ts-ignore
-                ray().interceptor().enable();
+                ray().interceptor()
+                    .enable();
             } else {
                 // @ts-ignore
-                ray().interceptor().disable();
+                ray().interceptor()
+                    .disable();
             }
         } catch (err) {
             console.error('failed to enable console.log interception:', err);
