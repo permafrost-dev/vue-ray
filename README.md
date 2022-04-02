@@ -83,6 +83,7 @@ Vue.use(RayPlugin, {
 | Name                  | Type       | Default     | Description                                                    |
 | --------------------- | ---------- | ----------- | -------------------------------------------------------------- |
 | `host`                | `string`   | `localhost` | host to connect to the Ray app on                              |
+| `scheme`              | `string`   | `http`      | URI scheme to use to connect to host                           |
 | `interceptErrors`     | `boolean`  | `false`     | send Vue errors to Ray                                         |
 | `port`                | `number`   | `23517`     | port to connect to the Ray app on                              |
 | `showComponentEvents` | `string[]` | `[]`        | display component events in Ray, see below for possible values |
