@@ -46,6 +46,7 @@
         "build:all": "concurrently npm:build:vue2 npm:build:vue3 && concurrently npm:build:dts:vue2 npm:build:dts:vue3",
         "preversion": "npm run test",
         "postversion": "npm run build:all",
+        "version": "auto-changelog -p -o CHANGELOG.md --hide-credit --release-summary --hide-empty-releases --sort-commits date-desc && git add CHANGELOG.md",
         "prepare": "husky install"
     },
     "keywords": [
@@ -77,6 +78,7 @@
         "@types/node": "^20.2.1",
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",
+        "auto-changelog": "^2.4.0",
         "concurrently": "^8.0.1",
         "dts-bundle-generator": "^8.0.1",
         "eslint": "^8.40.0",
