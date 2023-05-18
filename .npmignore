@@ -19,3 +19,4 @@ tsconfig.json
 _*.txt
 *.ignored
 rollup.vue?-config.js
+/.husky
