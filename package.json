@@ -13,18 +13,22 @@
         "url": "https://github.com/permafrost-dev/vue-ray/issues"
     },
     "main": "./dist/vue3.cjs.js",
+    "typings": "./dist/vue3.d.ts",
     "exports": {
         ".": {
             "import": "./dist/vue3.mjs",
-            "require": "./dist/vue3.cjs.js"
+            "require": "./dist/vue3.cjs.js",
+            "types": "./dist/vue3.d.ts"
         },
         "./vue2": {
             "import": "./dist/vue2.mjs",
-            "require": "./dist/vue2.cjs.js"
+            "require": "./dist/vue2.cjs.js",
+            "types": "./dist/vue2.d.ts"
         },
         "./vue3": {
             "import": "./dist/vue3.mjs",
-            "require": "./dist/vue3.cjs.js"
+            "require": "./dist/vue3.cjs.js",
+            "types": "./dist/vue3.d.ts"
         }
     },
     "scripts": {
@@ -35,9 +39,11 @@
         "lint:fix": "./node_modules/.bin/eslint --ext ts,js --fix src/",
         "lint:staged": "./node_modules/.bin/lint-staged",
         "fix": "npm run fmt && npm run lint:fix",
-        "build:vue2": "rollup --config rollup.vue2-config.js",
-        "build:vue3": "rollup --config rollup.vue3-config.js",
-        "build:all": "concurrently npm:build:vue2 npm:build:vue3",
+        "build:vue2": "rollup --config rollup.vue2-config.js --bundleConfigAsCjs",
+        "build:vue3": "rollup --config rollup.vue3-config.js --bundleConfigAsCjs",
+        "build:dts:vue2": "./node_modules/.bin/dts-bundle-generator -o ./dist/vue2.d.ts src/RayVue2.ts",
+        "build:dts:vue3": "./node_modules/.bin/dts-bundle-generator -o ./dist/vue2.d.ts src/RayVue2.ts",
+        "build:all": "concurrently npm:build:vue2 npm:build:vue3 && concurrently npm:build:dts:vue2 npm:build:dts:vue3",
         "preversion": "npm run test",
         "postversion": "npm run build:all",
         "prepare": "husky install"
@@ -72,6 +78,7 @@
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",
         "concurrently": "^8.0.1",
+        "dts-bundle-generator": "^8.0.1",
         "eslint": "^8.40.0",
         "husky": "^8.0.3",
         "jest": "^29.5.0",
