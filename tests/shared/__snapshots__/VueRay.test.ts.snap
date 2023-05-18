@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Base VueRay class: sends a refs innerHTML 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Data",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"one\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -23,15 +23,15 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "content": "<em>123</em>",
           "label": "HTML",
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -46,18 +46,18 @@ Array [
 `;
 
 exports[`Base VueRay class: sends the component data 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Data",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"one\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -68,17 +68,17 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Data",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"one\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -93,18 +93,18 @@ Array [
 `;
 
 exports[`Base VueRay class: sends the component props 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Data",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"one\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -115,17 +115,17 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Table",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"title\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"abc\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"title"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"abc"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -140,18 +140,18 @@ Array [
 `;
 
 exports[`Base VueRay class: stops tracking data variables 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Data",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"one\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -162,16 +162,16 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
-          "values": Array [
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "values": [
             "test",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -182,15 +182,15 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
-          "content": "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"info\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"tracking\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-indigo-600 bold\\">false</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"variable\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"test\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"trackedData\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"value\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>undefined<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "content": "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"info"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"tracking"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-indigo-600 bold">false</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"variable"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"test"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"trackedData"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"value"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>undefined<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           "label": "HTML",
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -205,18 +205,18 @@ Array [
 `;
 
 exports[`Base VueRay class: tracks data variables 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Data",
-          "values": Array [
-            "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"one\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+          "values": [
+            "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -227,16 +227,16 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
-          "values": Array [
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "values": [
             "test",
           ],
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -247,15 +247,15 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
-          "content": "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"info\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"tracking\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-indigo-600 bold\\">true</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"variable\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"test\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"trackingData\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"previous\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>undefined<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"value\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>undefined<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "content": "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"info"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"tracking"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-indigo-600 bold">true</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"variable"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"test"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"trackingData"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"previous"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>undefined<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"value"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>undefined<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           "label": "HTML",
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
