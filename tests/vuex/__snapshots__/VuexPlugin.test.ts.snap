@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VuexPlugin: logs action events 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Vuex",
-          "values": Object {
+          "values": {
             "Payload": 12,
-            "Vuex Event": "<span class=\\"pr-1 text-blue-600\\">action</span> testAction",
+            "Vuex Event": "<span class="pr-1 text-blue-600">action</span> testAction",
           },
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -24,14 +24,14 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "color": "blue",
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -42,12 +42,12 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {},
-        "origin": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {},
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -62,19 +62,19 @@ Array [
 `;
 
 exports[`VuexPlugin: logs mutation events 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "label": "Vuex",
-          "values": Object {
-            "Payload": "<code style=\\"font-size: 0.8rem!important;\\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"a\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>1<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
-            "Vuex Event": "<span class=\\"pr-1 text-green-600\\">mutation</span> testMutation",
+          "values": {
+            "Payload": "<code style="font-size: 0.8rem!important;"><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"a"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
+            "Vuex Event": "<span class="pr-1 text-green-600">mutation</span> testMutation",
           },
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -85,14 +85,14 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
           "color": "blue",
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -103,12 +103,12 @@ Array [
     ],
     "uuid": "fakeUuid",
   },
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {},
-        "origin": Object {
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {},
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
@@ -123,16 +123,16 @@ Array [
 `;
 
 exports[`VuexPlugin: tracks the vuex state 1`] = `
-Array [
-  Object {
-    "meta": Array [],
-    "payloads": Array [
-      Object {
-        "content": Object {
-          "content": "<code style=\\"font-size: 0.8rem!important;\\">VuexState&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"text-gray-600 \\"><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"state\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-yellow-600 bold\\">Object</span>&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"a\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>123<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code style=\\"font-size: 0.8rem!important;\\" class=\\"bold text-green-600 p-0\\">\\"b\\"</code><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">:&nbsp;</span>456<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">,</span><br><span style=\\"font-size: 0.8rem!important;\\" class=\\"text-orange-400 bold\\">}</span></code></code>",
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "content": "<code style="font-size: 0.8rem!important;">VuexState&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600 "><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"state"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span><span style="font-size: 0.8rem!important;" class="text-yellow-600 bold">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"a"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>123<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"b"</code><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">:&nbsp;</span>456<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">,</span><br><span style="font-size: 0.8rem!important;" class="text-orange-400 bold">}</span></code></code>",
           "label": "HTML",
         },
-        "origin": Object {
+        "origin": {
           "file": "web.cjs.js",
           "function_name": "xxxx",
           "hostname": "remote",
