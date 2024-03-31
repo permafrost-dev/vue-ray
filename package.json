@@ -31,7 +31,7 @@
         "lint:staged": "./node_modules/.bin/lint-staged",
         "fix": "npm run fmt && npm run lint:fix",
         "build:lib": "vite build",
-        "build:types": "dts-bundle-generator -o ./dist/index.d.ts src/index.ts",
+        "build:types": "node scripts/build-types.js",
         "build:all": "concurrently npm:build:lib npm:build:types",
         "preversion": "npm run test",
         "postversion": "npm run build:all",
