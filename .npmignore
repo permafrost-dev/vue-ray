@@ -7,12 +7,12 @@
 /src
 /tests
 .editorconfig
-.eslintrc.js
+.eslintrc.cjs
 .gitattributes
 .prettierignore
 jest.config.js
 package-lock.json
-prettier.config.js
+prettier.config.cjs
 SECURITY.md
 tsconfig.json
 *.sh
