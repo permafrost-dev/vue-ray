@@ -1,7 +1,6 @@
 import { VueRay } from '@/VueRay';
 import { determineComponentNameDuringEvent } from '@/lib/helpers';
-
-export let vue3Watch = null;
+import { watch } from 'vue';
 
 const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (VueRay.shouldDisplayEvent(eventName)) {
@@ -14,7 +13,13 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
 
         const componentName: string = determineComponentNameDuringEvent(options);
 
-        rayInstance().table([
+        let r = rayInstance;
+
+        if (typeof rayInstance === 'function') {
+            r = rayInstance();
+        }
+
+        r.table([
             `component ${eventName}: <code>${componentName}</code>`,
             `filename: <code>&lt;project root&gt;/${options?.__file ?? 'unknown.js'}</code>`,
         ]);
@@ -22,41 +27,35 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
 };
 
 export const RayMixin = {
-    $options: {},
-
-    beforeCreate() {
-        if (typeof vue3Watch === 'undefined' || vue3Watch === null) {
-            vue3Watch = require('vue').watch;
-        }
-
-        conditionallyDisplayEvent('before-create', this.$options);
+    beforeMount(component: any) {
+        conditionallyDisplayEvent('before-mount', component);
     },
 
-    beforeMount() {
-        conditionallyDisplayEvent('before-mount', this.$options);
+    beforeUnmount(component: any) {
+        conditionallyDisplayEvent('before-unmount', component);
     },
 
-    created() {
-        conditionallyDisplayEvent('created', this.$options);
+    created(component: any) {
+        conditionallyDisplayEvent('created', component);
     },
 
-    mounted() {
-        conditionallyDisplayEvent('mounted', this.$options);
+    mounted(component: any) {
+        conditionallyDisplayEvent('mounted', component);
     },
 
-    unmounted() {
-        conditionallyDisplayEvent('unmounted', this.$options);
+    unmounted(component: any) {
+        conditionallyDisplayEvent('unmounted', component);
     },
 
-    updated() {
-        conditionallyDisplayEvent('updated', this.$options);
+    updated(component: any) {
+        conditionallyDisplayEvent('updated', component);
     },
 
     methods: {
         $ray(...args: any[]) {
             const ray = VueRay.create();
             ray.component = this;
-            ray.watch = vue3Watch;
+            ray.watch = watch;
 
             return ray.send(...args);
         },

@@ -110,4 +110,12 @@ describe('Error Handler:', () => {
         expect(window.onerror).toBe(customErrorHandler1);
         expect(window.unhandledrejection).toBe(customErrorHandler2);
     });
+
+    it('generates additional info when a callback is provided', () => {
+        errorHandler = new ErrorHandler((...args) => ['test'], window, rayInstance);
+
+        const additionalInfo = errorHandler.additionalInfoHtml(null, null, 'error');
+
+        expect(additionalInfo).toContain('test');
+    });
 });

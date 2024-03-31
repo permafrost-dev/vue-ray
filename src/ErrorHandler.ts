@@ -27,7 +27,7 @@ export class ErrorHandler {
     public additionalInfoHtml(err: any, ctx: any, type: ERROR_TYPE): string {
         let info = this.additionalInfo(err, ctx, type);
 
-        if (typeof info === 'string' && !info.length) {
+        if (typeof info === 'string' && info.length === 0) {
             return '';
         }
 

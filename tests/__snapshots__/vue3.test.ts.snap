@@ -13,6 +13,19 @@ exports[`Vue 3 Mixin: > conditionally displays the beforeMount event 1`] = `
 ]
 `;
 
+exports[`Vue 3 Mixin: > conditionally displays the beforeUnmount event 1`] = `
+[
+  {
+    "content": [
+      "component before-unmount: <code>test</code>",
+      "filename: <code>&lt;project root&gt;/test.js</code>",
+    ],
+    "label": undefined,
+    "name": "table",
+  },
+]
+`;
+
 exports[`Vue 3 Mixin: > conditionally displays the created & mounted events 1`] = `
 [
   {

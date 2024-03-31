@@ -39,18 +39,6 @@ export const matchPattern = (str: string, patterns: string[]): boolean => {
     return false;
 };
 
-export const filterObjectByKeys = (obj: any, includeKeyPatterns: string[]) => {
-    const result: any = {};
-
-    Object.keys(obj).forEach(key => {
-        if (matchPattern(key, includeKeyPatterns)) {
-            result[key] = obj[key];
-        }
-    });
-
-    return result;
-};
-
 export const determineComponentNameDuringEvent = (options: Record<string, unknown>): string => {
     const result: string = <string>options?.name ?? 'unknown';
     let filename: string = <string>options?.__file ?? 'src/unknown.js';

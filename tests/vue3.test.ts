@@ -6,7 +6,12 @@ import { FakeVm } from './TestClasses/FakeVm';
 import { RayMixin } from '@/RayMixin';
 import { RayPlugin } from '@/RayPlugin';
 
-let ray: FakeRay, fakeApp: FakeApp;
+let ray: FakeRay;
+let fakeApp: FakeApp;
+const fakeComponent = {
+    name: 'test',
+    __file: 'test.js',
+};
 
 class FakeApp {
     public providedItems: any[] = [];
@@ -52,12 +57,6 @@ beforeEach(() => {
 });
 
 const prepareMixin = () => {
-    // @ts-ignore
-    RayMixin.$options = {
-        name: 'test',
-        __file: 'test.js',
-    };
-
     // @ts-ignore
     RayMixin.$ray = function (...args: any[]) {
         return ray.send(...args);
@@ -113,12 +112,12 @@ describe('Vue 3 Mixin:', () => {
 
         prepareMixin();
 
-        //RayMixin.beforeCreate();
-        RayMixin.beforeMount();
-        RayMixin.created();
-        RayMixin.mounted();
-        RayMixin.unmounted();
-        RayMixin.updated();
+        RayMixin.beforeUnmount(fakeComponent);
+        RayMixin.beforeMount(fakeComponent);
+        RayMixin.created(fakeComponent);
+        RayMixin.mounted(fakeComponent);
+        RayMixin.unmounted(fakeComponent);
+        RayMixin.updated(fakeComponent);
 
         expect(ray.payloads.length).toBe(0);
     });
@@ -127,7 +126,17 @@ describe('Vue 3 Mixin:', () => {
         VueRay.show_component_lifecycles = ['before-mount'];
 
         prepareMixin();
-        RayMixin.beforeMount();
+        RayMixin.beforeMount(fakeComponent);
+
+        expect(ray.payloads.length).toBe(1);
+        expect(ray.payloads).toMatchSnapshot();
+    });
+
+    it('conditionally displays the beforeUnmount event', () => {
+        VueRay.show_component_lifecycles = ['before-unmount'];
+
+        prepareMixin();
+        RayMixin.beforeUnmount(fakeComponent);
 
         expect(ray.payloads.length).toBe(1);
         expect(ray.payloads).toMatchSnapshot();
@@ -137,8 +146,8 @@ describe('Vue 3 Mixin:', () => {
         VueRay.show_component_lifecycles = ['created', 'mounted'];
 
         prepareMixin();
-        RayMixin.created();
-        RayMixin.mounted();
+        RayMixin.created(fakeComponent);
+        RayMixin.mounted(fakeComponent);
 
         expect(ray.payloads.length).toBe(2);
         expect(ray.payloads).toMatchSnapshot();
@@ -148,7 +157,7 @@ describe('Vue 3 Mixin:', () => {
         VueRay.show_component_lifecycles = ['unmounted'];
 
         prepareMixin();
-        RayMixin.unmounted();
+        RayMixin.unmounted(fakeComponent);
 
         expect(ray.payloads.length).toBe(1);
         expect(ray.payloads).toMatchSnapshot();
@@ -158,7 +167,7 @@ describe('Vue 3 Mixin:', () => {
         VueRay.show_component_lifecycles = ['updated'];
 
         prepareMixin();
-        RayMixin.updated();
+        RayMixin.updated(fakeComponent);
 
         expect(ray.payloads.length).toBe(1);
         expect(ray.payloads).toMatchSnapshot();
