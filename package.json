@@ -45,7 +45,7 @@
         "build:dist": "BUILD_ENV=production concurrently npm:build:lib npm:build:types",
         "build:dev": "BUILD_ENV=development concurrently npm:build:lib npm:build:types",
         "preversion": "npm run test",
-        "postversion": "npm run build:all",
+        "postversion": "npm run build:dist",
         "version": "auto-changelog -p -o CHANGELOG.md --hide-credit --release-summary --hide-empty-releases --sort-commits date-desc && git add CHANGELOG.md",
         "prepare": "husky install"
     },
