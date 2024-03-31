@@ -82,6 +82,7 @@
     },
     "dependencies": {
         "@permafrost-dev/pretty-format": "^1.1.5",
-        "node-ray": "^2.1.0"
+        "node-ray": "^2.1.0",
+        "vue": "^3.4.21"
     }
 }
