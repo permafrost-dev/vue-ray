@@ -1,0 +1,6 @@
+.cache/*
+coverage/*
+dist/*
+node_modules/*
+scripts/*
+*.d.ts
