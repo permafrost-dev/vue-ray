@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { ray, VueRay } from './VueRay';
+import { ray, VueRay } from '../VueRay';
 import errorHandler from './ErrorHandler';
 
 export const initializeOptions = (options: any, vueConfig: any) => {
@@ -12,13 +12,14 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         errorHandler.installWindowErrorHandlers();
     }
 
-    let host = 'localhost',
-        port = 23517,
-        scheme = 'http',
-        enabled_callback = null,
-        sending_payload_callback = null,
-        sent_payload_callback = null,
-        nodeRaySettings = options['nodeRaySettings'] ?? {};
+    let host = 'localhost';
+    let port = 23517;
+    let scheme = 'http';
+    let enabled_callback = null;
+    let sending_payload_callback = null;
+    let sent_payload_callback = null;
+
+    const nodeRaySettings = options['nodeRaySettings'] ?? {};
 
     options = Object.assign({ host, port, scheme, enabled_callback, sending_payload_callback, sent_payload_callback }, options);
 

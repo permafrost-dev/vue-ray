@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
-import { VueRay } from '../../src/shared/VueRay';
+import { VueRay } from '../../src/VueRay';
 import { FakeClient } from '../TestClasses/FakeClient';
 import { FakeVuexStore } from '../TestClasses/FakeVuexStore';
 import { VuexPlugin } from '../../src/vuex/VuexPlugin';

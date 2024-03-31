@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
-import RayVue3Plugin from '../src/RayVue3';
+import RayVue3Plugin from '../src/RayPlugin';
 import { FakeRay } from './TestClasses/FakeRay';
 import { FakeVm } from './TestClasses/FakeVm';
-import { Vue3RayMixin } from '../src/v3/Vue3RayMixin';
-import { VueRay } from '../src/shared/VueRay';
+import { Vue3RayMixin } from '../src/RayMixin';
+import { VueRay } from '../src/VueRay';
 
 let ray: FakeRay, fakeApp: FakeApp;
 
@@ -30,7 +30,7 @@ class FakeApp {
         };
     }
 
-    provide(name: any, options: any) {
+    provide(name: any) {
         this.providedItems.push(name);
     }
 
@@ -39,7 +39,8 @@ class FakeApp {
     }
 
     getLastProvided() {
-        return this.getProvided().slice(0).pop();
+        return this.getProvided().slice(0)
+            .pop();
     }
 
     mixin(obj: any) {

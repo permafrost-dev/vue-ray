@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
-import VueRay, { ray } from './VueRay';
+import VueRay, { ray } from '../VueRay';
 import { format as prettyFormat } from '@permafrost-dev/pretty-format';
 
 export type ERROR_TYPE = 'vue' | 'error' | 'unhandled_rejection';

@@ -1,6 +1,5 @@
-// @ts-nocheck
-import { VueRay } from '../shared/VueRay';
-import { determineComponentNameDuringEvent } from '../shared/helpers';
+import { VueRay } from '@/VueRay';
+import { determineComponentNameDuringEvent } from '@/lib/helpers';
 
 export let vue3Watch = null;
 
@@ -23,6 +22,8 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
 };
 
 export const Vue3RayMixin = {
+    $options: {},
+
     beforeCreate() {
         if (typeof vue3Watch === 'undefined' || vue3Watch === null) {
             vue3Watch = require('vue').watch;
@@ -52,7 +53,6 @@ export const Vue3RayMixin = {
     },
 
     methods: {
-        // @ts-ignore
         $ray(...args: any[]) {
             const ray = VueRay.create();
             ray.component = this;
@@ -62,5 +62,3 @@ export const Vue3RayMixin = {
         },
     },
 };
-
-export default Vue3RayMixin;

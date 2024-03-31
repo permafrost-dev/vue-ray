@@ -1,7 +1,6 @@
-import { PackageInfo } from './PackageInfo';
+import { PackageInfo } from '@/lib/PackageInfo';
 
-// @ts-ignore
-export const createPackageMetaProperty = obj => {
+export const createPackageMetaProperty = (obj: any) => {
     obj.$rayMeta = PackageInfo;
 };
 

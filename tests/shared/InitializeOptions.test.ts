@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-import { VueRay } from '../../src/shared/VueRay';
+import { VueRay } from '../../src/VueRay';
 import { initializeOptions } from '../../src/shared/InitializeOptions';
 
 let options: any, vueConfig: any;

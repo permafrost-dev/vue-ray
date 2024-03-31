@@ -1,7 +1,6 @@
-// @ts-nocheck
 /* eslint-disable no-unused-vars */
 
-import { Ray } from 'node-ray/web';
+import { Ray } from 'node-ray/dist/web';
 
 export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
@@ -97,17 +96,15 @@ export class VueRay extends Ray {
         return super.useDefaultSettings(settings);
     }
 
-    public send(...args: any[]): VueRay {
+    public send(...args: any[]) {
         return super.send(...args);
     }
 }
 
-export const ray = (...args: any[]): VueRay => {
+export const ray = (...args: any[]) => {
     if (!args.length) {
         return VueRay.create();
     }
 
     return VueRay.create().send(...args);
 };
-
-export default VueRay;

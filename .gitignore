@@ -1,13 +1,17 @@
 /build/*.js
 !/build/test.js
 
+/.cache
 /.vscode
 /node_modules
 /dist
+/dist-temp
 /coverage
 
+bun.lockb
 package-lock.json
 yarn.lock
 
 notes.txt
 *.ignored
+*.log
