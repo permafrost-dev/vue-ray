@@ -5,8 +5,7 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -14,7 +13,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [18, 20]
 
     steps:
       - name: Checkout repository
@@ -22,35 +21,18 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up NodeJS ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Get yarn cache directory path
-        id: npm-cache-dir-path
-        run: echo "::set-output name=dir::$(npm config get cache)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Run the tests
-        run: npm run test
+        run: bun install
 
       - name: Run the tests with coverage
-        run: npm run test -- --coverage --coverageReporters json
+        run: bun run test:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage/coverage-final.json
+          files: coverage/coverage.json
