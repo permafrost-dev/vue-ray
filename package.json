@@ -12,6 +12,15 @@
     "bugs": {
         "url": "https://github.com/permafrost-dev/vue-ray/issues"
     },
+    "keywords": [
+        "vue",
+        "ray",
+        "debug",
+        "javascript",
+        "typescript",
+        "permafrost",
+        "spatie"
+    ],
     "type": "module",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -26,7 +35,7 @@
     "scripts": {
         "test": "vitest tests",
         "test:coverage": "vitest tests --coverage",
-        "fmt": "prettier --config prettier.config.cjs --write 'src/**/*.{js,ts,json}' 'tests/**/*.{js,ts,json}' './*.js'",
+        "fmt": "prettier --config prettier.config.cjs --write 'src/**/*.{js,ts,json}' 'tests/**/*.{js,ts,json}' './*.js' './*.cjs'",
         "lint": "eslint --ext ts,js src/",
         "lint:fix": "eslint --ext ts,js --fix src/",
         "lint:staged": "./node_modules/.bin/lint-staged",
@@ -40,15 +49,6 @@
         "version": "auto-changelog -p -o CHANGELOG.md --hide-credit --release-summary --hide-empty-releases --sort-commits date-desc && git add CHANGELOG.md",
         "prepare": "husky install"
     },
-    "keywords": [
-        "vue",
-        "ray",
-        "debug",
-        "javascript",
-        "typescript",
-        "permafrost",
-        "spatie"
-    ],
     "lint-staged": {
         "*.{js,ts}": [
             "./node_modules/.bin/prettier --config prettier.config.cjs --write",
@@ -63,19 +63,19 @@
     },
     "devDependencies": {
         "@biomejs/biome": "^1.6.3",
-        "@types/node": "^20.11.5",
-        "@typescript-eslint/eslint-plugin": "^6.19.0",
-        "@typescript-eslint/parser": "^6.19.0",
+        "@types/node": "^20.12.2",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
         "@vitest/coverage-v8": "^1.4.0",
         "auto-changelog": "^2.4.0",
         "concurrently": "^8.2.2",
-        "dts-bundle-generator": "^9.2.4",
-        "eslint": "^8.56.0",
-        "husky": "^8.0.3",
-        "lint-staged": "^15.2.0",
-        "prettier": "^3.2.4",
+        "dts-bundle-generator": "^9.3.1",
+        "eslint": "^8.57.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
+        "prettier": "^3.2.5",
         "ts-mixer": "^6.0.4",
-        "typescript": "^5.3.3",
+        "typescript": "^5.4.3",
         "vite": "^5.2.7",
         "vite-plugin-externalize-deps": "^0.8.0",
         "vitest": "^1.4.0"
@@ -83,6 +83,9 @@
     "dependencies": {
         "@permafrost-dev/pretty-format": "^1.1.5",
         "node-ray": "^2.1.0",
-        "vue": "^3.4.21"
+        "vue": "^3.3.0"
+    },
+    "engines": {
+        "node": ">=18"
     }
 }
