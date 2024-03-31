@@ -76,7 +76,25 @@ Use any of the following values with this option:
 
 ## Usage
 
-Once the plugin is installed, you may access the `ray()` method on `this` as `this.$ray()`.
+To access the `ray()` function import `raySetup` from the `vue-ray` library:
+
+```vue
+<script setup>
+import { raySetup } from 'vue-ray'
+const ray = raySetup();
+</script>
+```
+
+Then use the `ray` function in the Vue SFC as normal _(see node-ray)_ to send data to Ray:
+
+```vue
+<template>
+    <div>
+        <button @click="ray('Hello from Vue!')">Send message to Ray</button>
+        <button @click="() => ray().html('<strong>hello with html!</strong>')">Send html message to Ray</button>
+    </div>
+</template>
+```
 
 See the [node-ray reference](https://github.com/permafrost-dev/node-ray#reference) for a complete list of available methods.
 
@@ -84,11 +102,11 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 | Name                        | Description                                            |
 | --------------------------- | ------------------------------------------------------ |
-| `this.$ray().data()`        | show the component data                                |
-| `this.$ray().props()`       | show the component props                               |
-| `this.$ray().ref(name)`     | show the `innerHTML` of a named ref                    |
-| `this.$ray().track(name)`   | display changes to a component's data variable         |
-| `this.$ray().untrack(name)` | stop displaying changes to a component's data variable |
+| `$ray.data()`        | show the component data                                |
+| `$ray.props()`       | show the component props                               |
+| `$ray.ref(name)`     | show the `innerHTML` of a named ref                    |
+| `$ray.track(name)`   | display changes to a component's data variable         |
+| `$ray.untrack(name)` | stop displaying changes to a component's data variable |
 
 ## Tracking component data
 
