@@ -1,9 +1,17 @@
-// import { defineConfig } from 'vitest/config';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
 
+/**
+ * Resolves the path to the given file.
+ * @param {string} str
+ * @returns {string}
+ */
 const resolvePath = str => resolve(new URL(import.meta.url).pathname.replace('/vite.config.js', ''), str);
+const globalConfig = {
+    pkg: JSON.parse(readFileSync(resolvePath('package.json'), 'utf-8')),
+};
 
 export default defineConfig({
     plugins: [
@@ -45,10 +53,11 @@ export default defineConfig({
         },
     },
     define: {
+        __BUILD_VERSION__: JSON.stringify(globalConfig.pkg.version),
         //'process.env.NODE_ENV': '"production"',
     },
     test: {
-        name: 'Ray',
+        name: 'VueRay',
         globals: true,
         passWithNoTests: true,
         watch: false,

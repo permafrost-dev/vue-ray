@@ -23,7 +23,7 @@
         }
     },
     "scripts": {
-        "test": "vitest tests --verbose",
+        "test": "vitest tests",
         "test:coverage": "vitest tests --coverage",
         "fmt": "prettier --config prettier.config.cjs --write 'src/**/*.{js,ts,json}' 'tests/**/*.{js,ts,json}' './*.js'",
         "lint": "eslint --ext ts,js src/",

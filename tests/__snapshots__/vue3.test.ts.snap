@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Vue 3 Mixin: it conditionally displays the beforeMount event 1`] = `
+exports[`Vue 3 Mixin: > conditionally displays the beforeMount event 1`] = `
 [
   {
     "content": [
@@ -13,7 +13,7 @@ exports[`Vue 3 Mixin: it conditionally displays the beforeMount event 1`] = `
 ]
 `;
 
-exports[`Vue 3 Mixin: it conditionally displays the created & mounted events 1`] = `
+exports[`Vue 3 Mixin: > conditionally displays the created & mounted events 1`] = `
 [
   {
     "content": [
@@ -34,7 +34,7 @@ exports[`Vue 3 Mixin: it conditionally displays the created & mounted events 1`]
 ]
 `;
 
-exports[`Vue 3 Mixin: it conditionally displays the unmounted event 1`] = `
+exports[`Vue 3 Mixin: > conditionally displays the unmounted event 1`] = `
 [
   {
     "content": [
@@ -47,7 +47,7 @@ exports[`Vue 3 Mixin: it conditionally displays the unmounted event 1`] = `
 ]
 `;
 
-exports[`Vue 3 Mixin: it conditionally displays the updated event 1`] = `
+exports[`Vue 3 Mixin: > conditionally displays the updated event 1`] = `
 [
   {
     "content": [
