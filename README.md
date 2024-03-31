@@ -13,7 +13,7 @@
 
 ## Debug Vue code with Ray to fix problems faster
 
-Install this package in any Vue 2 or Vue 3 project to send messages to the [Ray app](https://myray.app). It also includes a Vuex plugin to monitor changes to the Vuex state.
+Install this package in any Vue 3 project to send messages to the [Ray app](https://myray.app).
 
 ## Installation
 
@@ -23,25 +23,20 @@ Install with npm:
 npm install vue-ray
 ```
 
-or yarn:
+or bun:
 
 ```bash
-yarn add vue-ray
+bun add vue-ray
 ```
 
-### Installing in Vue 3
+### Installing
 
-When using in a Vue 3.x project (the default), import the package:
+When using in a Vue 3 project, import the package:
 
 ```js
+import { RayPlugin } from 'vue-ray';
 import { createApp } from 'vue';
 import App from './App.vue';
-
-// as an es module import:
-import { RayPlugin } from 'vue-ray';
-
-// or as a commonjs import:
-const { RayPlugin } = require('vue-ray');
 
 const app = createApp(App);
 
@@ -51,29 +46,6 @@ app.use(RayPlugin, {
     showComponentEvents: ['created', 'mounted'],
     nodeRaySettings: { 
         interceptConsoleLog: true,
-    },
-});
-```
-
-### Installing in Vue 2
-
-When using in a Vue 2.x project, import the 'vue2' variant:
-
-```js
-const Vue = require('vue');
-
-// as an es module import:
-import { RayPlugin } from 'vue-ray/vue2';
-
-// or as a commonjs import:
-const { RayPlugin } = require('vue-ray/vue2');
-
-Vue.use(RayPlugin, { 
-    interceptErrors: true,
-    host: '127.0.0.1',
-    showComponentEvents: ['mounted'],
-    nodeRaySettings: {
-        interceptConsoleLog: false,
     },
 });
 ```
@@ -187,80 +159,13 @@ export default {
 </script>
 ```
 
-## Intercepting errors (Vue 3)
+## Intercepting errors
 
 Use the `interceptErrors` option to intercept errors and send them to Ray:
 
 ```js
 app.use(RayPlugin, { interceptErrors: true });
 ```
-
-## Intercepting errors (Vue 2)
-
-Use the `interceptErrors` option to intercept errors and send them to Ray:
-
-```js
-Vue.use(RayPlugin, { interceptErrors: true });
-```
-
-## Using the Vuex plugin
-
-In either a Vue 2.x or 3.x project, use the `vue-ray` vuex plugin - it can track the vuex state, log mutations, and log actions.
-
-To use it, import the `RayVuexPlugin` function from `vue-ray`, and pass the result of the function to the `plugins` property on your Vuex store:
-
-```js
-// ...
-
-import { RayVuexPlugin } from 'vue-ray'; // for both vue 2 and vue 3
-
-// ...
-
-const storeObj = {
-    state: {
-        one: 11,
-        two: 22,
-    },
-    mutations: {
-        incrementOne(state) {
-            state.one += 1;
-        },
-        incrementTwo(state) {
-            state.two += 2;
-        },
-    },
-    actions: {},
-    modules: {},
-    plugins: [
-        RayVuexPlugin({ 
-            trackState: true,
-            logMutations: true,
-            trackingOptions: {
-                propNames: ['on*'],
-            }
-        }),
-    ],
-};
-
-// Vue 3:
-export default createStore(storeObj);
-
-// Vue 2:
-export default new Vuex.Store(storeObj);
-```
-
-### Vuex plugin options
-
-| Name                  | Type      | Description                                        |
-| --------------------- | --------- | -------------------------------------------------- |
-| `trackState`          | `boolean` | track the data in the store's state                |
-| `logMutations`        | `boolean` | log all fired mutations to Ray                     |
-| `logActions`          | `boolean` | log all fired actions to Ray                       |
-| `loggedMutationColor` | `string`  | send logged mutations with the specified Ray color |
-| `loggedActionColor`   | `string`  | send logged actions with the specified Ray color   |
-| `trackingOptions`     | `object`  | see "tracking options" section for more info       |
-
-Valid color names are `blue`, `gray`, `green`, `orange`, `purple`, `red`, and `none`.
 
 ### Tracking options
 
