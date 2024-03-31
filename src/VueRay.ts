@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 
+// @ts-ignore
 import { Ray } from 'node-ray/dist/web';
 
 export class VueRay extends Ray {

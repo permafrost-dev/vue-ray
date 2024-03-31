@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
-
-import { createPackageMetaProperty, determineComponentNameDuringEvent, encodeHtmlEntities, matchPattern } from '../../src/lib/helpers';
+import { createPackageMetaProperty, determineComponentNameDuringEvent, encodeHtmlEntities, matchPattern } from '@/lib/helpers';
+import { expect, it } from 'vitest';
 
 it('creates a package meta property', () => {
     const obj: any = { $rayMeta: null };

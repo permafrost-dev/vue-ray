@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
-
-import { DataTrackingMixin } from '../../src/shared/DataTrackingMixin';
+import { DataTrackingMixin } from '@/DataTrackingMixin';
+import { describe, expect, it } from 'vitest';
 
 describe('DataTracking Mixin:', () => {
     it('returns tracking data objects as a mixin', () => {

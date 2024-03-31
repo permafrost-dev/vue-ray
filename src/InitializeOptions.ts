@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import { ray, VueRay } from '../VueRay';
-import errorHandler from './ErrorHandler';
+import { ray, VueRay } from '@/VueRay';
+import { errorHandler } from '@/ErrorHandler';
 
 export const initializeOptions = (options: any, vueConfig: any) => {
     if (typeof options.interceptErrors === 'function') {
@@ -80,5 +80,3 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         ...nodeRaySettings,
     });
 };
-
-export default initializeOptions;

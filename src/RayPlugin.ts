@@ -1,7 +1,7 @@
-import { DataTrackingMixin } from './shared/DataTrackingMixin';
-import { createPackageMetaProperty } from './lib/helpers';
-import initializeOptions from './shared/InitializeOptions';
-import { Vue3RayMixin } from './RayMixin';
+import { DataTrackingMixin } from '@/DataTrackingMixin';
+import { initializeOptions } from '@/InitializeOptions';
+import { createPackageMetaProperty } from '@/lib/helpers';
+import { RayMixin } from '@/RayMixin';
 
 export const RayPlugin = {
     install: (app: any, options: any) => {
@@ -12,8 +12,6 @@ export const RayPlugin = {
         app.provide('ray', options);
 
         app.mixin(DataTrackingMixin);
-        app.mixin(Vue3RayMixin);
+        app.mixin(RayMixin);
     },
 };
-
-export default RayPlugin;

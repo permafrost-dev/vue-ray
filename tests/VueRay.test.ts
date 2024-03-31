@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-
-import { VueRay } from '../../src/VueRay';
-import { FakeClient } from '../TestClasses/FakeClient';
+import { VueRay } from '@/VueRay';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { FakeClient } from './TestClasses/FakeClient';
 
 interface WatchParameters {
     cb1: CallableFunction;

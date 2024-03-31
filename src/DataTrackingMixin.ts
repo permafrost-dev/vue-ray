@@ -6,5 +6,3 @@ export const DataTrackingMixin = {
         };
     },
 };
-
-export default DataTrackingMixin;

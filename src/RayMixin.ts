@@ -5,7 +5,7 @@ export let vue3Watch = null;
 
 const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (VueRay.shouldDisplayEvent(eventName)) {
-        rayInstance = rayInstance ?? Vue3RayMixin.methods.$ray;
+        rayInstance = rayInstance ?? RayMixin.methods.$ray;
 
         // don't display 'unknown' components
         if (!(options?.__file ?? false)) {
@@ -21,7 +21,7 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
     }
 };
 
-export const Vue3RayMixin = {
+export const RayMixin = {
     $options: {},
 
     beforeCreate() {

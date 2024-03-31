@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-
-import { VueRay } from '../../src/VueRay';
-import { initializeOptions } from '../../src/shared/InitializeOptions';
+import { initializeOptions } from '@/InitializeOptions';
+import { VueRay } from '@/VueRay';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 let options: any, vueConfig: any;
 

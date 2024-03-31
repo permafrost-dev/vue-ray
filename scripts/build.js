@@ -12,12 +12,12 @@ export const globalConfig = {
     basePath: resolve(dirname(fileURLToPath(import.meta.url)), '..'),
     builds: [
         {
-            entry: 'src/RayVue3.ts',
+            entry: 'src/index.ts',
             outfile: 'index.cjs',
             target: 'browser',
         },
         {
-            entry: 'src/RayVue3.ts',
+            entry: 'src/index.ts',
             outfile: 'index.js',
             target: 'browser',
         },
@@ -59,7 +59,7 @@ export const globalConfig = {
 
 async function buildTypeDefinitions() {
     async function generateTypesForEntry(info) {
-        const dts = generateDtsBundle([{ filePath: info.entry }])
+        const dts = generateDtsBundle([{ filePath: info.entry, failOnClass: false, output: { exportReferencedTypes: false } }])
             .pop()
             .replaceAll('export {};', '')
             .replaceAll(/\n{2,}/g, '\n')
@@ -73,7 +73,7 @@ async function buildTypeDefinitions() {
         console.log(`Compiled ${outputDir}/${baseFn}`);
     }
 
-    const entries = [{ entry: 'src/RayVue3.ts', outfile: 'index.d.ts' }];
+    const entries = [{ entry: 'src/index.ts', outfile: 'index.d.ts' }];
 
     await Promise.all(entries.map(e => generateTypesForEntry(e)));
 }

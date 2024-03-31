@@ -20,7 +20,7 @@ export default defineConfig({
     build: {
         lib: {
             name: 'vue-ray',
-            entry: ['src/RayVue3.ts'],
+            entry: ['src/index.ts'],
             formats: ['es', 'cjs'],
             fileName: format => {
                 if (format === 'es') return `index.js`;

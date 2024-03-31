@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-
-import { ErrorHandler } from '../../src/shared/ErrorHandler';
-import { FakeRay } from '../TestClasses/FakeRay';
+import { ErrorHandler } from '@/ErrorHandler';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { FakeRay } from './TestClasses/FakeRay';
 
 let options: any, window: any, rayInstance: FakeRay, vueConfig: any, errorHandler: ErrorHandler;
 
