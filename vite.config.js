@@ -9,6 +9,7 @@ import { externalizeDeps } from 'vite-plugin-externalize-deps';
  * @returns {string}
  */
 const resolvePath = str => resolve(new URL(import.meta.url).pathname.replace('/vite.config.js', ''), str);
+const outputDir = process.env.BUILD_ENV === 'production' ? 'dist' : 'dist-temp';
 const globalConfig = {
     pkg: JSON.parse(readFileSync(resolvePath('package.json'), 'utf-8')),
 };
@@ -35,7 +36,7 @@ export default defineConfig({
                 return 'index.cjs';
             },
         },
-        outDir: 'dist-temp',
+        outDir: outputDir,
         rollupOptions: {
             treeshake: true,
         },

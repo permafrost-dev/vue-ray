@@ -14,6 +14,7 @@
     },
     "type": "module",
     "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "typings": "./dist/index.d.ts",
     "exports": {
         ".": {
@@ -32,7 +33,8 @@
         "fix": "npm run fmt && npm run lint:fix",
         "build:lib": "vite build",
         "build:types": "node scripts/build-types.js",
-        "build:all": "concurrently npm:build:lib npm:build:types",
+        "build:dist": "BUILD_ENV=production concurrently npm:build:lib npm:build:types",
+        "build:dev": "BUILD_ENV=development concurrently npm:build:lib npm:build:types",
         "preversion": "npm run test",
         "postversion": "npm run build:all",
         "version": "auto-changelog -p -o CHANGELOG.md --hide-credit --release-summary --hide-empty-releases --sort-commits date-desc && git add CHANGELOG.md",

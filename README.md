@@ -187,9 +187,26 @@ The default value is `['*']`, meaning all modules and properties match.
 
 ## Development setup
 
-- `npm install`
-- `npm run test`
-- `npm run build:all`
+```bash
+npm install
+npm run test
+```
+
+## Development Builds
+
+```bash
+npm run build:dev
+```
+
+This will build the package in development mode, and writes to the `dist-temp` directory.
+
+## Production Builds
+
+```bash
+npm run build:dist
+```
+
+This will build the package in production mode, and writes to the `dist` directory.
 
 ## Code Coverage Details
 
@@ -201,9 +218,17 @@ The default value is `['*']`, meaning all modules and properties match.
 
 ## Testing
 
-`vue-ray` uses Jest for unit tests. To run the test suite:
+`vue-ray` uses Vitest for unit tests. To run the test suite, run the following command:
 
-`npm run test`
+```bash
+npm run test
+```
+
+...or run with coverage:
+
+```bash
+npm run test:coverage
+```
 
 ---
 
