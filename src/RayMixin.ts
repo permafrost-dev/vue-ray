@@ -1,57 +1,57 @@
-import { rayWrapped, VueRay } from '@/VueRay';
+import type { VueRay } from '@/VueRay';
+import { rayWrapped } from '@/VueRay';
 import { determineComponentNameDuringEvent } from '@/lib/helpers';
 
-const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
-    if (VueRay.shouldDisplayEvent(eventName)) {
-        rayInstance = rayInstance ?? RayMixin.methods.$ray;
+const displayLifecycleEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
+    rayInstance = rayInstance ?? RayMixin.methods.$ray;
 
-        if (options.type) {
-            options = options.type as any;
-        }
-
-        // don't display 'unknown' components
-        // if (!(options?.__file ?? false)) {
-        //     return;
-        // }
-
-        const componentName: string = determineComponentNameDuringEvent(options);
-
-        let r = rayInstance;
-
-        if (typeof rayInstance === 'function') {
-            r = rayInstance();
-        }
-
-        r.table([
-            `component ${eventName}: <code>${componentName}</code>`,
-            `filename: <code>&lt;project root&gt;/${options?.__file ?? 'unknown.js'}</code>`,
-        ]);
+    if (options.type) {
+        options = options.type as any;
     }
+
+    // don't display 'unknown' components
+    // if (!(options?.__file ?? false)) {
+    //     return;
+    // }
+
+    const componentName: string = determineComponentNameDuringEvent(options);
+
+    let r: VueRay | CallableFunction = rayInstance;
+
+    if (typeof rayInstance === 'function') {
+        r = rayInstance();
+    }
+
+    (r as VueRay).table([
+        `component: <code class="text-green-600 font-bold bold">${componentName}</code>`,
+        `lifecycle event: <code class="text-blue-600">${eventName}</code>`,
+        `filename: <code class="text-gray-700">${options?.__file ?? 'unknown.js'}</code>`,
+    ]);
 };
 
 export const RayMixin = {
     beforeMount(component: any, instance: any = null) {
-        conditionallyDisplayEvent('before-mount', component, instance);
+        displayLifecycleEvent('before-mount', component, instance);
     },
 
     beforeUnmount(component: any, instance: any = null) {
-        conditionallyDisplayEvent('before-unmount', component, instance);
+        displayLifecycleEvent('before-unmount', component, instance);
     },
 
     created(component: any, instance: any = null) {
-        conditionallyDisplayEvent('created', component, instance);
+        displayLifecycleEvent('created', component, instance);
     },
 
     mounted(component: any, instance: any = null) {
-        conditionallyDisplayEvent('mounted', component, instance);
+        displayLifecycleEvent('mounted', component, instance);
     },
 
     unmounted(component: any, instance: any = null) {
-        conditionallyDisplayEvent('unmounted', component, instance);
+        displayLifecycleEvent('unmounted', component, instance);
     },
 
     updated(component: any, instance: any = null) {
-        conditionallyDisplayEvent('updated', component, instance);
+        displayLifecycleEvent('updated', component, instance);
     },
 
     methods: {
