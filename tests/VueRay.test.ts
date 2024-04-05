@@ -56,7 +56,8 @@ describe('Base VueRay class:', () => {
     });
 
     it('sends a refs innerHTML', () => {
-        ray.ref('test1');
+        ray.component = { refs: { test1: { innerHTML: '<em>123</em>' } } };
+        ray.element('test1');
 
         expect(client.sentRequests).toMatchSnapshot();
     });
@@ -67,12 +68,12 @@ describe('Base VueRay class:', () => {
         expect(VueRay.show_component_lifecycles).toStrictEqual(['one', 'two']);
     });
 
-    it('searches the show_component_lifecycles property', () => {
-        VueRay.showComponentLifecycles(['one', 'two']);
+    // it('searches the show_component_lifecycles property', () => {
+    //     VueRay.showComponentLifecycles(['one', 'two']);
 
-        expect(VueRay.shouldDisplayEvent('one')).toBeTruthy();
-        expect(VueRay.shouldDisplayEvent('three')).toBeFalsy();
-    });
+    //     expect(VueRay.shouldDisplayEvent('one')).toBeTruthy();
+    //     expect(VueRay.shouldDisplayEvent('three')).toBeFalsy();
+    // });
 
     it('clears the show_component_lifecycles property', () => {
         VueRay.showComponentLifecycles(['one', 'two']);

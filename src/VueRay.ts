@@ -11,7 +11,7 @@ export class VueRay extends Ray {
 
     public data(): void {
         if (this.component) {
-            let data = Object.assign({}, this.component.$data);
+            let data = Object.assign({}, this.component.data);
 
             // remove Vue Observers to avoid recursive issues
             delete data['trackingRays'];
@@ -25,7 +25,7 @@ export class VueRay extends Ray {
 
     public props(): void {
         if (this.component) {
-            this.table([this.component.$props]);
+            this.table([this.component.props]);
         }
     }
 
@@ -110,7 +110,6 @@ export const ray = (...args: any[]) => {
     result.component = getCurrentInstance();
     result.watch = watch;
 
-    console.log('result===', result);
     if (!args.length) {
         return result;
     }
@@ -120,13 +119,20 @@ export const ray = (...args: any[]) => {
     return result;
 };
 
+/**
+ * Returns a ray() function that is wrapped with the component instance
+ *
+ * @param component
+ * @returns {(...args: any[]) => VueRay}
+ */
 export function rayWrapped(component: any): (...args: any[]) => VueRay {
+    // biome-ignore lint/complexity/useArrowFunction: <explanation>
     return function (...args: any[]) {
         const result = VueRay.create() as VueRay;
+
         result.component = component;
         result.watch = watch;
 
-        console.log('result===', result);
         if (!args.length) {
             return result;
         }

@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
-import { VueRay, ray } from '@/VueRay';
+import { RayMixin } from '@/RayMixin';
+import type { VueRay } from '@/VueRay';
 import { format as prettyFormat } from '@permafrost-dev/pretty-format';
+import { getCurrentInstance } from 'vue';
 
 export type ERROR_TYPE = 'vue' | 'error' | 'unhandled_rejection';
 
@@ -16,7 +18,7 @@ export class ErrorHandler {
 
     constructor(callback: AdditionalErrorInfoCallback | null = null, window: any = null, rayInstance: any = null) {
         this.additionalInfoCallback = callback;
-        this.ray = rayInstance ?? ray();
+        this.ray = rayInstance ?? RayMixin.methods.$ray(getCurrentInstance());
         this.window = window ?? globalThis;
     }
 
@@ -34,16 +36,10 @@ export class ErrorHandler {
         if (typeof info !== 'string' && typeof info !== 'number') {
             info = prettyFormat(info, { indent: 4, highlight: true });
 
-            return (
-                `<details open><summary class="text-black w-full block mt-1 cursor-pointer">Additional Info:</summary>` +
-                `<div class="text-blue-600 w-full block pl-8">${info}</div></details>`
-            );
+            return `<details open><summary class="text-black w-full block mt-1 cursor-pointer">Additional Info:</summary><div class="text-blue-600 w-full block pl-8">${info}</div></details>`;
         }
 
-        return (
-            `<div class="text-black w-full block mt-1">Additional Info:</div>` +
-            `<div class="text-blue-600 w-full block pl-8">${info}</div>`
-        );
+        return `<div class="text-black w-full block mt-1">Additional Info:</div><div class="text-blue-600 w-full block pl-8">${info}</div>`;
     }
 
     public onVueError = (err: any, vm: any) => {

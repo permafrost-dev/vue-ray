@@ -1,6 +1,8 @@
 import { RayMixin } from '@/RayMixin';
-import { ray, rayWrapped } from '@/VueRay';
-import { getCurrentInstance, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, onUpdated, Ref, ref } from 'vue';
+import type { ray } from '@/VueRay';
+import { rayWrapped } from '@/VueRay';
+import type { Ref } from 'vue';
+import { getCurrentInstance, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 
 export type RaySetupOptions = {
     beforeMount?: boolean;

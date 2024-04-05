@@ -14,5 +14,5 @@ it('adds the ray methods to the component', () => {
     const component = { data: {} } as any;
     raySetup(component);
 
-    expect(component.data.$ray).toBeDefined();
+    expect(component.$ray).toBeDefined();
 });

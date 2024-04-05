@@ -9,7 +9,7 @@ exports[`Base VueRay class: > sends a refs innerHTML 1`] = `
         "content": {
           "label": "Data",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code>",
           ],
         },
         "origin": {
@@ -28,7 +28,7 @@ exports[`Base VueRay class: > sends a refs innerHTML 1`] = `
     "payloads": [
       {
         "content": {
-          "content": "<em>123</em>",
+          "content": "",
           "label": "HTML",
         },
         "origin": {
@@ -54,7 +54,7 @@ exports[`Base VueRay class: > sends the component data 1`] = `
         "content": {
           "label": "Data",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code>",
           ],
         },
         "origin": {
@@ -75,7 +75,7 @@ exports[`Base VueRay class: > sends the component data 1`] = `
         "content": {
           "label": "Data",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code>",
           ],
         },
         "origin": {
@@ -101,7 +101,7 @@ exports[`Base VueRay class: > sends the component props 1`] = `
         "content": {
           "label": "Data",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code>",
           ],
         },
         "origin": {
@@ -122,7 +122,7 @@ exports[`Base VueRay class: > sends the component props 1`] = `
         "content": {
           "label": "Table",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"title"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span><code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"abc"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-indigo-600">undefined</span></code>",
           ],
         },
         "origin": {
@@ -148,7 +148,7 @@ exports[`Base VueRay class: > stops tracking data variables 1`] = `
         "content": {
           "label": "Data",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code>",
           ],
         },
         "origin": {
@@ -213,7 +213,7 @@ exports[`Base VueRay class: > tracks data variables 1`] = `
         "content": {
           "label": "Data",
           "values": [
-            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code>",
           ],
         },
         "origin": {

@@ -14,8 +14,6 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
         //     return;
         // }
 
-        console.log('options===', options);
-
         const componentName: string = determineComponentNameDuringEvent(options);
 
         let r = rayInstance;
@@ -59,15 +57,7 @@ export const RayMixin = {
     methods: {
         // eslint-disable-next-line
         $ray(component): (...args: any[]) => VueRay {
-            // const component = getCurrentInstance();
-            const r = rayWrapped(component); //VueRay.create();
-            // r.component = component;
-            // // ray.component = component;
-            // r.watch = watch;
-
-            // r.send(...args);
-
-            return r;
+            return rayWrapped(component);
         },
     },
 };

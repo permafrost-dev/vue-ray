@@ -9,7 +9,6 @@ export const RayPlugin = {
         initializeOptions(options, app.config);
 
         app.provide('ray', options);
-
         app.mixin(DataTrackingMixin);
     },
 };
