@@ -2,6 +2,7 @@
 
 // @ts-ignore
 import { Ray } from 'node-ray/dist/web';
+import { getCurrentInstance, watch } from 'vue';
 
 export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
@@ -28,10 +29,12 @@ export class VueRay extends Ray {
         }
     }
 
-    public ref(name: string): void {
-        if (this.component) {
-            this.html(this.component.$refs[name].innerHTML);
+    public element(refName: string): VueRay {
+        if (this.component?.refs[refName]) {
+            return this.html((this.component?.refs[refName] as any).outerHTML);
         }
+
+        return this;
     }
 
     public track(name: string): void {
@@ -75,7 +78,7 @@ export class VueRay extends Ray {
     }
 
     public static shouldDisplayEvent(name: string): boolean {
-        return VueRay.show_component_lifecycles.includes(name);
+        return true; //VueRay.show_component_lifecycles.includes(name) || true;
     }
 
     public static showComponentLifecycles(names: string[]): void {
@@ -103,9 +106,33 @@ export class VueRay extends Ray {
 }
 
 export const ray = (...args: any[]) => {
+    const result = VueRay.create() as VueRay;
+    result.component = getCurrentInstance();
+    result.watch = watch;
+
+    console.log('result===', result);
     if (!args.length) {
-        return VueRay.create();
+        return result;
     }
 
-    return VueRay.create().send(...args);
+    result.send(...args);
+
+    return result;
 };
+
+export function rayWrapped(component: any): (...args: any[]) => VueRay {
+    return function (...args: any[]) {
+        const result = VueRay.create() as VueRay;
+        result.component = component;
+        result.watch = watch;
+
+        console.log('result===', result);
+        if (!args.length) {
+            return result;
+        }
+
+        result.send(...args);
+
+        return result;
+    };
+}

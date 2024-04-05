@@ -102,11 +102,11 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 | Name                        | Description                                            |
 | --------------------------- | ------------------------------------------------------ |
-| `$ray.data()`        | show the component data                                |
-| `$ray.props()`       | show the component props                               |
-| `$ray.ref(name)`     | show the `innerHTML` of a named ref                    |
-| `$ray.track(name)`   | display changes to a component's data variable         |
-| `$ray.untrack(name)` | stop displaying changes to a component's data variable |
+| `ray().data()`            | show the component data                                |
+| `ray().props()`           | show the component props                               |
+| `ray().element(refName)`  | render the HTML of an element with a ref of `refName` |
+| `ray().track(name)`       | display changes to a component's data variable         |
+| `ray().untrack(name)`     | stop displaying changes to a component's data variable |
 
 ## Tracking component data
 

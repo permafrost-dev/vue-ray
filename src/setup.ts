@@ -1,5 +1,6 @@
 import { RayMixin } from '@/RayMixin';
-import { getCurrentInstance, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
+import { ray, rayWrapped } from '@/VueRay';
+import { getCurrentInstance, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, onUpdated, Ref, ref } from 'vue';
 
 export type RaySetupOptions = {
     beforeMount?: boolean;
@@ -9,32 +10,32 @@ export type RaySetupOptions = {
     unmounted?: boolean;
 };
 
-export function raySetup(component = null, options: RaySetupOptions = {}) {
+export function raySetup(component = null, options: RaySetupOptions = {}): Ref<typeof ray> {
     component = component ?? getCurrentInstance();
 
-    for (const key of Object.keys(RayMixin.methods)) {
-        component.data[key] = RayMixin.methods[key];
-    }
+    const $ray = rayWrapped(component);
+
+    component.$ray = $ray;
 
     if (options.beforeMount) {
-        onBeforeMount(() => RayMixin.beforeMount(component));
+        onBeforeMount(() => RayMixin.beforeMount(component, $ray()));
     }
 
     if (options.beforeUnmount) {
-        onBeforeUnmount(() => RayMixin.beforeUnmount(component));
+        onBeforeUnmount(() => RayMixin.beforeUnmount(component, $ray()));
     }
 
     if (options.updated) {
-        onUpdated(() => RayMixin.updated(component));
+        onUpdated(() => RayMixin.updated(component, $ray()));
     }
 
     if (options.mounted) {
-        onMounted(() => RayMixin.mounted(component));
+        onMounted(() => RayMixin.mounted(component, $ray()));
     }
 
     if (options.unmounted) {
-        onUnmounted(() => RayMixin.unmounted(component));
+        onUnmounted(() => RayMixin.unmounted(component, $ray()));
     }
 
-    return ref(component.data.$ray);
+    return ref(component.$ray);
 }

@@ -1,15 +1,20 @@
-import { VueRay } from '@/VueRay';
+import { rayWrapped, VueRay } from '@/VueRay';
 import { determineComponentNameDuringEvent } from '@/lib/helpers';
-import { watch } from 'vue';
 
 const conditionallyDisplayEvent = (eventName: string, options: Record<string, unknown>, rayInstance: any = null) => {
     if (VueRay.shouldDisplayEvent(eventName)) {
         rayInstance = rayInstance ?? RayMixin.methods.$ray;
 
-        // don't display 'unknown' components
-        if (!(options?.__file ?? false)) {
-            return;
+        if (options.type) {
+            options = options.type as any;
         }
+
+        // don't display 'unknown' components
+        // if (!(options?.__file ?? false)) {
+        //     return;
+        // }
+
+        console.log('options===', options);
 
         const componentName: string = determineComponentNameDuringEvent(options);
 
@@ -27,37 +32,42 @@ const conditionallyDisplayEvent = (eventName: string, options: Record<string, un
 };
 
 export const RayMixin = {
-    beforeMount(component: any) {
-        conditionallyDisplayEvent('before-mount', component);
+    beforeMount(component: any, instance: any = null) {
+        conditionallyDisplayEvent('before-mount', component, instance);
     },
 
-    beforeUnmount(component: any) {
-        conditionallyDisplayEvent('before-unmount', component);
+    beforeUnmount(component: any, instance: any = null) {
+        conditionallyDisplayEvent('before-unmount', component, instance);
     },
 
-    created(component: any) {
-        conditionallyDisplayEvent('created', component);
+    created(component: any, instance: any = null) {
+        conditionallyDisplayEvent('created', component, instance);
     },
 
-    mounted(component: any) {
-        conditionallyDisplayEvent('mounted', component);
+    mounted(component: any, instance: any = null) {
+        conditionallyDisplayEvent('mounted', component, instance);
     },
 
-    unmounted(component: any) {
-        conditionallyDisplayEvent('unmounted', component);
+    unmounted(component: any, instance: any = null) {
+        conditionallyDisplayEvent('unmounted', component, instance);
     },
 
-    updated(component: any) {
-        conditionallyDisplayEvent('updated', component);
+    updated(component: any, instance: any = null) {
+        conditionallyDisplayEvent('updated', component, instance);
     },
 
     methods: {
-        $ray(...args: any[]) {
-            const ray = VueRay.create();
-            ray.component = this;
-            ray.watch = watch;
+        // eslint-disable-next-line
+        $ray(component): (...args: any[]) => VueRay {
+            // const component = getCurrentInstance();
+            const r = rayWrapped(component); //VueRay.create();
+            // r.component = component;
+            // // ray.component = component;
+            // r.watch = watch;
 
-            return ray.send(...args);
+            // r.send(...args);
+
+            return r;
         },
     },
 };
