@@ -1,8 +1,6 @@
 import { RayMixin } from '@/RayMixin';
-import type { ray } from '@/VueRay';
-import { rayWrapped } from '@/VueRay';
-import type { Ref } from 'vue';
-import { getCurrentInstance, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
+import { type ray, rayWrapped, VueRay } from '@/VueRay';
+import { type Ref, getCurrentInstance, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 
 export type RaySetupLifecycleEventOptions = {
     beforeMount?: boolean;
@@ -14,8 +12,14 @@ export type RaySetupLifecycleEventOptions = {
 };
 
 export type RaySetupOptions = {
+    connection?: RaySetupConnectionOptions;
     lifecycleEvents?: RaySetupLifecycleEventOptions;
     lifecycleMethods?: RaySetupOptionsVueLifecycleMethods;
+};
+
+export type RaySetupConnectionOptions = {
+    host?: string;
+    port?: number;
 };
 
 export type RaySetupOptionsVueLifecycleMethods = {
@@ -26,12 +30,25 @@ export type RaySetupOptionsVueLifecycleMethods = {
     unmounted?: typeof onUnmounted;
 };
 
-export function raySetup(component = null, options: RaySetupOptions = {}): Ref<typeof ray> {
+export function raySetup(options: RaySetupOptions = {}, component = null): Ref<typeof ray> {
     component = component ?? getCurrentInstance();
 
     const $ray = rayWrapped(component);
 
     component.$ray = $ray;
+    component.trackingRays = {};
+    component.trackingStops = {};
+
+    if (options.connection.host || options.connection.port) {
+        const connectionOptions = {};
+        if (options.connection.port) {
+            connectionOptions['port'] = options.connection.port;
+        }
+        if (options.connection.host) {
+            connectionOptions['host'] = options.connection.host;
+        }
+        VueRay.useDefaultSettings(connectionOptions);
+    }
 
     options.lifecycleEvents = options.lifecycleEvents ?? {};
     options.lifecycleEvents.all = options.lifecycleEvents?.all ?? false;

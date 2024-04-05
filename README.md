@@ -76,18 +76,58 @@ Use any of the following values with this option:
 
 ## Usage
 
-To access the `ray()` function import `raySetup` from the `vue-ray` library:
+To access the `ray()` function, import `raySetup()` from the `vue-ray` library:
 
-```vue
+```html
 <script setup>
 import { raySetup } from 'vue-ray'
 const ray = raySetup();
 </script>
 ```
 
-Then use the `ray` function in the Vue SFC as normal _(see node-ray)_ to send data to Ray:
+The `raySetup()` function accepts an optional `options` object, defined as:
 
-```vue
+```typescript
+interface RaySetupOptions {
+    connection?: {
+        host?: string;
+        port?: number;
+    }
+    lifecycleEvents?: {
+        beforeCreate?: boolean;
+        beforeMount?: boolean;
+        created?: boolean;
+        mounted?: boolean;
+        unmounted?: boolean;
+        updated?: boolean;
+        all?: boolean;
+    }
+}
+```
+
+The `lifecycleEvents` object can be used to enable or disable sending of the component's lifecycle events to Ray. Use the `all` property to enable all lifecycle events.
+
+The following example will send the `created` and `mounted` events to Ray for the component:
+
+```html
+<script setup>
+import { raySetup } from 'vue-ray'
+const ray = raySetup({
+    lifecycleEvents: {
+        created: true,
+        mounted: true,
+    },
+});
+</script>
+```
+
+The `connection` object can be used to specify the host and port to connect to the Ray app. The default values are `localhost` and `23517`, respectively.
+
+### Sending data to Ray
+
+Once you have called `raySetup()`, you may use the `ray` function in the Vue SFC as normal _(see node-ray)_ to send data to Ray:
+
+```html
 <template>
     <div>
         <button @click="ray('Hello from Vue!')">Send message to Ray</button>
@@ -102,18 +142,23 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 | Name                        | Description                                            |
 | --------------------------- | ------------------------------------------------------ |
-| `ray().data()`            | show the component data                                |
-| `ray().props()`           | show the component props                               |
-| `ray().element(refName)`  | render the HTML of an element with a ref of `refName` |
-| `ray().track(name)`       | display changes to a component's data variable         |
-| `ray().untrack(name)`     | stop displaying changes to a component's data variable |
+| `ray().data()`                    | show the component data                                |
+| `ray().props()`                   | show the component props                               |
+| `ray().element(refName: string)`  | render the HTML of an element with a ref of `refName` |
+| `ray().track(name: string)`       | display changes to a component's data variable _(best used when not using script setup)_ |
+| `ray().untrack(name: string)`     | stop displaying changes to a component's data variable |
+| `ray().watch(name: string, ref: Ref)`  | watch a ref's value and send changes to Ray _(best used in script setup)_ |
+| `ray().unwatch(name: string)`     | stop watching a ref's value and stop sending changes to Ray |
 
 ## Tracking component data
 
-Changes to any component's data variables can be tracked and displayed in real-time using the `track(name)` method.
+When not using the `script setup` syntax, you can use the `ray().track(name)` method to track changes to a component's data variable. Here's an example SFC:
 
-```vue
+```html
 <script>
+import { raySetup } from 'vue-ray';
+let ray;
+
 export default {
     props: ['title'],
     data() {
@@ -123,59 +168,65 @@ export default {
         };
     },
     created() {
-        this.$ray().data();
-        this.$ray().track('one');
+        ray = raySetup().value;
+        ray().track('one');
     },
-    mounted() {
-        setInterval(() => {
+    methods: {
+        sendToRay() {
+            ray().element('div1');
+        },
+        increment() {
             this.one += 3;
-        }, 4000);
-    },
+            this.two += 5;
+        }
+    }
 };
 </script>
-```
 
-## Example Component
-
-```vue
 <template>
     <div class="flex-col border-r border-gray-200 bg-white overflow-y-auto w-100">
+        <div ref="div1" class="w-full flex flex-wrap">
+            <div ref="div1a" class="w-4/12 inline-flex">{{ one }}</div>
+            <div ref="div1b" class="w-4/12 inline-flex">{{ two }}</divr>
+        </div>
         <div class="about">
             <h1>{{ title }}</h1>
             <a @click="sendToRay()">send ref to ray</a><br>
             <a @click="increment()">increment data var</a><br>
         </div>
-        <div ref="div1" class="w-full flex flex-wrap">
-            <div ref="div1a" class="w-4/12 inline-flex">{{ one }}</div>
-            <div ref="div1b" class="w-4/12 inline-flex">{{ two }}</divr>
-        </div>
     </div>
 </template>
-
-<script>
-export default {
-    props: ['title'],
-    data() {
-        return {
-            one: 100,
-            two: 22,
-        };
-    },
-    created() {
-        this.$ray().data();
-        this.$ray().track('one');
-    },
-    methods: {
-        sendToRay() {
-            this.$ray().ref('div1');
-        },
-        increment() {
-            this.one += 3;
-        }
-    }
-};
-</script>
 ```
+
+## Watching refs
+
+When using the `script setup` syntax, you can use the `ray().watch(name, ref)` method to watch a ref's value and send changes to Ray. Here's an example SFC using the `script setup` syntax:
+
+```html
+<script setup>
+import { ref } from 'vue';
+import { raySetup } from 'vue-ray';
+
+const one = ref(100);
+const two = ref(22);
+const ray = raySetup().value;
+
+ray().watch('one', one);
+ray().watch('two', two);
+</script>
+
+<template>
+    <div>
+        <div>{{ one }}</div>
+        <div>{{ two }}</div>
+        <button @click="one += 3">Increment one</button>
+        <button @click="two += 3">Increment two</button>
+    </div>
+</template>
+```
+
+> When either tracking data or watching a ref, you will notice that the entry in Ray updates in real-time
+> as the data changes, instead of creating a new entry each time the >data changes. 
 
 ## Intercepting errors
 

@@ -1,13 +1,16 @@
 /* eslint-disable no-unused-vars */
 
 // @ts-ignore
+import { determineComponentNameDuringEvent } from '@/lib/helpers';
+import { RayMixin } from '@/RayMixin';
 import { Ray } from 'node-ray/dist/web';
-import { getCurrentInstance, watch } from 'vue';
+import { getCurrentInstance, type Ref, watch } from 'vue';
+import { format as prettyPrint } from '@permafrost-dev/pretty-format';
 
 export class VueRay extends Ray {
     public static show_component_lifecycles: string[] = [];
     public component: any = { $data: {}, $refs: {} };
-    public watch: CallableFunction = () => {};
+    public $watch: CallableFunction = () => {};
 
     public data(): void {
         if (this.component) {
@@ -39,41 +42,55 @@ export class VueRay extends Ray {
 
     public track(name: string): void {
         if (this.component && typeof this.component.trackingRays[name] === 'undefined') {
-            this.component.trackingRays[name] = this.component.$ray(name);
+            this.component.trackingRays[name] = RayMixin.methods.$ray(this.component)(this.component.data['name']);
 
             const onTrackedUpdate = (value: any, previousValue: any) => {
-                this.component.trackingRays[name] = this.component.trackingRays[name].send({
-                    info: {
-                        variable: name,
-                        tracking: true,
-                    },
-                    trackingData: {
-                        value: value,
-                        previous: previousValue,
-                    },
-                });
+                this.component.trackingRays[name] = this.component.trackingRays[name].sendCustom(
+                    [
+                        `<code style="font-weight: bold;">tracking: </code><code style="color: #16a34a;">${determineComponentNameDuringEvent(this.component.type)}.data.${name}</code>`,
+                        `<hr width="33%" align="left" /><code style="color: #94a3b8;">new value: </code><code class="text-gray-500 bold font-bold">${prettyPrint(value)}</div>`,
+                        `                               <code style="color: #94a3b8;">old value: </code><code class="text-gray-700">${prettyPrint(previousValue)}</code>`,
+                    ].join('<br>'),
+                    'Tracking Data',
+                );
             };
 
-            this.component.trackingStops[name] = this.watch(() => this.component[name], onTrackedUpdate, { deep: true });
+            this.component.trackingStops[name] = this.$watch(() => this.component.data[name], onTrackedUpdate, { deep: true });
         }
     }
 
     public untrack(name: string): void {
         if (this.component && typeof this.component.trackingStops[name] !== 'undefined') {
-            this.component.trackingRays[name] = this.component.trackingRays[name].send({
-                info: {
-                    variable: name,
-                    tracking: false,
-                },
-                trackedData: {
-                    value: this.component[name],
-                },
-            });
-
             this.component.trackingStops[name]();
-
             delete this.component.trackingStops[name];
             delete this.component.trackingRays[name];
+        }
+    }
+
+    public unwatch(name: string): void {
+        if (this.component && typeof this.component.trackingStops[name] !== 'undefined') {
+            this.component.trackingStops[name]();
+            delete this.component.trackingStops[name];
+            delete this.component.trackingRays[name];
+        }
+    }
+
+    public watch(name: string, ref: Ref<any>): void {
+        if (this.component && typeof this.component.trackingRays[name] === 'undefined') {
+            this.component.trackingRays[name] = RayMixin.methods.$ray(this.component)(ref.value);
+
+            const onTrackedUpdate = (value: any, previousValue: any) => {
+                this.component.trackingRays[name] = this.component.trackingRays[name].sendCustom(
+                    [
+                        `<code style="font-weight: bold;">watching: </code><code style="color: #16a34a;">${determineComponentNameDuringEvent(this.component.type)} ➞ Ref&lt;${name}&gt;</code>`,
+                        `<hr width="33%" align="left" /><code style="color: #94a3b8;">new value: </code><code class="text-gray-500 bold font-bold">${prettyPrint(value)}</div>`,
+                        `                               <code style="color: #94a3b8;">old value: </code><code class="text-gray-700">${prettyPrint(previousValue)}</code>`,
+                    ].join('<br>'),
+                    'Watching Ref',
+                );
+            };
+
+            this.component.trackingStops[name] = this.$watch(ref, onTrackedUpdate, { deep: true });
         }
     }
 
@@ -108,7 +125,7 @@ export class VueRay extends Ray {
 export const ray = (...args: any[]) => {
     const result = VueRay.create() as VueRay;
     result.component = getCurrentInstance();
-    result.watch = watch;
+    result.$watch = watch;
 
     if (!args.length) {
         return result;
@@ -131,7 +148,7 @@ export function rayWrapped(component: any): (...args: any[]) => VueRay {
         const result = VueRay.create() as VueRay;
 
         result.component = component;
-        result.watch = watch;
+        result.$watch = watch;
 
         if (!args.length) {
             return result;

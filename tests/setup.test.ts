@@ -49,7 +49,7 @@ function setupCallCounters() {
 
 it('performs setup for ray and returns a ref', () => {
     const component = { data: {} } as any;
-    const result = raySetup(component);
+    const result = raySetup({}, component);
 
     expect(result.value).not.toBeNull();
     expect(isRef(result)).toBe(true);
@@ -57,7 +57,7 @@ it('performs setup for ray and returns a ref', () => {
 
 it('adds the ray methods to the component', () => {
     const component = { data: {} } as any;
-    raySetup(component);
+    raySetup({}, component);
 
     expect(component.$ray).toBeDefined();
 });
@@ -65,12 +65,15 @@ it('adds the ray methods to the component', () => {
 it('adds all lifecycle events to the component', () => {
     const { component, callCounters, lifecycleMethods } = setupCallCounters();
 
-    raySetup(component, {
-        lifecycleEvents: {
-            all: true,
+    raySetup(
+        {
+            lifecycleEvents: {
+                all: true,
+            },
+            lifecycleMethods,
         },
-        lifecycleMethods,
-    });
+        component,
+    );
 
     expect(callCounters).toMatchSnapshot();
 });
@@ -78,12 +81,15 @@ it('adds all lifecycle events to the component', () => {
 it('adds beforeMount lifecycle event to the component', () => {
     const { component, callCounters, lifecycleMethods } = setupCallCounters();
 
-    raySetup(component, {
-        lifecycleEvents: {
-            beforeMount: true,
+    raySetup(
+        {
+            lifecycleEvents: {
+                beforeMount: true,
+            },
+            lifecycleMethods,
         },
-        lifecycleMethods,
-    });
+        component,
+    );
 
     expect(callCounters).toMatchSnapshot();
 });
@@ -91,12 +97,15 @@ it('adds beforeMount lifecycle event to the component', () => {
 it('adds beforeUnmount lifecycle event to the component', () => {
     const { component, callCounters, lifecycleMethods } = setupCallCounters();
 
-    raySetup(component, {
-        lifecycleEvents: {
-            beforeUnmount: true,
+    raySetup(
+        {
+            lifecycleEvents: {
+                beforeUnmount: true,
+            },
+            lifecycleMethods,
         },
-        lifecycleMethods,
-    });
+        component,
+    );
 
     expect(callCounters).toMatchSnapshot();
 });
@@ -104,12 +113,15 @@ it('adds beforeUnmount lifecycle event to the component', () => {
 it('adds updated lifecycle event to the component', () => {
     const { component, callCounters, lifecycleMethods } = setupCallCounters();
 
-    raySetup(component, {
-        lifecycleEvents: {
-            updated: true,
+    raySetup(
+        {
+            lifecycleEvents: {
+                updated: true,
+            },
+            lifecycleMethods,
         },
-        lifecycleMethods,
-    });
+        component,
+    );
 
     expect(callCounters).toMatchSnapshot();
 });
@@ -117,12 +129,15 @@ it('adds updated lifecycle event to the component', () => {
 it('adds mounted lifecycle event to the component', () => {
     const { component, callCounters, lifecycleMethods } = setupCallCounters();
 
-    raySetup(component, {
-        lifecycleEvents: {
-            mounted: true,
+    raySetup(
+        {
+            lifecycleEvents: {
+                mounted: true,
+            },
+            lifecycleMethods,
         },
-        lifecycleMethods,
-    });
+        component,
+    );
 
     expect(callCounters).toMatchSnapshot();
 });
@@ -130,12 +145,15 @@ it('adds mounted lifecycle event to the component', () => {
 it('adds unmounted lifecycle event to the component', () => {
     const { component, callCounters, lifecycleMethods } = setupCallCounters();
 
-    raySetup(component, {
-        lifecycleEvents: {
-            unmounted: true,
+    raySetup(
+        {
+            lifecycleEvents: {
+                unmounted: true,
+            },
+            lifecycleMethods,
         },
-        lifecycleMethods,
-    });
+        component,
+    );
 
     expect(callCounters).toMatchSnapshot();
 });
