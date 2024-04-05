@@ -10,9 +10,9 @@ const displayLifecycleEvent = (eventName: string, options: Record<string, unknow
     }
 
     // don't display 'unknown' components
-    // if (!(options?.__file ?? false)) {
-    //     return;
-    // }
+    if (!(options?.__file ?? false)) {
+        return;
+    }
 
     const componentName: string = determineComponentNameDuringEvent(options);
 
