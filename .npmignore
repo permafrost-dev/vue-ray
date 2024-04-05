@@ -12,6 +12,7 @@ _*.txt
 .editorconfig
 .eslintrc.cjs
 .gitattributes
+.gitignore
 .prettierignore
 *.ignored
 *.sh
