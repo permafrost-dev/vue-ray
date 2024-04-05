@@ -1,5 +1,6 @@
 import { VueRay } from '@/VueRay';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { ref } from 'vue';
 import { FakeClient } from './TestClasses/FakeClient';
 
 interface WatchParameters {
@@ -8,9 +9,9 @@ interface WatchParameters {
     options: Record<string, unknown>;
 }
 
-let ray: VueRay,
-    client: FakeClient,
-    lastWatchParams: WatchParameters | null = null;
+let ray: VueRay;
+let client: FakeClient;
+let lastWatchParams: WatchParameters | null = null;
 
 beforeEach(() => {
     client = new FakeClient(3000, 'localhost');
@@ -18,9 +19,9 @@ beforeEach(() => {
     ray = VueRay.create(client, 'fakeUuid'); // ({ enable: true, port: 3000, host: 'localhost' }, client, 'fakeUuid');
 
     ray.component = {
-        $data: { one: 1 },
-        $props: { title: 'abc' },
-        $refs: { test1: { innerHTML: '<em>123</em>' } },
+        data: { one: 1 },
+        props: { title: 'abc' },
+        refs: { test1: { innerHTML: '<em>123</em>' } },
         trackingRays: {},
         trackingStops: {},
         $ray(...args: any[]) {
@@ -29,7 +30,7 @@ beforeEach(() => {
         },
     };
 
-    ray.watch = (cb1: CallableFunction, cb2: CallableFunction, options: Record<string, unknown> = {}) => {
+    ray.$watch = (cb1: CallableFunction, cb2: CallableFunction, options: Record<string, unknown> = {}) => {
         lastWatchParams = {
             cb1,
             cb2,
@@ -38,6 +39,7 @@ beforeEach(() => {
 
         return () => true;
     };
+    // ray.$watch = watch;
 
     ray.data();
 });
@@ -90,23 +92,25 @@ describe('Base VueRay class:', () => {
     });
 
     it('tracks data variables', () => {
-        ray.track('test');
-
+        ray.track('one');
         lastWatchParams?.cb2();
 
         expect(client.sentRequests).toMatchSnapshot();
     });
 
     it('stops tracking data variables', () => {
-        ray.track('test');
+        ray.track('one');
+        ray.untrack('one');
 
-        expect(ray.component.trackingRays['test']).toBeDefined();
-        expect(ray.component.trackingStops['test']).toBeDefined();
+        expect([...Object.keys(ray.component.trackingRays), ...Object.keys(ray.component.trackingStops)]).toMatchSnapshot();
+    });
 
-        ray.untrack('test');
+    it('watches a ref', () => {
+        const r1 = ref(1);
+        ray.watch('r1', r1);
+        r1.value = 2;
 
-        expect(ray.component.trackingRays['test']).toBeUndefined();
-        expect(ray.component.trackingStops['test']).toBeUndefined();
+        lastWatchParams?.cb2(2, 1);
 
         expect(client.sentRequests).toMatchSnapshot();
     });

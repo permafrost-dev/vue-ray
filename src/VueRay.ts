@@ -63,6 +63,9 @@ export class VueRay extends Ray {
         if (this.component && typeof this.component.trackingStops[name] !== 'undefined') {
             this.component.trackingStops[name]();
             delete this.component.trackingStops[name];
+        }
+
+        if (this.component && typeof this.component.trackingRays[name] !== 'undefined') {
             delete this.component.trackingRays[name];
         }
     }
@@ -71,6 +74,9 @@ export class VueRay extends Ray {
         if (this.component && typeof this.component.trackingStops[name] !== 'undefined') {
             this.component.trackingStops[name]();
             delete this.component.trackingStops[name];
+        }
+
+        if (this.component && typeof this.component.trackingRays[name] !== 'undefined') {
             delete this.component.trackingRays[name];
         }
     }

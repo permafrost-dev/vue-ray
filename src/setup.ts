@@ -35,16 +35,20 @@ export function raySetup(options: RaySetupOptions = {}, component = null): Ref<t
 
     const $ray = rayWrapped(component);
 
+    if (!options) {
+        options = {};
+    }
+
     component.$ray = $ray;
     component.trackingRays = {};
     component.trackingStops = {};
 
-    if (options.connection.host || options.connection.port) {
+    if (options?.connection?.host || options?.connection?.port) {
         const connectionOptions = {};
-        if (options.connection.port) {
+        if (options.connection?.port) {
             connectionOptions['port'] = options.connection.port;
         }
-        if (options.connection.host) {
+        if (options.connection?.host) {
             connectionOptions['host'] = options.connection.host;
         }
         VueRay.useDefaultSettings(connectionOptions);
@@ -53,7 +57,7 @@ export function raySetup(options: RaySetupOptions = {}, component = null): Ref<t
     options.lifecycleEvents = options.lifecycleEvents ?? {};
     options.lifecycleEvents.all = options.lifecycleEvents?.all ?? false;
 
-    if (options.lifecycleEvents.all === true) {
+    if (options.lifecycleEvents?.all === true) {
         options.lifecycleEvents.beforeMount = true;
         options.lifecycleEvents.beforeUnmount = true;
         options.lifecycleEvents.updated = true;
@@ -61,27 +65,27 @@ export function raySetup(options: RaySetupOptions = {}, component = null): Ref<t
         options.lifecycleEvents.unmounted = true;
     }
 
-    if (options.lifecycleEvents.beforeMount) {
+    if (options.lifecycleEvents?.beforeMount) {
         const callback = options.lifecycleMethods?.beforeMount ?? onBeforeMount;
         callback(() => RayMixin.beforeMount(component, $ray()));
     }
 
-    if (options.lifecycleEvents.beforeUnmount) {
+    if (options.lifecycleEvents?.beforeUnmount) {
         const callback = options.lifecycleMethods?.beforeUnmount ?? onBeforeUnmount;
         callback(() => RayMixin.beforeUnmount(component, $ray()));
     }
 
-    if (options.lifecycleEvents.updated) {
+    if (options.lifecycleEvents?.updated) {
         const callback = options.lifecycleMethods?.updated ?? onUpdated;
         callback(() => RayMixin.updated(component, $ray()));
     }
 
-    if (options.lifecycleEvents.mounted) {
+    if (options.lifecycleEvents?.mounted) {
         const callback = options.lifecycleMethods?.mounted ?? onMounted;
         callback(() => RayMixin.mounted(component, $ray()));
     }
 
-    if (options.lifecycleEvents.unmounted) {
+    if (options.lifecycleEvents?.unmounted) {
         const callback = options.lifecycleMethods?.unmounted ?? onUnmounted;
         callback(() => RayMixin.unmounted(component, $ray()));
     }
