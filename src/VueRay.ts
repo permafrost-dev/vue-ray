@@ -8,7 +8,6 @@ import { getCurrentInstance, type Ref, watch } from 'vue';
 import { format as prettyPrint } from '@permafrost-dev/pretty-format';
 
 export class VueRay extends Ray {
-    public static show_component_lifecycles: string[] = [];
     public component: any = { $data: {}, $refs: {} };
     public $watch: CallableFunction = () => {};
 
@@ -98,25 +97,6 @@ export class VueRay extends Ray {
 
             this.component.trackingStops[name] = this.$watch(ref, onTrackedUpdate, { deep: true });
         }
-    }
-
-    public static shouldDisplayEvent(name: string): boolean {
-        return true; //VueRay.show_component_lifecycles.includes(name) || true;
-    }
-
-    public static showComponentLifecycles(names: string[]): void {
-        if (Array.isArray(VueRay.show_component_lifecycles)) {
-            VueRay.show_component_lifecycles.push(...names);
-        }
-    }
-
-    public static stopShowingComponentLifecycles(names: string[] = []): void {
-        if (!names.length) {
-            VueRay.show_component_lifecycles = [];
-            return;
-        }
-
-        VueRay.show_component_lifecycles = VueRay.show_component_lifecycles.filter(name => !names.includes(name));
     }
 
     public static useDefaultSettings(settings: any) {

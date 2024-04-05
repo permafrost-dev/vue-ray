@@ -64,33 +64,6 @@ describe('Base VueRay class:', () => {
         expect(client.sentRequests).toMatchSnapshot();
     });
 
-    it('sets the show_component_lifecycles property', () => {
-        VueRay.showComponentLifecycles(['one', 'two']);
-
-        expect(VueRay.show_component_lifecycles).toStrictEqual(['one', 'two']);
-    });
-
-    // it('searches the show_component_lifecycles property', () => {
-    //     VueRay.showComponentLifecycles(['one', 'two']);
-
-    //     expect(VueRay.shouldDisplayEvent('one')).toBeTruthy();
-    //     expect(VueRay.shouldDisplayEvent('three')).toBeFalsy();
-    // });
-
-    it('clears the show_component_lifecycles property', () => {
-        VueRay.showComponentLifecycles(['one', 'two']);
-        VueRay.stopShowingComponentLifecycles([]);
-
-        expect(VueRay.show_component_lifecycles.length).toBe(0);
-    });
-
-    it('removes items from the show_component_lifecycles property', () => {
-        VueRay.showComponentLifecycles(['one', 'two']);
-        VueRay.stopShowingComponentLifecycles(['two']);
-
-        expect(VueRay.show_component_lifecycles).toStrictEqual(['one']);
-    });
-
     it('tracks data variables', () => {
         ray.track('one');
         lastWatchParams?.cb2();

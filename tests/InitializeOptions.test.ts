@@ -3,7 +3,8 @@ import { initializeOptions } from '@/InitializeOptions';
 import { VueRay } from '@/VueRay';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-let options: any, vueConfig: any;
+let options: any;
+let vueConfig: any;
 
 beforeEach(() => {
     options = { port: 12345, scheme: 'http', showComponentEvents: [] };
@@ -44,13 +45,5 @@ describe('Option Initializer:', () => {
 
         // @ts-ignore
         expect(VueRay.defaultSettings.scheme).toBe('https');
-    });
-
-    it('initializes showComponentEvents option', () => {
-        options.showComponentEvents = ['created'];
-
-        initializeOptions(options, vueConfig);
-
-        expect(VueRay.show_component_lifecycles).toStrictEqual(['created']);
     });
 });

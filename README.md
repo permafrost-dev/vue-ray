@@ -41,9 +41,9 @@ import App from './App.vue';
 const app = createApp(App);
 
 app.use(RayPlugin, { 
-    interceptErrors: true,
     port: 23500,
-    showComponentEvents: ['created', 'mounted'],
+    host: 'localhost',
+    interceptErrors: true,
     nodeRaySettings: { 
         interceptConsoleLog: true,
     },
@@ -58,21 +58,7 @@ app.use(RayPlugin, {
 | `scheme`              | `string`   | `http`      | URI scheme to use to connect to host                           |
 | `interceptErrors`     | `boolean`  | `false`     | send Vue errors to Ray                                         |
 | `port`                | `number`   | `23517`     | port to connect to the Ray app on                              |
-| `showComponentEvents` | `string[]` | `[]`        | display component events in Ray, see below for possible values |
-| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrost-dev/node-ray#configuration)_ |
-
-### Component events
-
-Component lifecycle events can be sent to Ray using the `showComponentEvents` plugin option _(`array`)_.
-
-Use any of the following values with this option:
-
-- `before-create`
-- `before-mount`
-- `created`
-- `mounted`
-- `unmounted`
-- `updated`
+| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrots-dev/node-ray#configuration)_ |
 
 ## Usage
 
@@ -81,7 +67,7 @@ To access the `ray()` function, import `raySetup()` from the `vue-ray` library:
 ```html
 <script setup>
 import { raySetup } from 'vue-ray'
-const ray = raySetup();
+const ray = raySetup(); // `ray` is a ref, so you must use `ray.value` to access the `ray()` function within the script tags
 </script>
 ```
 
@@ -150,6 +136,33 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 | `ray().watch(name: string, ref: Ref)`  | watch a ref's value and send changes to Ray _(best used in script setup)_ |
 | `ray().unwatch(name: string)`     | stop watching a ref's value and stop sending changes to Ray |
 
+## Watching refs
+
+When using the `script setup` syntax, you can use the `ray().watch(name, ref)` method to watch a ref's value and send changes to Ray. Here's an example SFC using the `script setup` syntax:
+
+```html
+<script setup>
+import { ref } from 'vue';
+import { raySetup } from 'vue-ray';
+
+const one = ref(100);
+const two = ref(22);
+const ray = raySetup().value;
+
+ray().watch('one', one);
+ray().watch('two', two);
+</script>
+
+<template>
+    <div>
+        <div>{{ one }}</div>
+        <div>{{ two }}</div>
+        <button @click="one += 3">Increment one</button>
+        <button @click="two += 3">Increment two</button>
+    </div>
+</template>
+```
+
 ## Tracking component data
 
 When not using the `script setup` syntax, you can use the `ray().track(name)` method to track changes to a component's data variable. Here's an example SFC:
@@ -168,6 +181,7 @@ export default {
         };
     },
     created() {
+        // must call raySetup() in the created() lifecycle hook so it can access the current component
         ray = raySetup().value;
         ray().track('one');
     },
@@ -198,33 +212,6 @@ export default {
 </template>
 ```
 
-## Watching refs
-
-When using the `script setup` syntax, you can use the `ray().watch(name, ref)` method to watch a ref's value and send changes to Ray. Here's an example SFC using the `script setup` syntax:
-
-```html
-<script setup>
-import { ref } from 'vue';
-import { raySetup } from 'vue-ray';
-
-const one = ref(100);
-const two = ref(22);
-const ray = raySetup().value;
-
-ray().watch('one', one);
-ray().watch('two', two);
-</script>
-
-<template>
-    <div>
-        <div>{{ one }}</div>
-        <div>{{ two }}</div>
-        <button @click="one += 3">Increment one</button>
-        <button @click="two += 3">Increment two</button>
-    </div>
-</template>
-```
-
 > When either tracking data or watching a ref, you will notice that the entry in Ray updates in real-time
 > as the data changes, instead of creating a new entry each time the >data changes. 
 
@@ -235,24 +222,6 @@ Use the `interceptErrors` option to intercept errors and send them to Ray:
 ```js
 app.use(RayPlugin, { interceptErrors: true });
 ```
-
-### Tracking options
-
-The `trackingOptions` definition is as follows:
-
-```typescript
-trackingOptions?: {
-    moduleNames?: string[];
-    propNames?: string[];
-};
-```
-
-The `propNames` is an array of wildcard patterns that will match stored data property names when tracking store state; for example, a value of `['f*']` would match store data properties named `foo` and `fab` but not `dog`.
-
-The `moduleNames` is also an array of wildcard patterns but will match module names and module data property names, such as `['mymod.*']`, which would match all properties in the `mymod` store.
-
-The default value is `['*']`, meaning all modules and properties match.
-
 
 ## Development setup
 

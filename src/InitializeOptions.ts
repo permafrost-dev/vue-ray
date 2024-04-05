@@ -47,13 +47,6 @@ export const initializeOptions = (options: any, vueConfig: any) => {
         sent_payload_callback = options.sent_payload_callback;
     }
 
-    if (typeof options['showComponentEvents'] !== 'undefined') {
-        if (Array.isArray(typeof options.showComponentEvents)) {
-            VueRay.show_component_lifecycles = options.showComponentEvents;
-        }
-        VueRay.show_component_lifecycles = options.showComponentEvents;
-    }
-
     VueRay.useDefaultSettings({
         host,
         port,
