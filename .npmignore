@@ -2,12 +2,14 @@
 /.github
 /.husky
 /.vscode
+/.cache
 /build
 /coverage
-/dist-test
+/dist-*
 /node_modules
 /src
 /tests
+/scripts
 _*.txt
 .editorconfig
 .eslintrc.cjs
@@ -22,3 +24,4 @@ package-lock.json
 prettier.config.cjs
 tsconfig.json
 vite.config.js
+.eslintignore
