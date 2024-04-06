@@ -31,7 +31,7 @@ bun add vue-ray
 
 ### Installing
 
-When using in a Vue 3 project, import the package:
+When using in a Vue 3 project, you may optionally install the plugin globally in your `main.js` or `app.js` file. This is primarily useful if you want to cusomize the connection settings for the package.
 
 ```js
 import { RayPlugin } from 'vue-ray';
@@ -67,7 +67,7 @@ To access the `ray()` function, import `raySetup()` from the `vue-ray` library:
 ```html
 <script setup>
 import { raySetup } from 'vue-ray'
-const ray = raySetup(); // `ray` is a ref, so you must use `ray.value` to access the `ray()` function within the script tags
+const ray = raySetup(); // `ray` is a ref, so you must use `ray.value` within the script tags
 </script>
 ```
 
