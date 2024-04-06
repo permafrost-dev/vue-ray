@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { cpus } from 'node:os';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import { externalizeDeps } from 'vite-plugin-externalize-deps';
@@ -32,7 +33,7 @@ export default defineConfig({
             entry: ['src/index.ts'],
             formats: ['es', 'cjs'],
             fileName: format => {
-                if (format === 'es') return `index.js`;
+                if (format === 'es') return 'index.js';
                 return 'index.cjs';
             },
         },
@@ -55,19 +56,24 @@ export default defineConfig({
     },
     define: {
         __BUILD_VERSION__: JSON.stringify(globalConfig.pkg.version),
-        //'process.env.NODE_ENV': '"production"',
+        __LIBRARY_NAME__: JSON.stringify(globalConfig.pkg.name),
     },
     test: {
         name: 'VueRay',
         globals: true,
         passWithNoTests: true,
+        maxConcurrency: cpus().length - 1,
         watch: false,
         alias: {
             '@/': new URL('./src/', import.meta.url).pathname,
         },
         coverage: {
+            processingConcurrency: cpus().length - 1,
+            thresholds: {
+                autoUpdate: true,
+            },
             all: true,
-            include: ['src/**/*.ts'],
+            include: ['src/**/*.ts', 'src/**/*.js'],
             reporter: [['text'], ['json', { file: 'coverage.json' }]],
         },
         include: ['tests/**/*.ts', 'tests/**/*.js'],

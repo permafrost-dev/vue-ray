@@ -1,4 +1,3 @@
-import { DataTrackingMixin } from '@/DataTrackingMixin';
 import { initializeOptions } from '@/InitializeOptions';
 import { createPackageMetaProperty } from '@/lib/helpers';
 
@@ -9,6 +8,5 @@ export const RayPlugin = {
         initializeOptions(options, app.config);
 
         app.provide('ray', options);
-        app.mixin(DataTrackingMixin);
     },
 };

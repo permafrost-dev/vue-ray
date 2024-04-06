@@ -1,11 +1,8 @@
-/* eslint-disable no-unused-vars */
-
-// @ts-ignore
 import { determineComponentNameDuringEvent } from '@/lib/helpers';
 import { RayMixin } from '@/RayMixin';
+import { format as prettyPrint } from '@permafrost-dev/pretty-format';
 import { Ray } from 'node-ray/dist/web';
 import { getCurrentInstance, type Ref, watch } from 'vue';
-import { format as prettyPrint } from '@permafrost-dev/pretty-format';
 
 export class VueRay extends Ray {
     public component: any = { $data: {}, $refs: {} };
@@ -49,6 +46,7 @@ export class VueRay extends Ray {
                         `<code style="font-weight: bold;">tracking: </code><code style="color: #16a34a;">${determineComponentNameDuringEvent(this.component.type)}.data.${name}</code>`,
                         `<hr width="33%" align="left" /><code style="color: #94a3b8;">new value: </code><code class="text-gray-500 bold font-bold">${prettyPrint(value)}</div>`,
                         `                               <code style="color: #94a3b8;">old value: </code><code class="text-gray-700">${prettyPrint(previousValue)}</code>`,
+                        `<hr width="33%" align="left" /><code style="color: #94a3b8;">changed at: </code><code style="color: #60a5fa;">${new Date().toISOString()}</div>`,
                     ].join('<br>'),
                     'Tracking Data',
                 );
@@ -90,6 +88,7 @@ export class VueRay extends Ray {
                         `<code style="font-weight: bold;">watching: </code><code style="color: #16a34a;">${determineComponentNameDuringEvent(this.component.type)} ➞ Ref&lt;${name}&gt;</code>`,
                         `<hr width="33%" align="left" /><code style="color: #94a3b8;">new value: </code><code class="text-gray-500 bold font-bold">${prettyPrint(value)}</div>`,
                         `                               <code style="color: #94a3b8;">old value: </code><code class="text-gray-700">${prettyPrint(previousValue)}</code>`,
+                        `<hr width="33%" align="left" /><code style="color: #94a3b8;">changed at: </code><code style="color: #60a5fa" class="text-gray-500 bold font-bold">${new Date().toISOString()}</div>`,
                     ].join('<br>'),
                     'Watching Ref',
                 );
@@ -128,6 +127,7 @@ export const ray = (...args: any[]) => {
  * @param component
  * @returns {(...args: any[]) => VueRay}
  */
+// eslint-disable-next-line no-unused-vars
 export function rayWrapped(component: any): (...args: any[]) => VueRay {
     // biome-ignore lint/complexity/useArrowFunction: <explanation>
     return function (...args: any[]) {
