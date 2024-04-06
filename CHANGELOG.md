@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [v2.0.0](https://github.com/permafrost-dev/vue-ray/compare/v1.17.4...v2.0.0)
 
+- v2 refactor [`#239`](https://github.com/permafrost-dev/vue-ray/pull/239)
+- Bump dependabot/fetch-metadata from 1.7.0 to 2.0.0 [`#236`](https://github.com/permafrost-dev/vue-ray/pull/236)
 - Bump dependabot/fetch-metadata from 1.6.0 to 1.7.0 [`#235`](https://github.com/permafrost-dev/vue-ray/pull/235)
 - Bump github/codeql-action from 2 to 3 [`#198`](https://github.com/permafrost-dev/vue-ray/pull/198)
 - Bump actions/cache from 3 to 4 [`#219`](https://github.com/permafrost-dev/vue-ray/pull/219)
@@ -15,9 +17,9 @@ All notable changes to this project will be documented in this file. Dates are d
 - Bump dependabot/fetch-metadata from 1.5.0 to 1.5.1 [`#137`](https://github.com/permafrost-dev/vue-ray/pull/137)
 - Bump dependabot/fetch-metadata from 1.4.0 to 1.5.0 [`#136`](https://github.com/permafrost-dev/vue-ray/pull/136)
 - Add support for Node.js version 18 in test workflow [`#135`](https://github.com/permafrost-dev/vue-ray/pull/135)
+- wip [`f36ea4e`](https://github.com/permafrost-dev/vue-ray/commit/f36ea4e1365670d3a4d0ca6f24a774f279e44dcd)
+- wip [`99f8250`](https://github.com/permafrost-dev/vue-ray/commit/99f8250f2d9c6e58dd600cd7137ba3b8ad5a6277)
 - updates [`ce6659d`](https://github.com/permafrost-dev/vue-ray/commit/ce6659dd0db5df4590f4b4630ac49b1fe221ec8b)
-- more updates, unit tests [`96269d3`](https://github.com/permafrost-dev/vue-ray/commit/96269d36b518e7564b6771910e10258f34b7b8b9)
-- ux updates, code tweaks, remove unused code, etc wip [`408bb41`](https://github.com/permafrost-dev/vue-ray/commit/408bb413aad770d9578cc7144f65a52d6a7347ae)
 
 #### [v1.17.4](https://github.com/permafrost-dev/vue-ray/compare/v1.17.3...v1.17.4)
 
