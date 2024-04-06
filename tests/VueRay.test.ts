@@ -1,5 +1,6 @@
 import { VueRay } from '@/VueRay';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { spyOn } from '@vitest/spy';
 import { ref } from 'vue';
 import { FakeClient } from './TestClasses/FakeClient';
 
@@ -86,5 +87,12 @@ describe('Base VueRay class:', () => {
         lastWatchParams?.cb2(2, 1);
 
         expect(client.sentRequests).toMatchSnapshot();
+    });
+
+    it('sends data correctly', () => {
+        const sendSpy = spyOn(VueRay.prototype, 'send');
+        const instance = ray;
+        instance.send('test');
+        expect(sendSpy).toHaveBeenCalledWith('test');
     });
 });

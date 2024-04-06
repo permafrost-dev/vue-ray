@@ -3,11 +3,13 @@ import { VueRay } from '@/VueRay';
 import { errorHandler } from '@/ErrorHandler';
 
 export const initializeOptions = (options: any, vueConfig: any) => {
-    if (typeof options.interceptErrors === 'function') {
-        errorHandler.additionalInfoCallback = options.interceptErrors;
+    options = options || {};
+
+    if (typeof options?.interceptErrors === 'function') {
+        errorHandler.additionalInfoCallback = options?.interceptErrors;
     }
 
-    if (options.interceptErrors === true || typeof options.interceptErrors === 'function') {
+    if (options?.interceptErrors === true || typeof options?.interceptErrors === 'function') {
         errorHandler.installVueErrorHandler(vueConfig);
         errorHandler.installWindowErrorHandlers();
     }

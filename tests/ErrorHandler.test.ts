@@ -3,7 +3,11 @@ import { ErrorHandler } from '@/ErrorHandler';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { FakeRay } from './TestClasses/FakeRay';
 
-let options: any, window: any, rayInstance: FakeRay, vueConfig: any, errorHandler: ErrorHandler;
+let options: any;
+let window: any;
+let rayInstance: FakeRay;
+let vueConfig: any;
+let errorHandler: ErrorHandler;
 
 beforeEach(() => {
     options = {};
