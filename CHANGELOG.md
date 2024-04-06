@@ -2,7 +2,9 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v2.0.0](https://github.com/permafrost-dev/vue-ray/compare/v1.17.4...v2.0.0)
+### [v2.0.0](https://github.com/permafrost-dev/vue-ray/compare/v1.17.4...v2.0.0)
+
+> 6 April 2024
 
 - v2 refactor [`#239`](https://github.com/permafrost-dev/vue-ray/pull/239)
 - Bump dependabot/fetch-metadata from 1.7.0 to 2.0.0 [`#236`](https://github.com/permafrost-dev/vue-ray/pull/236)
