@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`adds all lifecycle events to the component 1`] = `
+{
+  "beforeMount": 1,
+  "beforeUnmount": 1,
+  "mounted": 1,
+  "unmounted": 1,
+  "updated": 1,
+}
+`;
+
+exports[`adds beforeMount lifecycle event to the component 1`] = `
+{
+  "beforeMount": 1,
+  "beforeUnmount": 0,
+  "mounted": 0,
+  "unmounted": 0,
+  "updated": 0,
+}
+`;
+
+exports[`adds beforeUnmount lifecycle event to the component 1`] = `
+{
+  "beforeMount": 0,
+  "beforeUnmount": 1,
+  "mounted": 0,
+  "unmounted": 0,
+  "updated": 0,
+}
+`;
+
+exports[`adds mounted lifecycle event to the component 1`] = `
+{
+  "beforeMount": 0,
+  "beforeUnmount": 0,
+  "mounted": 1,
+  "unmounted": 0,
+  "updated": 0,
+}
+`;
+
+exports[`adds unmounted lifecycle event to the component 1`] = `
+{
+  "beforeMount": 0,
+  "beforeUnmount": 0,
+  "mounted": 0,
+  "unmounted": 1,
+  "updated": 0,
+}
+`;
+
+exports[`adds updated lifecycle event to the component 1`] = `
+{
+  "beforeMount": 0,
+  "beforeUnmount": 0,
+  "mounted": 0,
+  "unmounted": 0,
+  "updated": 1,
+}
+`;

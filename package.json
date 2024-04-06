@@ -1,10 +1,19 @@
 {
     "name": "vue-ray",
-    "version": "1.17.4",
+    "version": "2.0.0",
     "description": "Debug Vue code with Ray to fix problems faster",
     "license": "MIT",
     "author": "Patrick Organ <patrick@permafrost.dev>",
     "homepage": "https://github.com/permafrost-dev/vue-ray",
+    "keywords": [
+        "vue",
+        "ray",
+        "debug",
+        "javascript",
+        "typescript",
+        "permafrost",
+        "spatie"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/permafrost-dev/vue-ray.git"
@@ -12,85 +21,66 @@
     "bugs": {
         "url": "https://github.com/permafrost-dev/vue-ray/issues"
     },
-    "main": "./dist/vue3.cjs.js",
-    "typings": "./dist/vue3.d.ts",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "typings": "./dist/index.d.ts",
     "exports": {
-        ".": {
-            "import": "./dist/vue3.mjs",
-            "require": "./dist/vue3.cjs.js",
-            "types": "./dist/vue3.d.ts"
-        },
-        "./vue2": {
-            "import": "./dist/vue2.mjs",
-            "require": "./dist/vue2.cjs.js",
-            "types": "./dist/vue2.d.ts"
-        },
-        "./vue3": {
-            "import": "./dist/vue3.mjs",
-            "require": "./dist/vue3.cjs.js",
-            "types": "./dist/vue3.d.ts"
-        }
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs",
+        "default": "./dist/index.js"
     },
     "scripts": {
-        "test": "./node_modules/.bin/jest tests --verbose",
-        "test:coverage": "./node_modules/.bin/jest tests --coverage",
-        "fmt": "./node_modules/.bin/prettier --config prettier.config.js --write 'src/**/*.{js,ts,json}' 'tests/**/*.{js,ts,json}' './*.js'",
-        "lint": "./node_modules/.bin/eslint --ext ts,js src/",
-        "lint:fix": "./node_modules/.bin/eslint --ext ts,js --fix src/",
+        "test": "vitest tests",
+        "test:coverage": "vitest tests --coverage",
         "lint:staged": "./node_modules/.bin/lint-staged",
-        "fix": "npm run fmt && npm run lint:fix",
-        "build:vue2": "rollup --config rollup.vue2-config.js --bundleConfigAsCjs",
-        "build:vue3": "rollup --config rollup.vue3-config.js --bundleConfigAsCjs",
-        "build:dts:vue2": "./node_modules/.bin/dts-bundle-generator -o ./dist/vue2.d.ts src/RayVue2.ts",
-        "build:dts:vue3": "./node_modules/.bin/dts-bundle-generator -o ./dist/vue2.d.ts src/RayVue2.ts",
-        "build:all": "concurrently npm:build:vue2 npm:build:vue3 && concurrently npm:build:dts:vue2 npm:build:dts:vue3",
+        "build:lib": "vite build",
+        "build:types": "node scripts/build-types.js",
+        "build:dist": "BUILD_ENV=production concurrently npm:build:lib npm:build:types",
+        "build:dev": "BUILD_ENV=development concurrently npm:build:lib npm:build:types",
         "preversion": "npm run test",
-        "postversion": "npm run build:all",
+        "postversion": "npm run build:dist",
         "version": "auto-changelog -p -o CHANGELOG.md --hide-credit --release-summary --hide-empty-releases --sort-commits date-desc && git add CHANGELOG.md",
         "prepare": "husky install"
     },
-    "keywords": [
-        "vue",
-        "ray",
-        "debug",
-        "javascript",
-        "typescript",
-        "permafrost"
-    ],
     "lint-staged": {
         "*.{js,ts}": [
-            "./node_modules/.bin/prettier --config prettier.config.js --write",
+            "./node_modules/.bin/prettier --config prettier.config.cjs --write",
             "./node_modules/.bin/eslint --fix"
         ],
         "*.{json,css,scss,gql}": [
-            "./node_modules/.bin/prettier --config prettier.config.js --write"
+            "./node_modules/.bin/prettier --config prettier.config.cjs --write"
         ],
         "*.{yaml,yml}": [
-            "./node_modules/.bin/prettier --config prettier.config.js --tab-width 2 --write"
+            "./node_modules/.bin/prettier --config prettier.config.cjs --tab-width 2 --write"
         ]
     },
     "devDependencies": {
-        "@rollup/plugin-commonjs": "^25.0.7",
-        "@rollup/plugin-node-resolve": "^15.2.3",
-        "@rollup/plugin-replace": "^5.0.5",
-        "@rollup/plugin-typescript": "^11.1.6",
-        "@types/jest": "^29.5.11",
-        "@types/node": "^20.11.5",
-        "@typescript-eslint/eslint-plugin": "^6.19.0",
-        "@typescript-eslint/parser": "^6.19.0",
+        "@biomejs/biome": "^1.6.3",
+        "@types/node": "^20.12.2",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
+        "@vitest/coverage-v8": "^1.4.0",
         "auto-changelog": "^2.4.0",
         "concurrently": "^8.2.2",
-        "dts-bundle-generator": "^9.2.4",
-        "eslint": "^8.56.0",
-        "husky": "^8.0.3",
-        "jest": "^29.7.0",
-        "lint-staged": "^15.2.0",
-        "prettier": "^3.2.4",
-        "rollup": "^4.9.5",
-        "ts-jest": "^29.1.1",
-        "typescript": "^5.3.3"
+        "dts-bundle-generator": "^9.3.1",
+        "eslint": "^8.57.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
+        "prettier": "^3.2.5",
+        "ts-mixer": "^6.0.4",
+        "typescript": "^5.4.3",
+        "vite": "^5.2.7",
+        "vite-plugin-externalize-deps": "^0.8.0",
+        "vitest": "^1.4.0"
     },
     "dependencies": {
-        "node-ray": "^1.21.0"
+        "@permafrost-dev/pretty-format": "^1.1.5",
+        "node-ray": "^2.1.0",
+        "vue": "^3.2.0"
+    },
+    "engines": {
+        "node": ">=18"
     }
 }

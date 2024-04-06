@@ -2,7 +2,26 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v2.0.0](https://github.com/permafrost-dev/vue-ray/compare/v1.17.4...v2.0.0)
+
+- Bump dependabot/fetch-metadata from 1.6.0 to 1.7.0 [`#235`](https://github.com/permafrost-dev/vue-ray/pull/235)
+- Bump github/codeql-action from 2 to 3 [`#198`](https://github.com/permafrost-dev/vue-ray/pull/198)
+- Bump actions/cache from 3 to 4 [`#219`](https://github.com/permafrost-dev/vue-ray/pull/219)
+- Bump stefanzweifel/git-auto-commit-action from 4 to 5 [`#166`](https://github.com/permafrost-dev/vue-ray/pull/166)
+- Bump actions/setup-node from 3 to 4 [`#172`](https://github.com/permafrost-dev/vue-ray/pull/172)
+- npm(deps-dev): bump lint-staged from 13.3.0 to 14.0.1 [`#151`](https://github.com/permafrost-dev/vue-ray/pull/151)
+- Bump actions/checkout from 3 to 4 [`#155`](https://github.com/permafrost-dev/vue-ray/pull/155)
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 [`#139`](https://github.com/permafrost-dev/vue-ray/pull/139)
+- Bump dependabot/fetch-metadata from 1.5.0 to 1.5.1 [`#137`](https://github.com/permafrost-dev/vue-ray/pull/137)
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.0 [`#136`](https://github.com/permafrost-dev/vue-ray/pull/136)
+- Add support for Node.js version 18 in test workflow [`#135`](https://github.com/permafrost-dev/vue-ray/pull/135)
+- updates [`ce6659d`](https://github.com/permafrost-dev/vue-ray/commit/ce6659dd0db5df4590f4b4630ac49b1fe221ec8b)
+- more updates, unit tests [`96269d3`](https://github.com/permafrost-dev/vue-ray/commit/96269d36b518e7564b6771910e10258f34b7b8b9)
+- ux updates, code tweaks, remove unused code, etc wip [`408bb41`](https://github.com/permafrost-dev/vue-ray/commit/408bb413aad770d9578cc7144f65a52d6a7347ae)
+
 #### [v1.17.4](https://github.com/permafrost-dev/vue-ray/compare/v1.17.3...v1.17.4)
+
+> 18 May 2023
 
 - Add typescript definitions [`#134`](https://github.com/permafrost-dev/vue-ray/pull/134)
 - Update dependencies [`#133`](https://github.com/permafrost-dev/vue-ray/pull/133)

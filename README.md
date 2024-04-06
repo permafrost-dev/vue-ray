@@ -13,7 +13,7 @@
 
 ## Debug Vue code with Ray to fix problems faster
 
-Install this package in any Vue 2 or Vue 3 project to send messages to the [Ray app](https://myray.app). It also includes a Vuex plugin to monitor changes to the Vuex state.
+Install this package in any Vue 3 project to send messages to the [Ray app](https://myray.app).
 
 ## Installation
 
@@ -23,57 +23,29 @@ Install with npm:
 npm install vue-ray
 ```
 
-or yarn:
+or bun:
 
 ```bash
-yarn add vue-ray
+bun add vue-ray
 ```
 
-### Installing in Vue 3
+### Installing
 
-When using in a Vue 3.x project (the default), import the package:
+When using in a Vue 3 project, you may optionally install the plugin globally in your `main.js` or `app.js` file. This is primarily useful if you want to cusomize the connection settings for the package.
 
 ```js
+import { RayPlugin } from 'vue-ray';
 import { createApp } from 'vue';
 import App from './App.vue';
-
-// as an es module import:
-import { RayPlugin } from 'vue-ray';
-
-// or as a commonjs import:
-const { RayPlugin } = require('vue-ray');
 
 const app = createApp(App);
 
 app.use(RayPlugin, { 
-    interceptErrors: true,
     port: 23500,
-    showComponentEvents: ['created', 'mounted'],
+    host: 'localhost',
+    interceptErrors: true,
     nodeRaySettings: { 
         interceptConsoleLog: true,
-    },
-});
-```
-
-### Installing in Vue 2
-
-When using in a Vue 2.x project, import the 'vue2' variant:
-
-```js
-const Vue = require('vue');
-
-// as an es module import:
-import { RayPlugin } from 'vue-ray/vue2';
-
-// or as a commonjs import:
-const { RayPlugin } = require('vue-ray/vue2');
-
-Vue.use(RayPlugin, { 
-    interceptErrors: true,
-    host: '127.0.0.1',
-    showComponentEvents: ['mounted'],
-    nodeRaySettings: {
-        interceptConsoleLog: false,
     },
 });
 ```
@@ -86,25 +58,69 @@ Vue.use(RayPlugin, {
 | `scheme`              | `string`   | `http`      | URI scheme to use to connect to host                           |
 | `interceptErrors`     | `boolean`  | `false`     | send Vue errors to Ray                                         |
 | `port`                | `number`   | `23517`     | port to connect to the Ray app on                              |
-| `showComponentEvents` | `string[]` | `[]`        | display component events in Ray, see below for possible values |
-| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrost-dev/node-ray#configuration)_ |
-
-### Component events
-
-Component lifecycle events can be sent to Ray using the `showComponentEvents` plugin option _(`array`)_.
-
-Use any of the following values with this option:
-
-- `before-create`
-- `before-mount`
-- `created`
-- `mounted`
-- `unmounted`
-- `updated`
+| `nodeRaySettings`     | `object`   | `{}`        | pass additional settings for `node-ray` _[(reference)](https://github.com/permafrots-dev/node-ray#configuration)_ |
 
 ## Usage
 
-Once the plugin is installed, you may access the `ray()` method on `this` as `this.$ray()`.
+To access the `ray()` function, import `raySetup()` from the `vue-ray` library:
+
+```html
+<script setup>
+import { raySetup } from 'vue-ray'
+const ray = raySetup(); // `ray` is a ref, so you must use `ray.value` within the script tags
+</script>
+```
+
+The `raySetup()` function accepts an optional `options` object, defined as:
+
+```typescript
+interface RaySetupOptions {
+    connection?: {
+        host?: string;
+        port?: number;
+    }
+    lifecycleEvents?: {
+        beforeCreate?: boolean;
+        beforeMount?: boolean;
+        created?: boolean;
+        mounted?: boolean;
+        unmounted?: boolean;
+        updated?: boolean;
+        all?: boolean;
+    }
+}
+```
+
+The `lifecycleEvents` object can be used to enable or disable sending of the component's lifecycle events to Ray. Use the `all` property to enable all lifecycle events.
+
+The following example will send the `created` and `mounted` events to Ray for the component:
+
+```html
+<script setup>
+import { raySetup } from 'vue-ray'
+const ray = raySetup({
+    lifecycleEvents: {
+        created: true,
+        mounted: true,
+    },
+});
+</script>
+```
+
+The `connection` object can be used to specify the host and port to connect to the Ray app. The default values are `localhost` and `23517`, respectively.
+
+### Sending data to Ray
+
+Once you have called `raySetup()`, you may use the `ray` function in the Vue SFC as normal _(see node-ray)_ to send data to Ray:
+
+```html
+<template>
+    <div>
+        <button @click="ray('Hello from Vue!')">Send message to Ray</button>
+        <button @click="() => ray().html('<strong>hello with html!</strong>')">Send html message to Ray</button>
+    </div>
+</template>
+```
 
 See the [node-ray reference](https://github.com/permafrost-dev/node-ray#reference) for a complete list of available methods.
 
@@ -112,18 +128,50 @@ See the [node-ray reference](https://github.com/permafrost-dev/node-ray#referenc
 
 | Name                        | Description                                            |
 | --------------------------- | ------------------------------------------------------ |
-| `this.$ray().data()`        | show the component data                                |
-| `this.$ray().props()`       | show the component props                               |
-| `this.$ray().ref(name)`     | show the `innerHTML` of a named ref                    |
-| `this.$ray().track(name)`   | display changes to a component's data variable         |
-| `this.$ray().untrack(name)` | stop displaying changes to a component's data variable |
+| `ray().data()`                    | show the component data                                |
+| `ray().props()`                   | show the component props                               |
+| `ray().element(refName: string)`  | render the HTML of an element with a ref of `refName` |
+| `ray().track(name: string)`       | display changes to a component's data variable _(best used when not using script setup)_ |
+| `ray().untrack(name: string)`     | stop displaying changes to a component's data variable |
+| `ray().watch(name: string, ref: Ref)`  | watch a ref's value and send changes to Ray _(best used in script setup)_ |
+| `ray().unwatch(name: string)`     | stop watching a ref's value and stop sending changes to Ray |
+
+## Watching refs
+
+When using the `script setup` syntax, you can use the `ray().watch(name, ref)` method to watch a ref's value and send changes to Ray. Here's an example SFC using the `script setup` syntax:
+
+```html
+<script setup>
+import { ref } from 'vue';
+import { raySetup } from 'vue-ray';
+
+const one = ref(100);
+const two = ref(22);
+const ray = raySetup().value;
+
+ray().watch('one', one);
+ray().watch('two', two);
+</script>
+
+<template>
+    <div>
+        <div>{{ one }}</div>
+        <div>{{ two }}</div>
+        <button @click="one += 3">Increment one</button>
+        <button @click="two += 3">Increment two</button>
+    </div>
+</template>
+```
 
 ## Tracking component data
 
-Changes to any component's data variables can be tracked and displayed in real-time using the `track(name)` method.
+When not using the `script setup` syntax, you can use the `ray().track(name)` method to track changes to a component's data variable. Here's an example SFC:
 
-```vue
+```html
 <script>
+import { raySetup } from 'vue-ray';
+let ray;
+
 export default {
     props: ['title'],
     data() {
@@ -133,61 +181,41 @@ export default {
         };
     },
     created() {
-        this.$ray().data();
-        this.$ray().track('one');
+        // must call raySetup() in the created() lifecycle hook so it can access the current component
+        ray = raySetup().value;
+        ray().track('one');
     },
-    mounted() {
-        setInterval(() => {
+    methods: {
+        sendToRay() {
+            ray().element('div1');
+        },
+        increment() {
             this.one += 3;
-        }, 4000);
-    },
+            this.two += 5;
+        }
+    }
 };
 </script>
-```
 
-## Example Component
-
-```vue
 <template>
     <div class="flex-col border-r border-gray-200 bg-white overflow-y-auto w-100">
+        <div ref="div1" class="w-full flex flex-wrap">
+            <div ref="div1a" class="w-4/12 inline-flex">{{ one }}</div>
+            <div ref="div1b" class="w-4/12 inline-flex">{{ two }}</divr>
+        </div>
         <div class="about">
             <h1>{{ title }}</h1>
             <a @click="sendToRay()">send ref to ray</a><br>
             <a @click="increment()">increment data var</a><br>
         </div>
-        <div ref="div1" class="w-full flex flex-wrap">
-            <div ref="div1a" class="w-4/12 inline-flex">{{ one }}</div>
-            <div ref="div1b" class="w-4/12 inline-flex">{{ two }}</divr>
-        </div>
     </div>
 </template>
-
-<script>
-export default {
-    props: ['title'],
-    data() {
-        return {
-            one: 100,
-            two: 22,
-        };
-    },
-    created() {
-        this.$ray().data();
-        this.$ray().track('one');
-    },
-    methods: {
-        sendToRay() {
-            this.$ray().ref('div1');
-        },
-        increment() {
-            this.one += 3;
-        }
-    }
-};
-</script>
 ```
 
-## Intercepting errors (Vue 3)
+> When either tracking data or watching a ref, you will notice that the entry in Ray updates in real-time
+> as the data changes, instead of creating a new entry each time the >data changes. 
+
+## Intercepting errors
 
 Use the `interceptErrors` option to intercept errors and send them to Ray:
 
@@ -195,96 +223,28 @@ Use the `interceptErrors` option to intercept errors and send them to Ray:
 app.use(RayPlugin, { interceptErrors: true });
 ```
 
-## Intercepting errors (Vue 2)
-
-Use the `interceptErrors` option to intercept errors and send them to Ray:
-
-```js
-Vue.use(RayPlugin, { interceptErrors: true });
-```
-
-## Using the Vuex plugin
-
-In either a Vue 2.x or 3.x project, use the `vue-ray` vuex plugin - it can track the vuex state, log mutations, and log actions.
-
-To use it, import the `RayVuexPlugin` function from `vue-ray`, and pass the result of the function to the `plugins` property on your Vuex store:
-
-```js
-// ...
-
-import { RayVuexPlugin } from 'vue-ray'; // for both vue 2 and vue 3
-
-// ...
-
-const storeObj = {
-    state: {
-        one: 11,
-        two: 22,
-    },
-    mutations: {
-        incrementOne(state) {
-            state.one += 1;
-        },
-        incrementTwo(state) {
-            state.two += 2;
-        },
-    },
-    actions: {},
-    modules: {},
-    plugins: [
-        RayVuexPlugin({ 
-            trackState: true,
-            logMutations: true,
-            trackingOptions: {
-                propNames: ['on*'],
-            }
-        }),
-    ],
-};
-
-// Vue 3:
-export default createStore(storeObj);
-
-// Vue 2:
-export default new Vuex.Store(storeObj);
-```
-
-### Vuex plugin options
-
-| Name                  | Type      | Description                                        |
-| --------------------- | --------- | -------------------------------------------------- |
-| `trackState`          | `boolean` | track the data in the store's state                |
-| `logMutations`        | `boolean` | log all fired mutations to Ray                     |
-| `logActions`          | `boolean` | log all fired actions to Ray                       |
-| `loggedMutationColor` | `string`  | send logged mutations with the specified Ray color |
-| `loggedActionColor`   | `string`  | send logged actions with the specified Ray color   |
-| `trackingOptions`     | `object`  | see "tracking options" section for more info       |
-
-Valid color names are `blue`, `gray`, `green`, `orange`, `purple`, `red`, and `none`.
-
-### Tracking options
-
-The `trackingOptions` definition is as follows:
-
-```typescript
-trackingOptions?: {
-    moduleNames?: string[];
-    propNames?: string[];
-};
-```
-
-The `propNames` is an array of wildcard patterns that will match stored data property names when tracking store state; for example, a value of `['f*']` would match store data properties named `foo` and `fab` but not `dog`.
-
-The `moduleNames` is also an array of wildcard patterns but will match module names and module data property names, such as `['mymod.*']`, which would match all properties in the `mymod` store.
-
-The default value is `['*']`, meaning all modules and properties match.
-
-
 ## Development setup
 
-- `npm install`
-- `npm run test`
-- `npm run build:all`
+```bash
+npm install
+npm run test
+```
+
+## Development Builds
+
+```bash
+npm run build:dev
+```
+
+This will build the package in development mode, and writes to the `dist-temp` directory.
+
+## Production Builds
+
+```bash
+npm run build:dist
+```
+
+This will build the package in production mode, and writes to the `dist` directory.
 
 ## Code Coverage Details
 
@@ -296,9 +256,17 @@ The default value is `['*']`, meaning all modules and properties match.
 
 ## Testing
 
-`vue-ray` uses Jest for unit tests. To run the test suite:
+`vue-ray` uses Vitest for unit tests. To run the test suite, run the following command:
 
-`npm run test`
+```bash
+npm run test
+```
+
+...or run with coverage:
+
+```bash
+npm run test:coverage
+```
 
 ---
 

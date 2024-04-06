@@ -1,0 +1,194 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Base VueRay class: > sends a refs innerHTML 1`] = `
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Data",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "content": "",
+          "label": "HTML",
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "custom",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
+
+exports[`Base VueRay class: > sends the component data 1`] = `
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Data",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Data",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
+
+exports[`Base VueRay class: > sends the component props 1`] = `
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Data",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Table",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"title"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span><code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"abc"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
+
+exports[`Base VueRay class: > stops tracking data variables 1`] = `[]`;
+
+exports[`Base VueRay class: > tracks data variables 1`] = `
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Data",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;
+
+exports[`Base VueRay class: > watches a ref 1`] = `
+[
+  {
+    "meta": [],
+    "payloads": [
+      {
+        "content": {
+          "label": "Data",
+          "values": [
+            "<code style="font-size: 0.8rem!important;" class=""><span style="font-size: 0.8rem!important;" class="bold text-yellow-600">Object</span>&nbsp;<code style="font-size: 0.8rem!important;" class="text-gray-600"><span style="font-size: 0.8rem!important;" class="bold text-orange-400">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;1<code style="font-size: 0.8rem!important;" class="bold text-green-600 p-0">"one"</code><span style="font-size: 0.8rem!important;" class="bold text-orange-400">:&nbsp;</span>1<span style="font-size: 0.8rem!important;" class="bold text-orange-400">,</span><br><span style="font-size: 0.8rem!important;" class="bold text-orange-400">}</span></code></code>",
+          ],
+        },
+        "origin": {
+          "file": "web.cjs.js",
+          "function_name": "xxxx",
+          "hostname": "remote",
+          "line_number": 999,
+        },
+        "type": "table",
+      },
+    ],
+    "uuid": "fakeUuid",
+  },
+]
+`;

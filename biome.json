@@ -1,0 +1,114 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.6.3/schema.json",
+    "organizeImports": {
+        "enabled": false
+    },
+    "files": {
+        "ignoreUnknown": true,
+        "maxSize": 1572864,
+        "include": ["./*.cjs", "./*.js", "./*.mjs", "./*.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "src/**/*.jsx"],
+        "ignore": [
+            ".git/**",
+            ".husky/**",
+            ".idea/**",
+            ".vscode/**",
+            "build/**",
+            "coverage/**",
+            "dist/**",
+            "dist-temp/**",
+            "node_modules/**",
+            "package-lock.json",
+            "tsconfig.json"
+        ]
+    },
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 170,
+        "lineEnding": "lf"
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "complexity": {
+                "noBannedTypes": "off",
+                "noExcessiveCognitiveComplexity": "warn",
+                "noForEach": "off",
+                "noStaticOnlyClass": "off",
+                "noThisInStatic": "off",
+                "useLiteralKeys": "warn",
+                "useSimplifiedLogicExpression": "off"
+            },
+            "correctness": {
+                "noConstAssign": "error",
+                "noInvalidUseBeforeDeclaration": "error",
+                "noSwitchDeclarations": "warn",
+                "noUndeclaredVariables": "off",
+                "noUnusedImports": "warn",
+                "useExhaustiveDependencies": "off",
+                "useHookAtTopLevel": "warn"
+            },
+            "style": {
+                "noArguments": "warn",
+                "noParameterAssign": "warn",
+                "useFragmentSyntax": "off",
+                "useNodejsImportProtocol": "error",
+                "useSelfClosingElements": "off"
+            },
+            "nursery": {
+                "noDuplicateJsonKeys": "warn",
+                "noExportsInTest": "warn",
+                "useJsxKeyInIterable": "warn"
+            },
+            "suspicious": {
+                "noAssignInExpressions": "off",
+                "noAsyncPromiseExecutor": "off",
+                "noConsoleLog": "warn",
+                "noDebugger": "error",
+                "noDoubleEquals": "warn",
+                "noExplicitAny": "off",
+                "noImplicitAnyLet": "off",
+                "noRedeclare": "warn"
+            },
+            "security": {
+                "recommended": true,
+                "noGlobalEval": "error"
+            },
+            "performance": {
+                "noDelete": "off"
+            },
+            "a11y": {
+                "recommended": true
+            }
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "arrowParentheses": "asNeeded",
+            "bracketSameLine": false,
+            "bracketSpacing": true,
+            "indentStyle": "space",
+            "indentWidth": 4,
+            "jsxQuoteStyle": "double",
+            "lineWidth": 170,
+            "quoteProperties": "asNeeded",
+            "quoteStyle": "single",
+            "semicolons": "always",
+            "trailingComma": "all"
+        }
+    },
+    "json": {
+        "formatter": {
+            "enabled": false
+        }
+    },
+    "vcs": {
+        "clientKind": "git",
+        "defaultBranch": "main",
+        "enabled": true,
+        "useIgnoreFile": true,
+        "root": "."
+    }
+}

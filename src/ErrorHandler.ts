@@ -1,0 +1,105 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
+import { RayMixin } from '@/RayMixin';
+import type { VueRay } from '@/VueRay';
+import { format as prettyFormat } from '@permafrost-dev/pretty-format';
+import { getCurrentInstance } from 'vue';
+
+export type ERROR_TYPE = 'vue' | 'error' | 'unhandled_rejection';
+
+export type AdditionalErrorInfoCallback = (err: any | null, ctx: any | null, type: ERROR_TYPE) => any;
+
+export class ErrorHandler {
+    public window: any;
+    public ray: VueRay | any;
+
+    public additionalInfoCallback: AdditionalErrorInfoCallback | null = null;
+
+    constructor(callback: AdditionalErrorInfoCallback | null = null, window: any = null, rayInstance: any = null) {
+        this.additionalInfoCallback = callback;
+        this.ray = rayInstance ?? RayMixin.methods.$ray(getCurrentInstance());
+        this.window = window ?? globalThis;
+    }
+
+    public additionalInfo(err: any, ctx: any, type: ERROR_TYPE): any {
+        return this.additionalInfoCallback ? this.additionalInfoCallback(err, ctx, type) : '';
+    }
+
+    public additionalInfoHtml(err: any, ctx: any, type: ERROR_TYPE): string {
+        let info = this.additionalInfo(err, ctx, type);
+
+        if (typeof info === 'string' && info.length === 0) {
+            return '';
+        }
+
+        if (typeof info !== 'string' && typeof info !== 'number') {
+            info = prettyFormat(info, { indent: 4, highlight: true });
+
+            return `<details open><summary class="text-black w-full block mt-1 cursor-pointer">Additional Info:</summary><div class="text-blue-600 w-full block pl-8">${info}</div></details>`;
+        }
+
+        return `<div class="text-black w-full block mt-1">Additional Info:</div><div class="text-blue-600 w-full block pl-8">${info}</div>`;
+    }
+
+    public onVueError = (err: any, vm: any) => {
+        const additionalInfoHtml = this.additionalInfoHtml(err, vm, 'vue');
+
+        // pretty-print the error message and stack trace, and append any additional info provided by the callback
+        const stack = err.stack
+            .replace(
+                /^(\w+):(.+)$/m,
+                '<div class="flex bg-white border-0">' +
+                    '<div class="flex-row bg-white text-red-400 pr-1 pl-1 border border-1 border-red-400">$1</div>' +
+                    '<div style="padding-top: 0.25em;" class="flex-row">$2</div>' +
+                    '</div>',
+            )
+            .replace(/\n/, 'Stack Trace:\n')
+            .replace(/ at ([^ ]+) (.*)$/gm, '<div class="inline"> at <span class="text-blue-700">$1</span> $2</div>'); // eslint-disable-line
+
+        vm.$ray().sendCustom(`<pre>${stack}${additionalInfoHtml}</pre>`, 'Error')
+            .small()
+            .red();
+    };
+
+    public onWindowError = (message: string, source: string, lineno: number, colno: number, error: any) => {
+        const additionalInfoHtml = this.additionalInfoHtml(error, { message, source, lineno, colno }, 'error');
+
+        const html = `
+        <div class="flex bg-white border-0">
+            <div class="flex-row bg-white text-red-400 pr-1 pl-1 border border-1 border-red-400">${message}</div>
+            <div style="padding-top: 0.25em;" class="flex-row"><code>${source}</code></div>
+        </div>${additionalInfoHtml}`;
+
+        this.ray?.html(`<pre>${html}</pre>`, 'Error').small()
+            .red();
+    };
+
+    public onWindowUnhandledRejectionEvent = (event: any) => {
+        const additionalInfoHtml = this.additionalInfoHtml(null, event, 'unhandled_rejection');
+
+        const html = `
+        <div class="flex bg-white border-0">
+            <div class="flex-row bg-white text-red-400 pr-1 pl-1 border border-1 border-red-400">${event.reason}</div>
+            <div style="padding-top: 0.25em;" class="flex-row"><code>${JSON.stringify(event)}</code></div>
+        </div>${additionalInfoHtml}`;
+
+        this.ray?.html(`<pre>${html}</pre>`, 'Error').small()
+            .red();
+    };
+
+    public installVueErrorHandler(vueConfig: any): any {
+        vueConfig.errorHandler = this.onVueError;
+
+        return vueConfig;
+    }
+
+    public installWindowErrorHandlers(onError: any = null, onUnhandled: any = null) {
+        if (this.window) {
+            this.window.onerror = onError ?? this.onWindowError;
+            this.window.unhandledrejection = onUnhandled ?? this.onWindowUnhandledRejectionEvent;
+        }
+    }
+}
+
+export const errorHandler = new ErrorHandler();
