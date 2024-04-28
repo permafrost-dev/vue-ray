@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v2.0.3](https://github.com/permafrost-dev/vue-ray/compare/v2.0.2...v2.0.3)
+
+- RayPlugin was not exported [`#245`](https://github.com/permafrost-dev/vue-ray/pull/245)
+- Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 [`#243`](https://github.com/permafrost-dev/vue-ray/pull/243)
+- RayPlugin exported via index.ts [`b8f100b`](https://github.com/permafrost-dev/vue-ray/commit/b8f100b7faa19a3faf657b7b10a15462fdd45c21)
+- Update README.md [`61a5a8d`](https://github.com/permafrost-dev/vue-ray/commit/61a5a8dc359962fb9c733732bc54ef3959cc9a99)
+
 ### [v2.0.0](https://github.com/permafrost-dev/vue-ray/compare/v1.17.4...v2.0.0)
 
 > 6 April 2024
